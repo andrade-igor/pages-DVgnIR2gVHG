@@ -489,61 +489,13 @@ function App() {
 
       <section className="section">
         <div className="wrap">
-          <article className="social-follow">
-            <h2 className="display text-center text-4xl sm:text-6xl">
-              Siga-nos e acompanhe os nossos conteudos nas redes sociais
-            </h2>
-
-            <div className="social-grid">
-              <a
-                href="https://www.instagram.com/dsx.summit/"
-                target="_blank"
-                rel="noreferrer"
-                className="social-pill"
-              >
-                <span className="social-pill-icon">IG</span>
-                <span className="social-pill-handle">@dsx.summit</span>
-              </a>
-
-              <a
-                href="https://www.instagram.com/digitalhub.experience/"
-                target="_blank"
-                rel="noreferrer"
-                className="social-pill"
-              >
-                <span className="social-pill-icon">IG</span>
-                <span className="social-pill-handle">@digitalhub.experience</span>
-              </a>
-
-              <a
-                href="https://www.tiktok.com/@dsx.summit"
-                target="_blank"
-                rel="noreferrer"
-                className="social-pill"
-              >
-                <span className="social-pill-icon">TT</span>
-                <span className="social-pill-handle">@dsx.summit</span>
-              </a>
-
-              <a
-                href="https://www.youtube.com/@dsx.summit"
-                target="_blank"
-                rel="noreferrer"
-                className="social-pill"
-              >
-                <span className="social-pill-icon">YT</span>
-                <span className="social-pill-handle">@dsx.summit</span>
-              </a>
-            </div>
-          </article>
-
           <article className="brand-footer">
             <img src={logoDsx} alt="DSX" className="brand-footer-logo" />
-            <p className="brand-footer-line">10.279.661/0001-51</p>
-            <p className="brand-footer-line">© 2026 Digital Comunicacao.</p>
+            <p className="brand-footer-line">CNPJ 10.279.661/0001-51</p>
+            <p className="brand-footer-line">Digital Comunicacao</p>
             <p className="brand-footer-line">Todos os direitos reservados.</p>
             <p className="brand-footer-powered">
-              Powered by <span>Digital Hub Experience</span>
+              PORB <span>Digital Hub Experience</span>
             </p>
           </article>
         </div>
