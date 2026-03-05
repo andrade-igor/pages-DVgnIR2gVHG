@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSX 2026 — Overview de Campanhas</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f4f4f8;--white:#fff;--surf:#f0f0f5;--surf2:#e8e8ee;--bdr:#dddde5;--bdr-l:#eaeaf0;
+  --tx:#1a1a2e;--tx2:#333350;--tx-m:#6b6b85;--tx-d:#9999ad;
+  --amber:#b45309;--amber-bg:#fef3c7;--amber-bdr:#fde68a;
+  --green:#15803d;--green-bg:#dcfce7;--green-bdr:#bbf7d0;
+  --red:#b91c1c;--red-bg:#fee2e2;--red-bdr:#fecaca;
+  --blue:#1d4ed8;--blue-bg:#dbeafe;
+  --purple:#6d28d9;--purple-bg:#ede9fe;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased}
+.page{max-width:980px;margin:0 auto;padding:40px 24px 80px}
+
+.header{margin-bottom:40px}
+.header-top{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--amber)}
+.hbadge{background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:4px}
+.hdate{font-size:13px;color:var(--tx-m)}
+.header h1{font-size:32px;font-weight:800;letter-spacing:-.8px;line-height:1.15;margin-bottom:5px}
+.header h1 span{color:var(--amber)}
+.hsub{font-size:14px;color:var(--tx-m)}
+
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:36px}
+.kpi{background:var(--white);border:1px solid var(--bdr-l);border-radius:10px;padding:16px 14px;position:relative;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.kpi::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px}
+.kpi.k-amber::before{background:var(--amber)}.kpi.k-green::before{background:var(--green)}
+.kpi.k-red::before{background:var(--red)}.kpi.k-blue::before{background:var(--blue)}
+.kl{font-size:11px;font-weight:600;color:var(--tx-m);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px}
+.kv{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700}
+.kd{font-size:11px;color:var(--tx-d);margin-top:2px}
+
+.sec{margin-bottom:40px}
+.sec-h{display:flex;align-items:center;gap:9px;margin-bottom:16px}
+.sec-n{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--amber);background:var(--amber-bg);width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:6px}
+.sec-t{font-size:19px;font-weight:700}
+
+/* Funnel - horizontal bars stacked vertically */
+.funnel{display:flex;flex-direction:column;gap:3px;margin-bottom:12px;max-width:700px}
+.fs{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-radius:6px;color:#fff;min-width:220px;gap:12px}
+.fs-left{display:flex;align-items:center;gap:14px}
+.fs-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;min-width:85px;opacity:.9}
+.fs-v{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700}
+.fs-r{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;opacity:.85;white-space:nowrap}
+.fs-1{width:100%;background:linear-gradient(90deg,#1d4ed8,#3b82f6)}
+.fs-2{width:88%;background:linear-gradient(90deg,#1e40af,#2563eb)}
+.fs-3{width:74%;background:linear-gradient(90deg,#5b21b6,#7c3aed)}
+.fs-4{width:48%;background:linear-gradient(90deg,#b91c1c,#dc2626)}
+.fs-5{width:38%;background:linear-gradient(90deg,#92400e,#b45309)}
+.fs-6{width:30%;background:linear-gradient(90deg,#166534,#22c55e)}
+
+@media(max-width:600px){
+  .fs-v{font-size:16px}
+  .fs-l{font-size:9px;min-width:70px}
+  .fs{padding:10px 12px}
+  .fs-4,.fs-5,.fs-6{width:65%}
+}
+
+.team-box{background:var(--amber-bg);border:1px solid var(--amber-bdr);border-radius:10px;padding:14px 18px;margin-top:10px;font-size:13px;color:#78350f;line-height:1.65}
+.team-box strong{color:var(--amber)}
+
+/* Campaign cards */
+.camp{background:var(--white);border:1px solid var(--bdr-l);border-radius:10px;padding:16px 18px;margin-bottom:8px;border-left:4px solid var(--tx-d);box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.camp.topo{border-left-color:var(--blue)}.camp.meio{border-left-color:var(--purple)}.camp.fundo{border-left-color:var(--green)}
+.cn{font-size:14px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.ctag{font-size:10px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;padding:3px 8px;border-radius:4px}
+.ct-topo{background:var(--blue-bg);color:var(--blue)}.ct-meio{background:var(--purple-bg);color:var(--purple)}.ct-fundo{background:var(--green-bg);color:var(--green)}
+.cms{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:5px}
+.cm{background:var(--surf);padding:8px 10px;border-radius:6px}
+.cm-l{font-size:10px;color:var(--tx-d);text-transform:uppercase;letter-spacing:.4px}
+.cm-v{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;margin-top:1px}
+.camp-obj{font-size:12px;color:var(--tx-m);margin-bottom:10px;font-style:italic}
+
+/* Ad cards */
+.ad-grid{display:grid;grid-template-columns:1fr;gap:8px}
+.ad{display:flex;background:var(--white);border:2px solid var(--bdr-l);border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.ad:hover{box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.ad.v-great{border-color:var(--green-bdr);background:linear-gradient(90deg,#f0fdf4,var(--white) 25%)}
+.ad.v-good{border-color:#a7f3d0}
+.ad.v-bad{border-color:var(--red-bdr);background:linear-gradient(90deg,#fef2f2,var(--white) 25%)}
+.ad.v-warn{border-color:var(--amber-bdr);background:linear-gradient(90deg,#fffbeb,var(--white) 25%)}
+
+.ad-thumb{width:120px;min-height:120px;flex-shrink:0;position:relative;background:var(--surf);overflow:hidden;cursor:pointer}
+.ad-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.ad-expand{position:absolute;bottom:5px;right:5px;width:28px;height:28px;background:rgba(0,0,0,.6);border-radius:5px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
+.ad-expand:hover{background:rgba(0,0,0,.85)}
+.ad-expand svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Modal */
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:999;display:none;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(4px)}
+.modal-overlay.active{display:flex}
+.modal-overlay img{max-width:90vw;max-height:90vh;border-radius:10px;box-shadow:0 8px 40px rgba(0,0,0,.5);object-fit:contain}
+.modal-close{position:fixed;top:20px;right:24px;z-index:1000;width:36px;height:36px;background:rgba(255,255,255,.15);border-radius:8px;display:none;align-items:center;justify-content:center;cursor:pointer}
+.modal-close.active{display:flex}
+.modal-close svg{width:20px;height:20px;stroke:#fff;stroke-width:2;fill:none}
+.thumb-fb{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:var(--tx-d);background:var(--surf2)}
+.ad-tags{position:absolute;top:5px;left:5px;display:flex;flex-direction:column;gap:2px}
+.tag{font-size:8px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;padding:2px 5px;border-radius:3px;width:fit-content}
+.type-reels{background:#7c3aed;color:#fff}.type-card{background:#2563eb;color:#fff}
+
+.ad-body{flex:1;padding:10px 14px;display:flex;flex-direction:column;gap:5px}
+.ad-top{display:flex;flex-direction:column;gap:4px}
+.ad-title{font-size:13px;font-weight:600;line-height:1.25}
+.verdict{font-size:12px;font-weight:600;line-height:1.35;padding:5px 9px;border-radius:6px}
+.verdict.v-great{background:var(--green-bg);color:var(--green)}
+.verdict.v-good{background:#ecfdf5;color:#047857}
+.verdict.v-bad{background:var(--red-bg);color:var(--red)}
+.verdict.v-warn{background:var(--amber-bg);color:var(--amber)}
+.verdict.v-neutral{background:var(--surf);color:var(--tx-m)}
+.v-icon{margin-right:2px}
+
+.ad-nums{display:flex;align-items:baseline;gap:8px}
+.spend-val{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--amber)}
+.spend-det{font-size:11px;color:var(--tx-d)}
+
+.ad-ms{display:flex;flex-wrap:wrap;gap:4px}
+.m{background:var(--surf);padding:4px 8px;border-radius:4px}
+.ml{font-size:8px;color:var(--tx-d);text-transform:uppercase;letter-spacing:.3px}
+.mv{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:var(--tx2)}
+.val-good{color:var(--green)!important}.val-bad{color:var(--red)!important}.val-dim{color:var(--tx-d)!important}
+
+/* Stage section headers */
+.stage-header{display:flex;align-items:center;gap:10px;margin:28px 0 10px;padding:10px 14px;border-radius:8px}
+.stage-header.sh-topo{background:var(--blue-bg)}
+.stage-header.sh-meio{background:var(--purple-bg)}
+.stage-header.sh-fundo{background:var(--green-bg)}
+.sh-tag{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:4px 10px;border-radius:4px;color:#fff}
+.sh-topo .sh-tag{background:var(--blue)}.sh-meio .sh-tag{background:var(--purple)}.sh-fundo .sh-tag{background:var(--green)}
+.sh-text{font-size:14px;font-weight:600}
+.sh-obj{font-size:12px;color:var(--tx-m);margin-left:auto}
+
+/* Patterns */
+.pats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pat{background:var(--white);border:1px solid var(--bdr-l);border-radius:10px;padding:16px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.pat.pw{border-top:3px solid var(--green)}.pat.pf{border-top:3px solid var(--red)}
+.pi{font-size:17px;margin-bottom:6px}.pt{font-size:14px;font-weight:700;margin-bottom:5px}
+.pd{font-size:12px;color:var(--tx-m);line-height:1.6}
+.pm{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;background:var(--surf);border:1px solid var(--bdr-l);padding:2px 6px;border-radius:3px;margin:1px;color:var(--tx2)}
+
+/* Recs */
+.rec{list-style:none}
+.ri{background:var(--white);border:1px solid var(--bdr-l);border-radius:10px;padding:14px 16px;margin-bottom:7px;display:flex;gap:10px;align-items:flex-start;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.rp{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:4px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.rp-h{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bdr)}
+.rp-m{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr)}
+.rt{font-size:13px;line-height:1.55;color:var(--tx2)}.rt strong{font-weight:700;color:var(--tx)}
+
+.footer{margin-top:50px;padding-top:18px;border-top:2px solid var(--amber);display:flex;justify-content:space-between;align-items:center}
+.fl{font-size:11px;color:var(--tx-d)}.fb{font-size:13px;font-weight:700;color:var(--tx-m)}
+.img-note{background:var(--surf);border:1px solid var(--bdr);border-radius:7px;padding:8px 12px;margin-bottom:12px;font-size:11px;color:var(--tx-d)}
+
+@media(max-width:700px){
+  .kpis{grid-template-columns:repeat(2,1fr)}.pats{grid-template-columns:1fr}
+  .funnel{flex-wrap:wrap}.fs{min-width:calc(33% - 2px)}.fa{display:none}
+  .ad{flex-direction:column}.ad-thumb{width:100%;height:160px}
+  .header h1{font-size:24px}.page{padding:20px 14px 60px}.cms{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-top">
+      <span class="hbadge">Relatório</span>
+      <span class="hdate">01 — 05 de Março de 2026</span>
+    </div>
+    <h1>DSX 2026 — <span>Overview de Campanhas</span></h1>
+    <p class="hsub">Análise de performance de criativos e funil de conversão · Meta Ads</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi k-amber"><div class="kl">Investido</div><div class="kv">R$ 2.334</div><div class="kd">5 dias ativos</div></div>
+    <div class="kpi k-blue"><div class="kl">Vendas</div><div class="kv">2</div><div class="kd">via Meta Ads</div></div>
+    <div class="kpi k-green"><div class="kl">Passaportes Vendidos</div><div class="kv">15</div><div class="kd">todos os canais</div></div>
+    <div class="kpi k-green"><div class="kl">Faturamento</div><div class="kv">R$ 1.398</div><div class="kd">via Meta Ads</div></div>
+    <div class="kpi k-amber"><div class="kl">Ticket Médio</div><div class="kv">R$ 699</div><div class="kd">por venda</div></div>
+    <div class="kpi k-red"><div class="kl">ROAS</div><div class="kv">0,60x</div><div class="kd">Fase de aquecimento</div></div>
+  </div>
+
+  <!-- FUNNEL -->
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">1</div><div class="sec-t">Funil de Conversão</div></div>
+    <div class="funnel">
+      <div class="fs fs-1"><div class="fs-left"><div class="fs-l">Impressões</div><div class="fs-v">315.212</div></div></div>
+      <div class="fs fs-2"><div class="fs-left"><div class="fs-l">Cliques</div><div class="fs-v">7.269</div></div><div class="fs-r">CTR 2,31%</div></div>
+      <div class="fs fs-3"><div class="fs-left"><div class="fs-l">Vis. Página</div><div class="fs-v">5.087</div></div><div class="fs-r">70,0%</div></div>
+      <div class="fs fs-4"><div class="fs-left"><div class="fs-l">Carrinho</div><div class="fs-v">26</div></div><div class="fs-r">0,51%</div></div>
+      <div class="fs fs-5"><div class="fs-left"><div class="fs-l">Checkout</div><div class="fs-v">17</div></div><div class="fs-r">65,4%</div></div>
+      <div class="fs fs-6"><div class="fs-left"><div class="fs-l">Vendas</div><div class="fs-v">2</div></div><div class="fs-r">11,8%</div></div>
+    </div>
+    <div class="team-box">
+      <strong>Nosso principal desafio agora:</strong> De 5.087 pessoas que visitaram a página, só 26 foram pro carrinho (0,51%). Essa é a maior alavanca que temos pra melhorar o resultado. Precisamos atuar juntos em criativo, página e oferta pra subir essa taxa nas próximas semanas.
+    </div>
+  </div>
+
+  <!-- CREATIVES BY STAGE -->
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">2</div><div class="sec-t">Criativos por Etapa do Funil</div></div>
+
+    <div class="stage-header sh-topo">
+      <span class="sh-tag">Topo</span>
+      <span class="sh-text">9 criativos · R$ 1.494 investidos</span>
+      <span class="sh-obj">Métricas-chave: CTR, Hook Rate, Vis. Página</span>
+    </div>
+    <div class="ad-grid">
+
+    <div class="ad v-warn">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t15.5256-10/643810729_2325867921540475_8643850668018019115_n.jpg?_nc_cat=100&ccb=1-7&_nc_eui2=AeHxu_ycBn3cKSodnnSFJy2-74xEVee9V8rvjERV571XymT5ZgNdS0NaTft3_wzEhgF6Eiqos3C5ilGtYuj-x0af&_nc_ohc=7QwV0OzFqyQQ7kNvwFUQuKg&_nc_oc=Adl7iI9fFZW_DxF-vIRCg0-2jyDpYRIhGEg62Laa4XY72UfnyU_w781n5QvVhK0JuQU&_nc_zt=23&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=VYVz27olOi7XA4vxXyAe3Q&_nc_tpa=Q5bMBQGL36IPqr1tlfsfcifxzU24cX-pydrYtazeXkx4BdBoygIpP_jkStSW_YkZhtOzzT1X3nc2wTPjyg&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_Afyyd-qRJTnV-ORdvebGuYgfVpYAPrbTkuqJAl8-Tnlx1Q&oe=69AFC3C9" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">R</div>
+        <div class="ad-tags"><span class="tag type-reels">REELS</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">Junior - O DSX está de volta</div>
+          <div class="verdict v-warn"><span class="v-icon">⚠️</span> Esse criativo já cumpriu o papel dele de abertura e gerou muito alcance. O Hook Rate tá começando a cair — vamos preparar um substituto novo.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 1,097</span>
+          <span class="spend-det">139,407 impr. · 3,200 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv ">2.30%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.34</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-bad">15%</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">1,997</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 0.55</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-neutral">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/643779741_900726255899862_1023115268167797699_n.png?_nc_cat=109&ccb=1-7&_nc_eui2=AeFup_kG2rXiK9ViJTa7ssnAhaaWhXSYjZyFppaFdJiNnNgrebm3ltQ4zkXql0ipl1zkWTJPzRfxNjH39OZE0Y9Z&_nc_ohc=XF1V9NuceJQQ7kNvwHtG4NM&_nc_oc=AdluhCRLk1uohIpG3kn9fP_jAgFmiFerhxg7QeByoxYt3NfOXW4dsKay0TEb7NnswZw&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=BfZbWR4Apeh6uGPym8uMDg&_nc_tpa=Q5bMBQFj1-1cf6RLv22pXoQLz7FclXHlqpJ5U6y_-TjrZZ2pNdISaI_au-OfWFHPw6BvsKyrMP3gfgPbFQ&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Afzqt52QgdfCCQqXEfP5Dz6V-98rvDTqEWdKruDZRbLSdA&oe=69AFB486" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">C</div>
+        <div class="ad-tags"><span class="tag type-card">CARD</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">O ambiente que reúne quem decide</div>
+          <div class="verdict v-neutral"><span class="v-icon">🔍</span> Resultado mediano por enquanto. Vamos acompanhar mais uns dias antes de tomar decisão.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 363</span>
+          <span class="spend-det">82,293 impr. · 1,089 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv ">1.32%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.33</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-dim">—</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">853</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 0.43</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-warn">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/642852566_900724535900034_2054427512681828744_n.png?_nc_cat=102&ccb=1-7&_nc_eui2=AeE9SVmJ5UTWvu7jUHSeqIjosBd-OrizyNGwF346uLPI0bb3ROw6hV1FDHbKG_v2P1R28d9YCu1s-ygzN08gnIvo&_nc_ohc=qhoHx9Dh4GwQ7kNvwHpq81Q&_nc_oc=Admk0EZBgvR4xQqVFs0kPeBXSeck48MtmFGDbsUkKR0fmzeLFs1Ontt_AaSuy7Zit2E&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=f0mX9LRxsM0vI5fMvBPFCg&_nc_tpa=Q5bMBQEjhSnaeXX2Ujb1x17ocTz3HNqBRRJeDqbu5ZHN790TrMAk9TAWatJEz4Fy9aSynoTUo1atwxox8A&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_AfxfYMpslHGQpG1PR256LhaMdLfeGjvSRAgc3e6rOPc87Q&oe=69AFAD25" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">C</div>
+        <div class="ad-tags"><span class="tag type-card">CARD</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">Em 2025, em 2026</div>
+          <div class="verdict v-warn"><span class="v-icon">⚠️</span> CTR baixo — esse formato não tá atraindo clique. Não vamos replicar nessa linha.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 13</span>
+          <span class="spend-det">4,143 impr. · 28 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv val-bad">0.68%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.48</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-dim">—</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">15</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 0.90</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-neutral">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t15.5256-10/643680510_1625929241937415_8501193480974988666_n.jpg?_nc_cat=103&ccb=1-7&_nc_eui2=AeH_GzjlG_j84TPe6Lkc40vOMK7m7Sg7BPEwrubtKDsE8a5UpDNZplsSwtNqW8tcWVfpikUnSUorrCTrY3kXikyS&_nc_ohc=SPzon3XWs-QQ7kNvwH51QK8&_nc_oc=AdmQz3uVH-PT8224XrPOzqiVrLQw4Or092nubRE4Xt7m6eY6ZnCtBpVHiCTlNhVS7rA&_nc_zt=23&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=fNzPQtBd5djwcEMrYW71Tw&_nc_tpa=Q5bMBQElNNcCXLdOXwiGFmiKL0i6AQqoncMEXkLaJiVAWM-THRVNrBSqq67l1VoRiFmgjxKeYCSTa8AyAw&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AfwKfICSgIXxjcvhsgVjEKtYaOVMhts-lmz-ApGfOhiYvg&oe=69AF9402" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">R</div>
+        <div class="ad-tags"><span class="tag type-reels">REELS</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">todo evento cria um tipo de ambiente.</div>
+          <div class="verdict v-neutral"><span class="v-icon">🔍</span> Pouco dado ainda. Vamos acompanhar.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 6</span>
+          <span class="spend-det">964 impr. · 14 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv ">1.45%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.42</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-bad">17%</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">8</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 0.74</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-neutral">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t15.5256-10/640115347_1457157026011820_2635197417509107177_n.jpg?_nc_cat=100&ccb=1-7&_nc_eui2=AeHt6oT-9fP0YYaFwZjOxKIKjnePA-HUE7KOd48D4dQTsiAIRX5BqCUxynJiLOcleUJrCoULMOV_yrqVjCz1vWwZ&_nc_ohc=DEwWnH4qsxoQ7kNvwEhNoUE&_nc_oc=Adk89yNRNu5IJxb12sZ09s6P_3fKJUsm-6-TD0hhWsIn82UJFq7hOwhJFahyFjwxu8A&_nc_zt=23&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=DYubNCN2jkQc0NBBPNORRg&_nc_tpa=Q5bMBQEBTN0tc0gHTD2g3E6fk1LgMJUwjNsVu8DWfd-5kUXdisxvjDM7H75rqm7666MncQ1NwXQrjabbcA&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AfzdEFzE8jxI1rJAUXZYWKcx0tDR2kfEXFz0r59VmZsB_w&oe=69AFBBF9" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">R</div>
+        <div class="ad-tags"><span class="tag type-reels">REELS</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">sem fala - em 23 e 24 de julho de 2026</div>
+          <div class="verdict v-neutral"><span class="v-icon">🔍</span> Pouco dado ainda. Vamos acompanhar.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 5</span>
+          <span class="spend-det">1,306 impr. · 18 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv ">1.38%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.30</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-bad">14%</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">15</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 0.36</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-good">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t15.5256-10/629839468_1380859943308139_2734840203113477644_n.jpg?_nc_cat=100&ccb=1-7&_nc_eui2=AeFjjjmSg-yoZHBODm1QWQX1ljAuR8Tgb8SWMC5HxOBvxIE5wZmT9RY7wB-3dwqSTClsfth78oIG6xcxCOzTRFwt&_nc_ohc=-3TuBtnhO0UQ7kNvwHKyMKC&_nc_oc=AdldEVgY0spZDxJO751eNiEiF4o6X4Mgq_aoMs-LW0WLcgBNHDdaOTVuAEu5Va0asBU&_nc_zt=23&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=unX8MBqK-guiweoAroXcxw&_nc_tpa=Q5bMBQGzWRmKiIhNkv6FXkR2WAmlZkuLw1HgF8FKETT1ojDgztCzuU8oRguzY2HRPbVNvvIkXLgMvmtxng&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AfxIdwAynkz1t5khFMnPgwnbdODF79NsfyhByKN8a-PbLw&oe=69AFA390" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">R</div>
+        <div class="ad-tags"><span class="tag type-reels">REELS</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">DSX 2026</div>
+          <div class="verdict v-good"><span class="v-icon">👀</span> Hook bom, mas gastou pouco ainda. Vamos dar mais verba pra ele e ver se confirma.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 5</span>
+          <span class="spend-det">1,974 impr. · 6 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv val-bad">0.30%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.85</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-good">32%</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">3</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 1.70</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-neutral">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/645272083_903406612298493_7192967033005303982_n.png?_nc_cat=109&ccb=1-7&_nc_eui2=AeFEInyN4eephiIkh-ae4a-213jWuOTG9ZHXeNa45Mb1kUJA5Vq84zUV-0ihkmTwTgCfer-oTqrkmgmNipiMycbo&_nc_ohc=3NYK_HV2l9MQ7kNvwEZU2rn&_nc_oc=Adn4_JxJ2cDrbOeSaK2BI7ZnFKuYYpoVBtGmly9Yoj-S4GXSERhI9zgddIIb8p_WwdA&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=A78sfyO26oQ2j-F_kfjGNg&_nc_tpa=Q5bMBQFwLH450ErNrlgxJCkFgVA3ctCwsF3juhFxdKNmxId2Fv8qyP_wP8TgrUApITp60z8SNscVy9E1sg&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_AfzXeuwy-bx0kU7i8cEV4dY8AThPa0okfkIOrFzEGhzeEw&oe=69AFBE3C" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">C</div>
+        <div class="ad-tags"><span class="tag type-card">CARD</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">DSX está de volta - lote promocional</div>
+          <div class="verdict v-neutral"><span class="v-icon">🔍</span> Pouco dado ainda. Vamos acompanhar.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 2</span>
+          <span class="spend-det">688 impr. · 10 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv ">1.45%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.23</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-dim">—</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">5</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 0.45</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-neutral">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/646382355_903406672298487_4466505172122929749_n.png?_nc_cat=107&ccb=1-7&_nc_eui2=AeGCGmJsI8ZMGkSSOhIb_PP5EL-qVq7AR7UQv6pWrsBHtV8EAucyKYP8SxI8T6pxkBKZJQIBS7eniw2pnG8irMu4&_nc_ohc=1AZGULrOdkgQ7kNvwEOVxfe&_nc_oc=AdnwuTndjvLwgQXHAQlXsIHSUqL-9dnhRt0SLNqssY1_pIkFQFZXoEmOD7rEDPMsaLM&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=7xj91REToe34ewGZsZMP8Q&_nc_tpa=Q5bMBQH6PQfZtjXZKEnOO-NJKZEM55jCab1BJbFx-Awlrz5JnbDP2-vgtgBpUxueWk3H_uQ-myPfVgDdwA&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Afxtm-ytjulf4jtwXGZZni5Z6zY9FiMgSIKMFeRxMaRdxA&oe=69AFB07D" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">C</div>
+        <div class="ad-tags"><span class="tag type-card">CARD</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">negócio não cresce por motivação, cresce por decisão.</div>
+          <div class="verdict v-neutral"><span class="v-icon">🔍</span> Pouco dado ainda. Vamos acompanhar.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 1</span>
+          <span class="spend-det">338 impr. · 5 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv ">1.48%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.22</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-dim">—</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">3</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 0.36</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-neutral">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t15.5256-10/639098776_2184572345681290_3324777156016892222_n.jpg?_nc_cat=103&ccb=1-7&_nc_eui2=AeFOMLlKDOeulWv4hseph0e5VwoN9satritXCg32xq2uK_s8GFmnGgnPM6DgOOYFL0dNlgJL4OcJGWNP-m-91aZY&_nc_ohc=akiC_sncX5YQ7kNvwGnViq2&_nc_oc=Adm7pRfXE-cxm0tnT_W38HcfnUn0Ic3U6i6osihC-6bbkz_C_X3LAeBCQxoLrlovKP8&_nc_zt=23&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=vk80pAU3Rg6VM146pge6XQ&_nc_tpa=Q5bMBQHHfFT93HvWX9RakYQAh3hUoGkj9RPTCSDgAF-hck-O9o9KQBGRlE5mLQRkSc0IWyWjPRYUtrv2Rw&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_AfxAgi_tDXu6ELnS3cD8R7stTTiu3BqSPh_vUKWKEXmoNw&oe=69AFA14F" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">R</div>
+        <div class="ad-tags"><span class="tag type-reels">REELS</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">sem fala - 1º lote promocional disponível.</div>
+          <div class="verdict v-neutral"><span class="v-icon">🔍</span> Pouco dado ainda. Vamos acompanhar.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 0</span>
+          <span class="spend-det">112 impr. · 1 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv val-bad">0.89%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.46</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-bad">18%</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">0</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">—</div></div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="stage-header sh-meio">
+      <span class="sh-tag">Meio</span>
+      <span class="sh-text">7 criativos · R$ 624 investidos</span>
+      <span class="sh-obj">Métricas-chave: CTR, Hook Rate, Vis. Página</span>
+    </div>
+    <div class="ad-grid">
+
+    <div class="ad v-great">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t15.5256-10/645207265_905684755654844_4682878566884991027_n.jpg?_nc_cat=103&ccb=1-7&_nc_eui2=AeGMLsUVd8IUmi5IS2MtErT_xl5RuW8akPvGXlG5bxqQ-xxjeN58ebShti1FOVXQKXDQmgMnvgYDewS9ztPJkHna&_nc_ohc=JGjLjPxdo30Q7kNvwEmmJOU&_nc_oc=AdlcDYA1Ud5IwDHjMbDL8_UWOEGR0utJFTPlSxR9xB2U5rGDrj0sup9I3bSgsEUb54M&_nc_zt=23&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=ppV26mZF0vsc63CH8o3Xog&_nc_tpa=Q5bMBQGxtERLi7Gq2m1b__nz-vYu_ApddGY553NbtBjqgdmyNZ5jQBFq3ULyeSvuxHKYD5wJhcZ1P0ke4A&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_Afx4_o09gy81Vk3t8W1HMizVLM86HlxA4_makhsCUDbHPQ&oe=69AF910A" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">R</div>
+        <div class="ad-tags"><span class="tag type-reels">REELS</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">Prova Social - Pessoa falando - Participante</div>
+          <div class="verdict v-great"><span class="v-icon">🔥</span> Melhor desempenho do Meio. Vamos escalar esse e produzir mais nessa linha.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 302</span>
+          <span class="spend-det">23,201 impr. · 1,423 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv val-good">6.13%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.21</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-good">30%</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">1,084</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 0.28</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-good">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t15.5256-10/645585955_1551674589279831_254650215109434340_n.jpg?_nc_cat=102&ccb=1-7&_nc_eui2=AeHJZXNkZjCSs5cgLvncTy2esZBwqTW8MW6xkHCpNbwxbn-h-zadPuAfwg-JYwYSzopoCPpx-wi4kgX5lkkcpW94&_nc_ohc=B5D6-F3WIQYQ7kNvwGdAWuI&_nc_oc=AdmvMvVHsZPCR4gsZdTOYYpUe6Jg2w-7TreaXiTGD5LlYSRLfDbGuJk3Zv9cMTNvzcI&_nc_zt=23&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=eljTnB-GXvRKTA5-6Vjfrw&_nc_tpa=Q5bMBQGGPC42bSKQC9kZKA0ueR4zh_VBdLpml3XAgSLd33zrWS5vXnOxXblQV4YM5ALRYPl8Z3KiD2292A&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_Afw5n9CROqT3dEoRPnGc8KbnFlIax7daI5wCVmf_HKNxEg&oe=69AF9414" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">R</div>
+        <div class="ad-tags"><span class="tag type-reels">REELS</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">Junior - Steve Jobs</div>
+          <div class="verdict v-good"><span class="v-icon">✅</span> Bom engajamento com o público morno. Vamos manter rodando.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 233</span>
+          <span class="spend-det">26,897 impr. · 1,009 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv val-good">3.75%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.23</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-good">36%</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">722</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 0.32</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-neutral">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/642151524_900743012564853_8399040528201018922_n.png?_nc_cat=101&ccb=1-7&_nc_eui2=AeED59FwDS8nivDZbcN1-XqAY0MzIBCh3WdjQzMgEKHdZ8dhu6DNQKEr9FzDYn7ar-0f7TAoFC3coMS_5IAB9O5a&_nc_ohc=gjHK1vcSUx8Q7kNvwEupT6u&_nc_oc=AdkoKISgd2P0P7QLflSxc8kjxavu3y6KMARnc8EGtOAYfHwEGGBniNOL1Ie6zqbppnw&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=kdBsjh3UL6CG0WjNlFBqqA&_nc_tpa=Q5bMBQHesUoNZjh7xwcPaP8efUESYbByn86GwLEjIGRj360bTPzQp6_hZVdNCr_hSqIgOPebUQV1WfH1GA&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_AfyKMz8Z6WA9uG1vT28HDY3uNPpMlK4HTfHQzkJqzVApKw&oe=69AFB98A" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">C</div>
+        <div class="ad-tags"><span class="tag type-card">CARD</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">líderes precisam decidir com clareza</div>
+          <div class="verdict v-neutral"><span class="v-icon">🔍</span> Resultado mediano. Vamos testar com mais volume antes de decidir.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 49</span>
+          <span class="spend-det">13,452 impr. · 217 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv ">1.61%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.22</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-dim">—</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">171</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 0.28</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-great">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t15.5256-10/640137041_2052610968644474_7359175666654882965_n.jpg?_nc_cat=111&ccb=1-7&_nc_eui2=AeERfwsWT-kGYdE5NUspiFH6lPMCy6GS90GU8wLLoZL3QcMYEabjglsVsOwiwYqxyqbKnk8zoTdw_HT-YuzRvru2&_nc_ohc=d35nAOwXC0oQ7kNvwHln_M6&_nc_oc=Adkxw_gVjRLOSFMV0BPh_-pxQGIo0JqF8INorahjc8kpo1KSrrrTptL4l4WaWfEY2pE&_nc_zt=23&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=loszq9Iy8p9gQHoHpzVtQw&_nc_tpa=Q5bMBQHW4HaW35M4k12GAB4PIJ0T9mHewbbVhX5d4CPMrXJRZ_963YUvvE89Z7bTpFQgal4RO_FQ-ujc8w&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_Afy2kevN_Lc23MvlivbBxCz_5YzQRQhFtt2uq3DyQDU4Gg&oe=69AFA867" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">R</div>
+        <div class="ad-tags"><span class="tag type-reels">REELS</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">Prova Social - Pessoa falando - Rodrigo Oboticario</div>
+          <div class="verdict v-good"><span class="v-icon">👀</span> Sinais excelentes com pouco investimento. Vou aumentar a verba dele pra validar com volume.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 17</span>
+          <span class="spend-det">1,260 impr. · 73 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv val-good">5.79%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.23</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-good">35%</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">66</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 0.25</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-warn">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/644078330_900745275897960_3518980768924592840_n.png?_nc_cat=100&ccb=1-7&_nc_eui2=AeEAuSm-KeORsuh4lWiPmXWJnMaTa3cNU1KcxpNrdw1TUpwDnO1PoaZrnmuQBqFMpFqoDmq9BXdUo_1JUOsQNPP6&_nc_ohc=FK2FHlYQAqkQ7kNvwFAfLel&_nc_oc=Adle3q0mehthhMblNDdcwIQ4XyuQb4YcP_JAOdcobiPkwatSeukAcbZV-sTNLknVdo0&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=BdE5BFb2i0yt90fjxxLY4A&_nc_tpa=Q5bMBQGOwiy2Far-7c75Hl6pOvM06lQjjSratiIFv4J7c2A1eTE-HVeGgzJr6Vl43RMxKdvVc_jAq4UU4A&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_AfweN6v5Cgabr0g4-WaBcASvKZS71LooqHZ56xG3bLxZFw&oe=69AFB745" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">C</div>
+        <div class="ad-tags"><span class="tag type-card">CARD</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">o ambiente que você frequenta define o tamanho que você cresce</div>
+          <div class="verdict v-warn"><span class="v-icon">⚠️</span> CTR baixo pro Meio. Não vamos priorizar esse formato na produção.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 12</span>
+          <span class="spend-det">2,899 impr. · 37 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv ">1.28%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.32</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-dim">—</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">30</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 0.39</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-great">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t15.5256-10/643624208_1246721743551961_974857869221396741_n.jpg?_nc_cat=105&ccb=1-7&_nc_eui2=AeGovIUvmBquNlQDAzl6BRuvK2GT8PP0EPorYZPw8_QQ-r1s9JBfx8RUccvauhFkcJCfOztcDwv_3129g3XJpEsp&_nc_ohc=UnDTzURjQkUQ7kNvwEUSnpd&_nc_oc=Adkfd8rHTaUXMKb5lRkNldFuKmqW3IaOF-M5ofvV8oGrw4xkYPjwksFmlUrEbUuN_mU&_nc_zt=23&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=ir0nTuE5AGdoEG_n9PyG8w&_nc_tpa=Q5bMBQGyj9zDQgS-YhBKxVJo_oCZD1_VnUya7TU2B0YQVwCOGIYy_6zEMQbND10eQR040-UMPIjQOzvtIQ&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=5fad0e&_nc_sid=58080a&oh=00_AfyExiJfEBdtwNCrv8X0M5anP7LSMRyGXf7U_KK3GPdJ8A&oe=69AFAD88" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">R</div>
+        <div class="ad-tags"><span class="tag type-reels">REELS</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">Junior - Fernando Miranda</div>
+          <div class="verdict v-good"><span class="v-icon">👀</span> Pouco gasto ainda, mas Hook de 32% e CTR acima de 4%. Vamos dar mais verba pra confirmar.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 7</span>
+          <span class="spend-det">503 impr. · 21 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv val-good">4.17%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.31</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-good">32%</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">15</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 0.44</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-neutral">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t15.5256-10/643606151_1630046524676000_6743752102827782966_n.jpg?_nc_cat=105&ccb=1-7&_nc_eui2=AeEy1Fq0QzvsV8nZNlbg6XuxdMylmGHN33Z0zKWYYc3fdqFGG1WPPr-BFwcFw1Blz3AiwnTIZ1mjoUlJJOtJln2C&_nc_ohc=_Tf4H1frpmsQ7kNvwFAD4qY&_nc_oc=Adl75GV90704_R4WI51FfYxN3I3ZBV7xf_VcnvxU5IC-v-BqZHo3n_BaBHtxGbFTZK0&_nc_zt=23&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=wO_16kYlqSFykh6mjPTOOw&_nc_tpa=Q5bMBQEG6jjd6jrUGs1o8ZzjmcNPGcvTiOjgWHnvKpt5n4LQTvIVYIRK1a5ROH98cVsMUgN8JlBOa5VBEw&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_Afwfb1_Kze9UBjDDCvW1Uo0CBf4cCfvAOMFaNClgkWzMmg&oe=69AFC402" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">R</div>
+        <div class="ad-tags"><span class="tag type-reels">REELS</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">Prova Social - Abertura + pessoa falando</div>
+          <div class="verdict v-neutral"><span class="v-icon">🔍</span> Pouco dado ainda. Vamos acompanhar.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 5</span>
+          <span class="spend-det">1,056 impr. · 17 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">CTR</div><div class="mv ">1.61%</div></div>
+          <div class="m"><div class="ml">CPC</div><div class="mv">R$ 0.32</div></div>
+          <div class="m"><div class="ml">Hook Rate</div><div class="mv val-bad">19%</div></div>
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">16</div></div>
+          <div class="m"><div class="ml">Custo/Vis.</div><div class="mv">R$ 0.34</div></div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="stage-header sh-fundo">
+      <span class="sh-tag">Fundo</span>
+      <span class="sh-text">4 criativos · R$ 216 investidos</span>
+      <span class="sh-obj">Métricas-chave: Carrinho, Checkout, Vendas</span>
+    </div>
+    <div class="ad-grid">
+
+    <div class="ad v-great">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/642781248_900757762563378_2367689478170617374_n.png?_nc_cat=100&ccb=1-7&_nc_eui2=AeFH5VrUqLtHxx0dFGzA4Edl2Jdk59ZvxkLYl2Tn1m_GQsCCpBUbWZtHbA4hmDOYH2qmng_ypKsnOPlSdFXUIDQ9&_nc_ohc=j0wCAXqX3gwQ7kNvwHCiH4O&_nc_oc=AdkqIC8NIBmb3K5xvoDAzZqK1xtGUiZQTkdF9D8obMl7_58L9Gj5jB5xeqwLmGj1y68&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=5SfNKanD1P8wBu6RwabHiA&_nc_tpa=Q5bMBQFmRn2uqxeG6G1t6eilRAaDh3FgSdtLKCg9UlgqHK0OaVM_cwSRA8EVFwkA3GYi_mTtReMLLucV-w&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_AfzrRDK8iSitYToiWtncSRQZ0yKfT7E6QibwdswtzfHTzQ&oe=69AF9D5E" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">C</div>
+        <div class="ad-tags"><span class="tag type-card">CARD</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">empreendedorismo, Marketing e Vendas</div>
+          <div class="verdict v-great"><span class="v-icon">🏆</span> Nosso único criativo com vendas reais. Time, precisamos de variações desse.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 155</span>
+          <span class="spend-det">10,856 impr. · 72 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">59</div></div>
+          <div class="m"><div class="ml">Carrinho</div><div class="mv">19</div></div>
+          <div class="m"><div class="ml">Checkout</div><div class="mv val-good">10</div></div>
+          <div class="m"><div class="ml">Vendas</div><div class="mv val-good">2</div></div>
+          <div class="m"><div class="ml">Faturamento</div><div class="mv val-good">R$ 1,399</div></div>
+          <div class="m"><div class="ml">ROAS</div><div class="mv val-good">9.0x</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-good">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/642731462_900756179230203_2498109718662186911_n.png?_nc_cat=111&ccb=1-7&_nc_eui2=AeH9ep3LqfU0dEjDNsq26dtOcomvP-jzVYRyia8_6PNVhPf0gJAFZFm14rf5BmPLgzyW-UV6lMEnJqDjEZi3xqbZ&_nc_ohc=4arx4KM_YccQ7kNvwEy92zl&_nc_oc=AdlwJd1lwGizPYFopoCW_94oKAfJelHWm3nG_FT_I9fsItWCPpPEmroy6fMTtWOEHO8&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=E4JDOyCMHiRpaLZlARIbvA&_nc_tpa=Q5bMBQHACW_jfU2fwIp8WJLPJAAFELNEUzGNpSOCaf5_Q4Yb24ct0h1iN4jIyJFMuD04EKI9zwO7eCc6Ag&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_AfxT5F3K202J7PaAIExVXHxZdTq5meszx-eThj-vZEIt9g&oe=69AFA674" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">C</div>
+        <div class="ad-tags"><span class="tag type-card">CARD</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">o Maior Encontro de Empresários do Norte 297</div>
+          <div class="verdict v-good"><span class="v-icon">✅</span> Tá gerando intenção de compra. Vamos manter e criar variações.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 30</span>
+          <span class="spend-det">1,968 impr. · 11 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">9</div></div>
+          <div class="m"><div class="ml">Carrinho</div><div class="mv">3</div></div>
+          <div class="m"><div class="ml">Checkout</div><div class="mv val-good">3</div></div>
+          <div class="m"><div class="ml">Vendas</div><div class="mv ">0</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-good">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/642097460_900754275897060_860655333399713825_n.png?_nc_cat=105&ccb=1-7&_nc_eui2=AeFFoz0wgCUcfwBCYfmZYEeaslJC02XP4TqyUkLTZc_hOlZDwKaIB1brxbIeReKAREXxrQMAVg8nTcpyqHCKojDf&_nc_ohc=dcwrOOJAh0kQ7kNvwH5mBej&_nc_oc=AdmFqaV3MHPXI0yJunth_pQuUuU9dfwAYjQiSQFB95luJXx1n08W3DLT5Y7czVHG8Q4&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=44e4XJ8SE5ehM0P8phFlYQ&_nc_tpa=Q5bMBQH3e3XL7t5gpHsmR3AN1QQmi-0Oewj2iK6eGhnRVEWs454wzAISvSDDfNpEsqG9hGDYub3k_6dTpw&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_AfxIvH5fmdFRWnjh2K9Iyi2ByNlzLIqqW0STFLgxl9p5hA&oe=69AFA8DD" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">C</div>
+        <div class="ad-tags"><span class="tag type-card">CARD</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">passaporte VIP liberado 997</div>
+          <div class="verdict v-good"><span class="v-icon">✅</span> Tá gerando intenção de compra. Vamos manter e criar variações.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 23</span>
+          <span class="spend-det">1,249 impr. · 12 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">10</div></div>
+          <div class="m"><div class="ml">Carrinho</div><div class="mv">3</div></div>
+          <div class="m"><div class="ml">Checkout</div><div class="mv val-good">3</div></div>
+          <div class="m"><div class="ml">Vendas</div><div class="mv ">0</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ad v-warn">
+      <div class="ad-thumb">
+        <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/645272083_903406578965163_8740145127469381043_n.jpg?_nc_cat=111&ccb=1-7&_nc_eui2=AeGn9M7RAUeubIFVK1i2pVsveQMn6Rcbxk95AyfpFxvGT6VLCasoMMHCJ8Qi5hmnt3Oh_WV-6tFtebfP-fHv591-&_nc_ohc=oumffqwY3pwQ7kNvwFf7UTZ&_nc_oc=Adl0IhEPQWa3VkPOe4AJ3iHFlLMw-qCVIC5uRh5yb5zNh5mDey9AC4orm0Fr-7N9l-o&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=my0XYxaTHzcWYoCUORqPcA&_nc_tpa=Q5bMBQEQ4OHCzez0XZwMMGycyLRaQcTkwKemq1NLacbpsCRlwehyOhp9fSr1BM54JsiklJNG1Bt_41dBSg&stp=c0.5000x0.5000f_dst-emg0_p1080x1080_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_AfwwV7LJfgBR7En2CkhgyIzJtysSVvdHgROejKewZAQnig&oe=69AF8E96" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="thumb-fb" style="display:none">C</div>
+        <div class="ad-tags"><span class="tag type-card">CARD</span></div>
+      </div>
+      <div class="ad-body">
+        <div class="ad-top">
+          <div class="ad-title">empreendedorismo, Marketing e Vendas V2</div>
+          <div class="verdict v-warn"><span class="v-icon">⚠️</span> Ainda sem conversão. Vamos avaliar se vale manter.</div>
+        </div>
+        <div class="ad-nums">
+          <span class="spend-val">R$ 7</span>
+          <span class="spend-det">447 impr. · 2 cliques</span>
+        </div>
+        <div class="ad-ms">
+          <div class="m"><div class="ml">Vis. Página</div><div class="mv">2</div></div>
+          <div class="m"><div class="ml">Carrinho</div><div class="mv">0</div></div>
+          <div class="m"><div class="ml">Checkout</div><div class="mv ">0</div></div>
+          <div class="m"><div class="ml">Vendas</div><div class="mv ">0</div></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- PATTERNS -->
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">3</div><div class="sec-t">Padrões — O que Replicar na Produção</div></div>
+    <div class="pats">
+      <div class="pat pw">
+        <div class="pi">✅</div>
+        <div class="pt">Reels com prova social (pessoa real falando)</div>
+        <div class="pd">Depoimentos reais de participantes do DSX 2025:<br><br><span class="pm">Hook 30-36%</span><span class="pm">CTR 4-6%</span><span class="pm">CPC R$ 0,21</span><br><br>Pessoa olhando pra câmera, falando naturalmente. Quanto mais autêntico e menos produzido, melhor. É nessa direção que precisamos produzir.</div>
+      </div>
+      <div class="pat pw">
+        <div class="pi">✅</div>
+        <div class="pt">Reels com referência a figuras conhecidas</div>
+        <div class="pd">Junior + referência a Steve Jobs = maior Hook Rate:<br><br><span class="pm">Hook 36%</span><span class="pm">CTR 3,75%</span><span class="pm">CPC R$ 0,23</span><br><br>Rosto do evento + referência cultural forte = curiosidade. Vamos testar com outras figuras.</div>
+      </div>
+      <div class="pat pw">
+        <div class="pi">✅</div>
+        <div class="pt">Cards diretos no Fundo dizendo o que o evento entrega</div>
+        <div class="pd">O card "Empreendedorismo, Marketing e Vendas" é o único com vendas:<br><br><span class="pm">10 checkouts</span><span class="pm">2 vendas</span><span class="pm">ROAS 9x</span><br><br>No fundo do funil, clareza sobre a oferta vence criatividade. Time, vamos criar variações mantendo essa objetividade.</div>
+      </div>
+      <div class="pat pf">
+        <div class="pi">⚠️</div>
+        <div class="pt">Reels de abertura perdendo força</div>
+        <div class="pd">"O DSX está de volta" foi o criativo com maior alcance do período, mas o Hook Rate está perdendo escala:<br><br><span class="pm">Hook 15%</span><span class="pm">R$ 1.097</span><span class="pm">2.902 vis. página</span><br><br>Cumpriu o papel de abertura. Momento de avaliar a troca por um criativo novo com gancho mais forte.</div>
+      </div>
+      <div class="pat pf">
+        <div class="pi">⚠️</div>
+        <div class="pt">Cards com frase motivacional genérica</div>
+        <div class="pd">"Em 2025, em 2026" e "O ambiente que você frequenta...":<br><br><span class="pm">CTR 0,68-1,32%</span><br><br>Frase motivacional não diferencia o DSX. Precisamos ser mais específicos — dizer o que vai acontecer, quem vai estar, qual o benefício concreto.</div>
+      </div>
+      <div class="pat pw">
+        <div class="pi">📋</div>
+        <div class="pt">Regra pra novos criativos</div>
+        <div class="pd"><strong style="color:var(--tx)">Topo e Meio:</strong> Reels com pessoas reais falando pra câmera. Gancho forte nos 3 primeiros segundos. Alvo: Hook Rate acima de 25%.<br><br><strong style="color:var(--tx)">Fundo:</strong> Cards objetivos — temas, palestrantes, networking, preço e urgência do lote. Direto ao ponto.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE SUGGESTIONS -->
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">4</div><div class="sec-t">Sugestões de Ângulos para Novos Criativos</div></div>
+    <p style="font-size:13px;color:var(--tx-m);margin-bottom:14px;line-height:1.6;">
+      Com o Andromeda, o Meta favorece variedade de ângulos criativos. Replicar o mesmo criativo em várias versões tende a dar errado — precisamos explorar ângulos diferentes pra que o algoritmo consiga encontrar públicos variados. Abaixo estão exemplos organizados por etapa do funil.
+    </p>
+
+    <div class="stage-header sh-topo" style="margin-top:0">
+      <span class="sh-tag">Topo</span>
+      <span class="sh-text">Objetivo: atrair público frio e gerar curiosidade</span>
+    </div>
+    <div class="pats" style="margin-bottom:24px">
+      <div class="pat pw">
+        <div class="pi">🎯</div>
+        <div class="pt">Exemplo 1: Reels com dor do público</div>
+        <div class="pd">
+          <strong style="color:var(--tx)">Formato:</strong> Reels 15-20s · Vídeo falando pra câmera<br><br>
+          <strong style="color:var(--tx)">Gancho (3s):</strong> <em>"Você sai de evento motivado e volta pra mesma rotina de sempre?"</em><br><br>
+          <strong style="color:var(--tx)">Desenvolvimento:</strong> "O DSX é diferente porque [resultado concreto]. Em 2025, participantes saíram com [dado real]."<br><br>
+          <strong style="color:var(--tx)">Por que funciona:</strong> Abre com a dor do público (Hook alto), não com o nome do evento. Puxa a atenção de quem ainda nem conhece o DSX.
+        </div>
+      </div>
+      <div class="pat pw">
+        <div class="pi">🧠</div>
+        <div class="pt">Exemplo 2: Reels com referência cultural</div>
+        <div class="pd">
+          <strong style="color:var(--tx)">Formato:</strong> Reels 15-20s · Vídeo falando pra câmera<br><br>
+          <strong style="color:var(--tx)">Gancho (3s):</strong> <em>"O Steve Jobs montou a Apple numa garagem com 2 pessoas certas. Você tá cercado de quem?"</em><br><br>
+          <strong style="color:var(--tx)">Desenvolvimento:</strong> "O DSX coloca no mesmo lugar quem tá construindo algo de verdade no Norte. 23 e 24 de julho."<br><br>
+          <strong style="color:var(--tx)">Por que funciona:</strong> Mesmo padrão do Reels que teve Hook de 36%. Nome conhecido nos 3 primeiros segundos gera curiosidade imediata. Cada Reels usa uma referência diferente, gerando variedade de ângulo pro Andromeda.
+        </div>
+      </div>
+    </div>
+
+    <div class="stage-header sh-meio">
+      <span class="sh-tag">Meio</span>
+      <span class="sh-text">Objetivo: engajar público morno e gerar visitas qualificadas</span>
+    </div>
+    <div class="pats" style="margin-bottom:24px">
+      <div class="pat pw">
+        <div class="pi">🎤</div>
+        <div class="pt">Exemplo 1: Reels com depoimento editado (já temos material)</div>
+        <div class="pd">
+          <strong style="color:var(--tx)">Formato:</strong> Reels 20-30s · Participante do DSX 2025 falando pra câmera<br><br>
+          <strong style="color:var(--tx)">Estrutura:</strong> Sem abertura, sem vinheta, sem texto inicial — a pessoa já tem que estar falando desde o primeiro frame. Corte direto pro trecho mais impactante do depoimento. Isso é o que gera Hook alto. Depois entra o contexto de quem é a pessoa e o que mudou depois do evento.<br><br>
+          <strong style="color:var(--tx)">Variações:</strong> Editar cada depoimento com um ângulo diferente — um focado em networking, outro em resultado financeiro, outro em mudança de mentalidade.<br><br>
+          <strong style="color:var(--tx)">Por que funciona:</strong> Já temos o material gravado, só falta editar. É o formato que mais performa (Hook 30-36%, CTR 4-6%). Cada depoimento é naturalmente um ângulo diferente.
+        </div>
+      </div>
+      <div class="pat pw">
+        <div class="pi">📊</div>
+        <div class="pt">Exemplo 2: Reels com dados e resultados concretos</div>
+        <div class="pd">
+          <strong style="color:var(--tx)">Formato:</strong> Reels 15-20s · Palestrante confirmado ou apresentador falando pra câmera<br><br>
+          <strong style="color:var(--tx)">Gancho (3s):</strong> <em>"Mais de 2.000 pessoas estiveram no DSX 2025. Em 2026, o evento vai ser ainda maior."</em><br><br>
+          <strong style="color:var(--tx)">Desenvolvimento:</strong> Mostrar números reais que a gente tem: quantidade de participantes, palestrantes confirmados, horas de conteúdo, empresas presentes.<br><br>
+          <strong style="color:var(--tx)">Por que funciona:</strong> Público morno já sabe o que é o DSX. O que falta é dimensão — mostrar o tamanho do evento com dados que a gente já tem em mãos constrói credibilidade e empurra pra decisão.
+        </div>
+      </div>
+    </div>
+
+    <div class="stage-header sh-fundo">
+      <span class="sh-tag">Fundo</span>
+      <span class="sh-text">Objetivo: converter quem já visitou a página</span>
+    </div>
+    <div class="pats">
+      <div class="pat pw">
+        <div class="pi">🏷️</div>
+        <div class="pt">Exemplo 1: Card com urgência real do lote</div>
+        <div class="pd">
+          <strong style="color:var(--tx)">Formato:</strong> Card estático ou carrossel<br><br>
+          <strong style="color:var(--tx)">Copy principal:</strong> <em>"Quem comprou no 1º lote economizou R$ [valor]. O próximo aumento é em [data]."</em><br><br>
+          <strong style="color:var(--tx)">Elementos:</strong> Comparação visual de preço entre lotes, contagem regressiva, CTA direto pro checkout.<br><br>
+          <strong style="color:var(--tx)">Por que funciona:</strong> Público de fundo já conhece o evento. O que falta é o gatilho final — urgência real, não forçada. A comparação de economia entre lotes é concreta.
+        </div>
+      </div>
+      <div class="pat pw">
+        <div class="pi">🤝</div>
+        <div class="pt">Exemplo 2: Card com lineup e benefício direto</div>
+        <div class="pd">
+          <strong style="color:var(--tx)">Formato:</strong> Card estático ou carrossel<br><br>
+          <strong style="color:var(--tx)">Copy principal:</strong> <em>"Empreendedorismo, Marketing, Vendas e Networking com [nome dos palestrantes confirmados]. 23 e 24 de julho."</em><br><br>
+          <strong style="color:var(--tx)">Elementos:</strong> Fotos dos palestrantes, temas das palestras, o que está incluso no ingresso (VIP vs. normal).<br><br>
+          <strong style="color:var(--tx)">Por que funciona:</strong> Mesmo padrão do card que já tá vendendo (10 checkouts, 2 vendas, ROAS 9x). Proposta de valor clara e direta. Variação com nomes e fotos diferentes mantém o Andromeda alimentado.
+        </div>
+      </div>
+      <div class="pat pw">
+        <div class="pi">🎬</div>
+        <div class="pt">Exemplo 3: Reels com depoimento + CTA direto</div>
+        <div class="pd">
+          <strong style="color:var(--tx)">Formato:</strong> Reels 15-25s · Participante do DSX 2025 já falando desde o primeiro frame<br><br>
+          <strong style="color:var(--tx)">Estrutura:</strong> Pessoa já começa falando sobre a experiência que teve — sem abertura, sem vinheta. Usar o trecho mais impactante e emocional do depoimento. No final, entra texto na tela com o CTA: "Lote promocional aberto. Link na bio."<br><br>
+          <strong style="color:var(--tx)">Importante:</strong> Selecionar trechos reais dos depoimentos que já temos gravados. Não inventar resultado — usar o que a pessoa realmente falou.<br><br>
+          <strong style="color:var(--tx)">Por que funciona:</strong> O público de fundo já viu a página, já sabe o que é o DSX. O que falta é o empurrão final. Um depoimento de resultado concreto + CTA é mais persuasivo que qualquer card estático. E como é vídeo, traz um formato diferente dos cards que já tão rodando — mais variedade pro Andromeda.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div class="sec">
+    <div class="sec-h"><div class="sec-n">5</div><div class="sec-t">Próximos Passos</div></div>
+    <ul class="rec">
+      <li class="ri"><span class="rp rp-h">URGENTE</span><div class="rt"><strong>Atacar a conversão Página → Carrinho.</strong> Temos 5.087 visualizações de página e só 26 carrinhos (0,51%). Vamos revisar juntos: copy da página, destaque da oferta e do lote, prova social na LP e a experiência de checkout no celular.</div></li>
+      <li class="ri"><span class="rp rp-h">URGENTE</span><div class="rt"><strong>Renovar o criativo principal do Topo.</strong> O Reels "DSX está de volta" já cumpriu o papel dele e gerou bastante alcance, mas o Hook Rate tá caindo (15%). Precisamos de um substituto com gancho mais forte — time de criação, vamos priorizar isso.</div></li>
+      <li class="ri"><span class="rp rp-m">ESCALAR</span><div class="rt"><strong>Editar e publicar os depoimentos do DSX 2025.</strong> Esse é o formato que mais funciona e já temos o material gravado. Time de edição, vamos priorizar: selecionar os melhores depoimentos, editar em formato Reels (15-30s) e subir como anúncios.</div></li>
+      <li class="ri"><span class="rp rp-m">ESCALAR</span><div class="rt"><strong>Escalar o Reels do Rodrigo (O Boticário).</strong> Gastou só R$ 16 mas tá com CTR de 5,79% e Hook de 35%. Vou aumentar a verba dele pra validar com mais volume.</div></li>
+      <li class="ri"><span class="rp rp-m">TESTAR</span><div class="rt"><strong>Produzir criativos com ângulos novos.</strong> Com o Andromeda, precisamos de variedade — não adianta replicar o mesmo criativo. Vamos testar os ângulos sugeridos acima: dados concretos, dor do público, urgência real e networking.</div></li>
+      <li class="ri"><span class="rp rp-m">TESTAR</span><div class="rt"><strong>Criar variações do card de Fundo que tá vendendo.</strong> O card "Empreendedorismo, Mkt e Vendas" já tem 10 checkouts e 2 vendas. Time, precisamos de 2-3 versões com ângulos diferentes pra não cansar.</div></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div class="fl">Dados extraídos em 05/03/2026 · Período: 01 a 05 de Março</div>
+    <div class="fb">Digital Comunicação</div>
+  </div>
+
+</div>
+<div class="modal-overlay" id="modal">
+  <img src="" alt="" />
+</div>
+<div class="modal-close" id="modalClose">
+  <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg>
+</div>
+<script>
+const modal = document.getElementById('modal');
+const modalImg = modal.querySelector('img');
+const modalClose = document.getElementById('modalClose');
+
+function openModal(src) {
+  modalImg.src = src;
+  modal.classList.add('active');
+  modalClose.classList.add('active');
+}
+
+function closeModal() {
+  modal.classList.remove('active');
+  modalClose.classList.remove('active');
+  modalImg.src = '';
+}
+
+modal.addEventListener('click', closeModal);
+modalClose.addEventListener('click', closeModal);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+document.querySelectorAll('.ad-thumb').forEach(thumb => {
+  const img = thumb.querySelector('img');
+  if (!img) return;
+  const btn = document.createElement('div');
+  btn.className = 'ad-expand';
+  btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
+  thumb.appendChild(btn);
+  thumb.addEventListener('click', () => {
+    if (img.src && img.style.display !== 'none') openModal(img.src);
+  });
+});
+</script>
+</body>
+</html>
