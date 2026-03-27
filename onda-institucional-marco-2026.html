@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onda Digital — Anúncios Institucionais | Março 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #08091a;
+    --surface: #111228;
+    --surface-hover: #191a36;
+    --border: rgba(255,255,255,0.04);
+    --blue: #4f8fff;
+    --blue-glow: rgba(79,143,255,0.15);
+    --green: #34d399;
+    --green-dim: rgba(52,211,153,0.12);
+    --red: #f87171;
+    --red-dim: rgba(248,113,113,0.12);
+    --purple: #a78bfa;
+    --purple-dim: rgba(167,139,250,0.12);
+    --orange: #fb923c;
+    --orange-dim: rgba(251,146,60,0.12);
+    --yellow: #fbbf24;
+    --text: #eef0f6;
+    --text-secondary: #8b8fa8;
+    --text-dim: #555773;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  section {
+    padding: 88px 0;
+    position: relative;
+  }
+
+  section + section { border-top: 1px solid var(--border); }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 140px 0 100px;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, var(--purple-dim) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero .badge-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: var(--surface);
+    border: 1px solid rgba(167,139,250,0.2);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--purple);
+    letter-spacing: 0.5px;
+    margin-bottom: 32px;
+  }
+
+  .hero h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(36px, 5vw, 62px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+
+  .hero .subtitle {
+    font-size: clamp(16px, 1.8vw, 20px);
+    color: var(--text-secondary);
+    margin-bottom: 56px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero .big-number {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(72px, 10vw, 130px);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+
+  .hero .big-label {
+    font-size: 18px;
+    color: var(--text-dim);
+    margin-top: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  /* HEADINGS */
+  h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+  }
+
+  h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .section-desc {
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    max-width: 800px;
+    line-height: 1.7;
+  }
+
+  .accent { color: var(--blue); }
+  .green { color: var(--green); }
+  .red { color: var(--red); }
+  .purple { color: var(--purple); }
+  .orange { color: var(--orange); }
+  .dim { color: var(--text-dim); }
+
+  /* STAT CARDS */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin: 36px 0;
+  }
+
+  .stat-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+
+  .stat-box:hover { background: var(--surface-hover); }
+
+  .stat-box .value {
+    font-family: 'Sora', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+  }
+
+  .stat-box .label {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+  }
+
+  .stat-box .sub {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  /* AD CARDS */
+  .card-grid {
+    display: grid;
+    gap: 24px;
+    margin-top: 28px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 1100px) { .card-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 700px) { .card-grid { grid-template-columns: 1fr; } }
+
+  .ad-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.25s;
+  }
+
+  .ad-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .ad-card .img-wrap { width: 100%; overflow: hidden; }
+  .ad-card .img-wrap img { width: 100%; display: block; aspect-ratio: 4/5; object-fit: cover; }
+
+  .ad-card .card-header {
+    padding: 20px 24px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .format-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .format-tag.reels { background: var(--purple-dim); color: var(--purple); }
+  .format-tag.card { background: rgba(251,191,36,0.12); color: var(--yellow); }
+
+  .status-tag {
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .status-tag.active { background: var(--green-dim); color: var(--green); }
+  .status-tag.paused { background: var(--orange-dim); color: var(--orange); }
+
+  .ad-card .card-title {
+    padding: 0 24px 16px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .ad-card .card-period {
+    padding: 0 24px 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .ad-card .metrics {
+    padding: 0 24px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .ad-card .metrics.cols-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .metric-item .metric-value {
+    font-family: 'Sora', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+  }
+
+  .metric-item .metric-label {
+    font-size: 10px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .metric-item .metric-sub {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  .divider {
+    margin: 0 24px;
+    border: none;
+    border-top: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+
+  /* COMPARISON TABLE */
+  .compare-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 28px;
+    background: var(--surface);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .compare-table th {
+    padding: 16px 24px;
+    text-align: left;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .compare-table th:not(:first-child) { text-align: right; }
+
+  .compare-table td {
+    padding: 18px 24px;
+    font-size: 15px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .compare-table td:not(:first-child) {
+    text-align: right;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .compare-table tr:last-child td { border-bottom: none; }
+
+  .compare-table tr:hover td { background: var(--surface-hover); }
+
+  .compare-table .row-name {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .compare-table .total td {
+    font-weight: 800;
+    color: var(--blue);
+    border-top: 2px solid rgba(79,143,255,0.2);
+  }
+
+  /* INSIGHT BOX */
+  .insight-box {
+    background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(79,143,255,0.06));
+    border: 1px solid rgba(167,139,250,0.15);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .insight-box::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(167,139,250,0.1), transparent 70%);
+    pointer-events: none;
+  }
+
+  .insight-box h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .insight-box p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+  }
+
+  .insight-box ul {
+    list-style: none;
+    margin-top: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .insight-box ul li {
+    font-size: 15px;
+    color: var(--text-secondary);
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .insight-box ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--purple);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 48px;
+    color: var(--text-dim);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="badge-date">CAMPANHA ALCANCE/POLITICA</div>
+    <h1>Anuncios <span class="purple">Institucionais</span></h1>
+    <p class="subtitle">Performance dos anuncios de marca da Onda Digital na campanha de Alcance — Marco 2026</p>
+    <div class="big-number">43,1K</div>
+    <div class="big-label">impressoes totais dos 3 anuncios institucionais</div>
+  </div>
+</section>
+
+<!-- VISAO GERAL -->
+<section>
+  <div class="container">
+    <h2>Visao <span class="purple">Geral</span></h2>
+    <p class="section-desc">Metricas consolidadas dos 3 anuncios institucionais veiculados entre 21/mar e 27/mar. Campanha de Alcance com remarketing (seguidores IG + visitantes perfil 30D + engajamento 7D).</p>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="value purple">43.114</div>
+        <div class="label">Impressoes</div>
+      </div>
+      <div class="stat-box">
+        <div class="value accent">33.836</div>
+        <div class="label">Alcance</div>
+        <div class="sub">pessoas unicas</div>
+      </div>
+      <div class="stat-box">
+        <div class="value green">R$ 63,37</div>
+        <div class="label">Investimento</div>
+        <div class="sub">dos R$ 15/dia da campanha</div>
+      </div>
+      <div class="stat-box">
+        <div class="value" style="color: var(--yellow)">R$ 1,47</div>
+        <div class="label">CPM Medio</div>
+        <div class="sub">custo por mil impressoes</div>
+      </div>
+      <div class="stat-box">
+        <div class="value orange">1,24</div>
+        <div class="label">Frequencia</div>
+        <div class="sub">vezes por pessoa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETALHAMENTO POR AD -->
+<section>
+  <div class="container">
+    <h2>Detalhamento por <span class="accent">Anuncio</span></h2>
+    <p class="section-desc">Os 3 anuncios institucionais lado a lado com todas as metricas disponiveis.</p>
+
+    <div class="card-grid">
+
+      <!-- AD 26 -->
+      <div class="ad-card">
+        <div class="img-wrap">
+          <img src="img/pol_ad26.jpg" alt="Noticias com credibilidade">
+        </div>
+        <div class="card-header">
+          <span class="format-tag card">Card</span>
+          <span class="status-tag paused">Pausado</span>
+        </div>
+        <div class="card-title">AD 26 — Noticias com credibilidade</div>
+        <div class="card-period">21/mar a 27/mar | 6 dias</div>
+        <hr class="divider">
+        <div class="metrics">
+          <div class="metric-item">
+            <div class="metric-value purple">19.400</div>
+            <div class="metric-label">Impressoes</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value accent">14.827</div>
+            <div class="metric-label">Alcance</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value green">R$ 28,36</div>
+            <div class="metric-label">Investimento</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value" style="color: var(--yellow)">R$ 1,46</div>
+            <div class="metric-label">CPM</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">8</div>
+            <div class="metric-label">Cliques no Link</div>
+            <div class="metric-sub">R$ 3,55 por clique</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">1,31</div>
+            <div class="metric-label">Frequencia</div>
+          </div>
+        </div>
+        <hr class="divider">
+        <div class="metrics cols-3">
+          <div class="metric-item">
+            <div class="metric-value">1</div>
+            <div class="metric-label">Curtidas</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value dim">0</div>
+            <div class="metric-label">Compartilh.</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value dim">0</div>
+            <div class="metric-label">Salvamentos</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AD 27 -->
+      <div class="ad-card" style="border-color: rgba(167,139,250,0.2);">
+        <div class="img-wrap">
+          <img src="img/pol_ad27.jpg" alt="Noticias com credibilidade Motion">
+        </div>
+        <div class="card-header">
+          <span class="format-tag reels">Reels</span>
+          <span class="status-tag active">Ativo</span>
+        </div>
+        <div class="card-title">AD 27 — Noticias com credibilidade (Motion)</div>
+        <div class="card-period">21/mar a 27/mar | 6 dias</div>
+        <hr class="divider">
+        <div class="metrics">
+          <div class="metric-item">
+            <div class="metric-value purple">18.430</div>
+            <div class="metric-label">Impressoes</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value accent">14.308</div>
+            <div class="metric-label">Alcance</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value green">R$ 26,90</div>
+            <div class="metric-label">Investimento</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value" style="color: var(--yellow)">R$ 1,46</div>
+            <div class="metric-label">CPM</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">17</div>
+            <div class="metric-label">Cliques no Link</div>
+            <div class="metric-sub">R$ 1,58 por clique</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">1,29</div>
+            <div class="metric-label">Frequencia</div>
+          </div>
+        </div>
+        <hr class="divider">
+        <div class="metrics cols-3">
+          <div class="metric-item">
+            <div class="metric-value purple">633</div>
+            <div class="metric-label">Video Views</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">1</div>
+            <div class="metric-label">Curtidas</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value dim">0</div>
+            <div class="metric-label">Compartilh.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AD 30 -->
+      <div class="ad-card">
+        <div class="img-wrap">
+          <img src="img/ad30-35m.jpg" alt="Onda Digital 35 milhoes de visualizacoes">
+        </div>
+        <div class="card-header">
+          <span class="format-tag reels">Reels</span>
+          <span class="status-tag active">Ativo</span>
+        </div>
+        <div class="card-title">AD 30 — Onda Digital ultrapassa 35 milhoes de visualizacoes</div>
+        <div class="card-period">23/mar a 27/mar | 4 dias</div>
+        <hr class="divider">
+        <div class="metrics">
+          <div class="metric-item">
+            <div class="metric-value purple">5.284</div>
+            <div class="metric-label">Impressoes</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value accent">4.701</div>
+            <div class="metric-label">Alcance</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value green">R$ 8,11</div>
+            <div class="metric-label">Investimento</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value" style="color: var(--yellow)">R$ 1,53</div>
+            <div class="metric-label">CPM</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">2</div>
+            <div class="metric-label">Cliques no Link</div>
+            <div class="metric-sub">R$ 4,06 por clique</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">1,12</div>
+            <div class="metric-label">Frequencia</div>
+          </div>
+        </div>
+        <hr class="divider">
+        <div class="metrics cols-3">
+          <div class="metric-item">
+            <div class="metric-value purple">278</div>
+            <div class="metric-label">Video Views</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value">1</div>
+            <div class="metric-label">Curtidas</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-value dim">0</div>
+            <div class="metric-label">Compartilh.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TABELA COMPARATIVA -->
+<section>
+  <div class="container">
+    <h2>Comparativo <span class="purple">Lado a Lado</span></h2>
+    <p class="section-desc">Todos os numeros em uma tabela para facilitar a comparacao direta.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Anuncio</th>
+          <th>Formato</th>
+          <th>Impressoes</th>
+          <th>Alcance</th>
+          <th>Invest.</th>
+          <th>CPM</th>
+          <th>Cliques</th>
+          <th>CPC</th>
+          <th>Views</th>
+          <th>Freq.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="row-name">Noticias com credibilidade</span></td>
+          <td>Card</td>
+          <td>19.400</td>
+          <td>14.827</td>
+          <td>R$ 28,36</td>
+          <td>R$ 1,46</td>
+          <td>8</td>
+          <td>R$ 3,55</td>
+          <td>—</td>
+          <td>1,31</td>
+        </tr>
+        <tr>
+          <td><span class="row-name">Credibilidade (Motion)</span></td>
+          <td>Reels</td>
+          <td>18.430</td>
+          <td>14.308</td>
+          <td>R$ 26,90</td>
+          <td>R$ 1,46</td>
+          <td>17</td>
+          <td>R$ 1,58</td>
+          <td>633</td>
+          <td>1,29</td>
+        </tr>
+        <tr>
+          <td><span class="row-name">35M visualizacoes</span></td>
+          <td>Reels</td>
+          <td>5.284</td>
+          <td>4.701</td>
+          <td>R$ 8,11</td>
+          <td>R$ 1,53</td>
+          <td>2</td>
+          <td>R$ 4,06</td>
+          <td>278</td>
+          <td>1,12</td>
+        </tr>
+        <tr class="total">
+          <td><span class="row-name">TOTAL</span></td>
+          <td>—</td>
+          <td>43.114</td>
+          <td>~33.836</td>
+          <td>R$ 63,37</td>
+          <td>R$ 1,47</td>
+          <td>27</td>
+          <td>R$ 2,35</td>
+          <td>911</td>
+          <td>1,24</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section>
+  <div class="container">
+    <h2>Leitura dos <span class="purple">Resultados</span></h2>
+
+    <div class="insight-box">
+      <h3>O que os numeros mostram</h3>
+      <ul>
+        <li><strong>CPM excelente (R$ 1,47)</strong> — o custo por mil impressoes esta muito baixo, indicando que a campanha de Alcance esta eficiente em entregar o conteudo ao publico de remarketing</li>
+        <li><strong>Reels Motion performa melhor em cliques</strong> — o AD 27 (Reels Motion) teve o dobro de cliques do Card estatico (17 vs 8) com investimento menor (R$ 26,90 vs R$ 28,36). CPC de R$ 1,58 vs R$ 3,55</li>
+        <li><strong>Engajamento baixo em curtidas/compartilhamentos</strong> — apenas 3 curtidas e 0 compartilhamentos no total. Normal para campanha de Alcance com remarketing (publico ja segue, nao interage novamente), mas vale avaliar se o conteudo institucional esta gerando conexao</li>
+        <li><strong>911 video views nos 2 Reels</strong> — os Reels geram visualizacoes naturalmente. O AD 27 (Motion credibilidade) concentra 69% das views</li>
+        <li><strong>AD 30 ("Onda Digital ultrapassa 35 milhoes de visualizacoes") com apenas 4 dias</strong> — menos impressoes por estar rodando ha menos tempo, mas CPM e frequencia estao alinhados com os outros</li>
+      </ul>
+    </div>
+
+    <div class="insight-box">
+      <h3>Contexto da campanha</h3>
+      <p>Estes 3 anuncios institucionais dividem os R$ 15/dia de budget com os anuncios politicos da mesma campanha. O investimento total de R$ 63,37 nos institucionais representa a parcela que o Andromeda direcionou para eles no mes. O publico-alvo e remarketing (quem ja segue ou visitou o perfil), entao o objetivo e reforco de marca, nao aquisicao.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    Onda Digital — Relatorio Institucional Marco 2026 | Dados: Meta Ads API | Periodo: 01-27/mar/2026
+  </div>
+</footer>
+
+</body>
+</html>
