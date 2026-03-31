@@ -677,17 +677,94 @@
     border-top: 1px solid var(--border);
   }
 
+  /* Tablet */
+  @media (max-width: 1024px) {
+    .container { padding: 0 32px; }
+    .card-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+    .briefing-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* Mobile */
   @media (max-width: 768px) {
-    .container { padding: 0 24px; }
-    .stat-row { grid-template-columns: repeat(2, 1fr); }
-    .card-grid.cols-3 { grid-template-columns: 1fr; }
-    .card-grid.cols-2 { grid-template-columns: 1fr; }
+    .container { padding: 0 16px; }
+    section { padding: 56px 0; }
+    .hero { padding: 80px 0 48px; }
+
+    /* Stats */
+    .stat-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .stat-box { padding: 20px 14px; }
+    .stat-box .value { font-size: 26px; }
+    .stat-box .label { font-size: 10px; letter-spacing: 1px; }
+
+    /* Cards */
+    .card-grid.cols-3, .card-grid.cols-2 { grid-template-columns: 1fr; }
+
+    /* Metrics inside cards */
+    .metrics-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
+    .metric-cell { padding: 8px 4px; }
+    .metric-cell .val { font-size: 15px; }
+    .metric-cell .lbl { font-size: 8px; letter-spacing: 0.5px; }
+
+    /* Spend bar */
+    .spend-bar { flex-direction: column; align-items: flex-start; gap: 6px; }
+
+    /* Versus */
     .versus-grid { grid-template-columns: 1fr; gap: 16px; }
     .versus-divider { display: none; }
+
+    /* Briefing */
     .briefing-grid { grid-template-columns: 1fr; }
-    .metrics-grid { grid-template-columns: repeat(3, 1fr); }
-    .data-table { font-size: 12px; }
-    .data-table th, .data-table td { padding: 12px 8px; }
+    .brief-card .qty { font-size: 32px; }
+
+    /* Formula boxes */
+    .formula-box { padding: 24px 16px; }
+    .formula-box .formula { font-size: 16px !important; line-height: 1.6; }
+
+    /* Table — horizontal scroll + sticky first column */
+    .data-table { font-size: 11px; white-space: nowrap; }
+    .data-table th, .data-table td { padding: 10px 8px; }
+    .data-table th:first-child,
+    .data-table td:first-child {
+      position: sticky;
+      left: 0;
+      background: var(--bg);
+      z-index: 2;
+      min-width: 140px;
+      white-space: normal;
+    }
+    .data-table tr:hover td:first-child { background: var(--surface); }
+
+    /* Format tags */
+    .format-tag { font-size: 9px; padding: 3px 8px; }
+
+    /* Insight boxes */
+    .insight-list { font-size: 11px; }
+    .ad-card .title { font-size: 14px; }
+    .ad-card .info { padding: 16px; gap: 8px; }
+
+    /* Section headings */
+    .section-desc { font-size: 15px; margin-bottom: 28px; }
+    h3 { font-size: 18px; }
+
+    /* Check lists */
+    .check-list li { font-size: 14px; padding: 10px 0; }
+
+    /* Closing */
+    .closing { padding: 64px 0; }
+  }
+
+  /* Small mobile */
+  @media (max-width: 420px) {
+    .container { padding: 0 12px; }
+    .stat-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .stat-box .value { font-size: 22px; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .metric-cell .val { font-size: 14px; }
+    .data-table { font-size: 10px; }
+    .data-table th:first-child,
+    .data-table td:first-child { min-width: 120px; }
+    .hero h1 { font-size: 28px; }
+    .ad-card .img-wrap { aspect-ratio: 1/1; }
   }
 </style>
 </head>
