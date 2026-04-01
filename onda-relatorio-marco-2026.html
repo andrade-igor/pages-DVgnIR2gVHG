@@ -107,20 +107,20 @@
 
   /* === HEADER ACTIONS === */
   .header-actions {
-    display: none;
+    display: flex;
     gap: 12px;
     justify-content: center;
     margin-top: 24px;
     flex-wrap: wrap;
   }
-  @media (max-width: 768px) {
-    .header-actions { display: flex; }
-  }
   .share-btn {
     padding: 10px 14px !important;
-    display: inline-flex;
+    display: none;
     align-items: center;
     justify-content: center;
+  }
+  @media (max-width: 768px) {
+    .share-btn { display: inline-flex; }
   }
 
   /* === DOWNLOAD BUTTON === */
