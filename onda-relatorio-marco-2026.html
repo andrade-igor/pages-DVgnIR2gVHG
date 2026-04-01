@@ -577,7 +577,10 @@
   <h1>Relat&oacute;rio Mensal &mdash; Mar&ccedil;o 2026</h1>
   <div class="subtitle">Onda Digital &nbsp;&bull;&nbsp; @redeondadigitall</div>
   <div style="font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 16px; font-weight: 400; letter-spacing: 0.5px;">Por: Igor Andrade</div>
-  <button onclick="window.print()" class="download-btn">Baixar PDF</button>
+  <div style="display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap;">
+    <button onclick="downloadHTML()" class="download-btn">Baixar</button>
+    <button onclick="shareReport()" class="download-btn">Compartilhar</button>
+  </div>
 </div>
 
 <!-- Content -->
@@ -1151,6 +1154,36 @@
   document.fonts.ready.then(() => {
     document.querySelectorAll('.section').forEach(s => observer.observe(s));
   });
+
+  // Download HTML
+  function downloadHTML() {
+    const html = document.documentElement.outerHTML;
+    const blob = new Blob(['\ufeff' + html], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Relatorio-Onda-Digital-Marco-2026.html';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // Share report
+  async function shareReport() {
+    const shareData = {
+      title: 'Relat\u00f3rio Mensal \u2014 Mar\u00e7o 2026 | Onda Digital',
+      text: 'Relat\u00f3rio de performance da Onda Digital \u2014 Mar\u00e7o 2026',
+      url: window.location.href
+    };
+    if (navigator.share) {
+      try { await navigator.share(shareData); } catch(e) {}
+    } else {
+      await navigator.clipboard.writeText(window.location.href);
+      const btn = event.target;
+      const orig = btn.textContent;
+      btn.textContent = 'Link copiado!';
+      setTimeout(() => btn.textContent = orig, 2000);
+    }
+  }
 </script>
 </body>
 </html>
