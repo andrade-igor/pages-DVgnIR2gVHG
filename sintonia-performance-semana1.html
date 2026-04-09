@@ -542,8 +542,9 @@
     .ad-nums dl { min-width: 70px; flex: 1; }
     .ad-nums dd { font-size: 16px; }
 
-    /* Gráfico: altura mínima maior */
-    .chart-box svg { min-width: 560px; }
+    /* Gráfico: cabe na tela sem scroll */
+    .chart-box { overflow-x: hidden; }
+    .chart-box svg { min-width: 0; width: 100%; }
 
     /* Pills: wrap melhor */
     .pills { gap: 5px; }
