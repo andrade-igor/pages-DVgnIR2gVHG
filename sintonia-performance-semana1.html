@@ -472,7 +472,7 @@
 
     /* Ads: thumb em cima */
     .ad { grid-template-columns: 1fr; gap: 12px; }
-    .ad img { width: 100%; height: 180px; object-position: top; }
+    .ad img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: contain; background: #f7f7f7; border-radius: 3px; }
     .ad-nums { flex-wrap: wrap; }
     .ad-nums dl { min-width: 70px; flex: 1; }
     .ad-nums dd { font-size: 16px; }
