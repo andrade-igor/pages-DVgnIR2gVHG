@@ -791,6 +791,15 @@
     .kpi-v { font-size: 18px; }
     .kpi.em { grid-column: 1 / -1; }
     .kpi.em .kpi-v { font-size: 24px; }
+    /* Faturamento (último KPI) full-width + accent no mobile */
+    .kpis-6 .kpi:last-child {
+      grid-column: 1 / -1;
+      background: var(--accent);
+      text-align: center;
+    }
+    .kpis-6 .kpi:last-child .kpi-n { color: rgba(255,255,255,0.5); }
+    .kpis-6 .kpi:last-child .kpi-v { color: #e4ce82; font-size: 24px; }
+    .kpis-6 .kpi:last-child .kpi-d { color: rgba(255,255,255,0.4); }
     table th, table td { padding: 8px 8px; font-size: 11px; }
     .chart-box { overflow-x: hidden; }
     .chart-box svg { min-width: 0; width: 100%; }
@@ -805,9 +814,31 @@
     .funnel-steps { grid-template-columns: repeat(2, 1fr); gap: 6px; }
     .funnel-s-v { font-size: 16px; }
     .brief-cols { grid-template-columns: 1fr; }
-    .week-row { grid-template-columns: 1fr 1fr; gap: 4px 10px; font-size: 11px; }
+    /* Padrão semanal: key-value empilhado no mobile */
+    .week-row { grid-template-columns: 1fr; gap: 4px; padding: 14px 16px; font-size: 12px; }
     .week-row.head { display: none; }
-    .week-row > div:first-child { grid-column: 1 / -1; font-weight: 700; margin-bottom: 4px; }
+    .week-row > div:first-child {
+      font-size: 13px;
+      margin-bottom: 6px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+    .week-row > div:not(:first-child) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: right;
+    }
+    .week-row > div[data-label]::before {
+      content: attr(data-label);
+      color: var(--text-3);
+      font-weight: 500;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      text-align: left;
+    }
     .footer { flex-direction: column; gap: 6px; align-items: flex-start; }
   }
 
@@ -1009,27 +1040,27 @@
         </div>
         <div class="week-row good">
           <div><strong>Dias úteis (seg-sex)</strong></div>
-          <div>11</div>
-          <div>R$ 6.172</div>
-          <div>79</div>
-          <div><strong>R$ 78,13</strong></div>
-          <div class="g"><strong>22% abaixo ✓</strong></div>
+          <div data-label="Dias">11</div>
+          <div data-label="Investimento">R$ 6.172</div>
+          <div data-label="Pedidos">79</div>
+          <div data-label="CAC"><strong>R$ 78,13</strong></div>
+          <div data-label="vs Teto" class="g"><strong>22% abaixo ✓</strong></div>
         </div>
         <div class="week-row warn">
           <div><strong>Sábado</strong></div>
-          <div>3</div>
-          <div>R$ 1.663</div>
-          <div>13</div>
-          <div><strong>R$ 127,93</strong></div>
-          <div class="r"><strong>28% acima</strong></div>
+          <div data-label="Dias">3</div>
+          <div data-label="Investimento">R$ 1.663</div>
+          <div data-label="Pedidos">13</div>
+          <div data-label="CAC"><strong>R$ 127,93</strong></div>
+          <div data-label="vs Teto" class="r"><strong>28% acima</strong></div>
         </div>
         <div class="week-row good">
           <div><strong>Domingo</strong></div>
-          <div>3</div>
-          <div>R$ 1.805</div>
-          <div>22</div>
-          <div><strong>R$ 82,03</strong></div>
-          <div class="g"><strong>18% abaixo ✓</strong></div>
+          <div data-label="Dias">3</div>
+          <div data-label="Investimento">R$ 1.805</div>
+          <div data-label="Pedidos">22</div>
+          <div data-label="CAC"><strong>R$ 82,03</strong></div>
+          <div data-label="vs Teto" class="g"><strong>18% abaixo ✓</strong></div>
         </div>
       </div>
 
