@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>DSX 2026 · Reunião de Diretoria · 22 de abril</title>
+<meta name="author" content="Digital Comunicação">
+<meta name="theme-color" content="#1a1f2e">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f3;
+    --bg-alt: #f3efe6;
+    --surface: #ffffff;
+    --text: #1a1f2e;
+    --text-dim: #5a6275;
+    --text-mute: #8a8f9c;
+    --border: #e8e3d7;
+    --border-soft: #f0ece2;
+    --accent: #b8893a;
+    --accent-dark: #8a6528;
+    --accent-soft: #f5ead0;
+    --navy: #1e3a5f;
+    --navy-soft: #eaf0f7;
+    --success: #2e7d32;
+    --success-soft: #e8f2e9;
+    --warning: #c85c5c;
+    --warning-soft: #fbe9e9;
+    --pie-std: #1e3a5f;
+    --pie-vip: #b8893a;
+    --pie-g5: #c85c5c;
+    --pie-g10: #6b8e9e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 56px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', Georgia, serif;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 72px 0 60px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .hero-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 48px;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    font-weight: 600;
+  }
+  .hero-brand::before {
+    content: '';
+    width: 36px;
+    height: 2px;
+    background: var(--accent);
+  }
+  .hero h1 {
+    font-size: 54px;
+    font-weight: 500;
+    max-width: 1120px;
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-dim);
+    max-width: 900px;
+    margin-bottom: 56px;
+    line-height: 1.5;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-stat {
+    padding: 28px 24px;
+    border-right: 1px solid var(--border);
+  }
+  .hero-stat:last-child { border-right: none; }
+  .hero-stat-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .hero-stat-value {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  .hero-stat-value.accent { color: var(--accent); }
+  .hero-stat-value.success { color: var(--success); }
+  .hero-stat-value.navy { color: var(--navy); }
+  .hero-stat-sub {
+    font-size: 13px;
+    color: var(--text-mute);
+    margin-top: 8px;
+  }
+
+  /* ============ SECTION BASE ============ */
+  section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  section.alt { background: var(--bg-alt); }
+
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+  section h2 {
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    max-width: 1100px;
+  }
+  section h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .section-lead {
+    font-size: 17px;
+    color: var(--text-dim);
+    max-width: 980px;
+    margin-bottom: 48px;
+    line-height: 1.55;
+  }
+
+  /* ============ KPI BIG (stats visuais) ============ */
+  .kpi-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 20px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .kpi-item {
+    padding: 60px 40px;
+    border-right: 1px solid var(--border);
+    text-align: left;
+  }
+  .kpi-item:last-child { border-right: none; }
+  .kpi-value {
+    font-family: 'Fraunces', serif;
+    font-size: 110px;
+    font-weight: 600;
+    color: var(--accent-dark);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    margin-bottom: 20px;
+  }
+  .kpi-item.navy .kpi-value { color: var(--navy); }
+  .kpi-item.success .kpi-value { color: var(--success); }
+  .kpi-label {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .kpi-sub {
+    font-size: 15px;
+    color: var(--text-mute);
+    letter-spacing: 0.02em;
+  }
+
+  /* ============ MONTHLY TIMELINE ============ */
+  .months-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 12px;
+  }
+  .month-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--border);
+    border-radius: 4px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+  }
+  .month-card.m-zero { opacity: 0.55; }
+  .month-card.m-low { border-top-color: var(--text-mute); }
+  .month-card.m-peak { border-top-color: var(--success); background: var(--success-soft); }
+  .month-card.m-curr { border-top-color: var(--accent); background: var(--accent-soft); }
+
+  .month-label {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .month-tag {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .month-card.m-peak .month-tag { color: var(--success); }
+  .month-card.m-curr .month-tag { color: var(--accent-dark); }
+  .month-value {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .month-card.m-peak .month-value { color: var(--success); }
+  .month-card.m-curr .month-value { color: var(--accent-dark); }
+  .month-unit {
+    font-size: 11px;
+    color: var(--text-mute);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .month-stats {
+    margin-top: auto;
+    border-top: 1px dashed var(--border);
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .month-stat-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+  }
+  .month-stat-row .label { color: var(--text-mute); }
+  .month-stat-row .value { color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  /* ============ TABELA DE ORIGEM ============ */
+  .origin-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  table.origin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  table.origin-table th {
+    background: var(--bg-alt);
+    text-align: left;
+    padding: 14px 22px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+  }
+  table.origin-table th.num { text-align: right; }
+  table.origin-table td {
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--border-soft);
+    vertical-align: middle;
+  }
+  table.origin-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.origin-table tr:last-child td { border-bottom: none; }
+  table.origin-table tr.highlight td {
+    background: var(--warning-soft);
+    font-weight: 600;
+    color: var(--warning);
+  }
+  table.origin-table tr.highlight td strong { color: #6b2626; }
+  table.origin-table tr.total td {
+    background: var(--bg-alt);
+    font-weight: 700;
+    color: var(--text);
+    font-size: 16px;
+  }
+  table.origin-table td.origin-name { font-weight: 600; color: var(--text); }
+  table.origin-table td.origin-bar-cell {
+    padding-right: 24px;
+    vertical-align: middle;
+  }
+  .origin-bar {
+    display: block;
+    width: 100%;
+    max-width: 180px;
+    height: 8px;
+    background: var(--border-soft);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .origin-bar-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  tr.highlight .origin-bar-fill { background: var(--warning); }
+
+  /* ============ INSIGHT BOX ============ */
+  .insight-box {
+    margin-top: 32px;
+    padding: 22px 28px;
+    background: var(--surface);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .insight-box strong { color: var(--accent-dark); font-weight: 600; }
+  .insight-box.navy { border-left-color: var(--navy); }
+  .insight-box.navy strong { color: var(--navy); }
+  .insight-box.success { border-left-color: var(--success); background: var(--success-soft); }
+  .insight-box.success strong { color: #143816; }
+  .insight-box.warning { border-left-color: var(--warning); background: var(--warning-soft); }
+  .insight-box.warning strong { color: #6b2626; }
+
+  /* ============ PIVOT UTM VS PIXEL ============ */
+  .pivot-grid {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    gap: 32px;
+    align-items: stretch;
+    margin-top: 20px;
+  }
+  .pivot-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+  }
+  .pivot-card.before { border-top: 4px solid var(--warning); }
+  .pivot-card.after { border-top: 4px solid var(--success); background: var(--success-soft); }
+  .pivot-tag {
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 3px;
+    margin-bottom: 32px;
+    align-self: flex-start;
+  }
+  .pivot-tag.t-before { background: var(--warning-soft); color: var(--warning); }
+  .pivot-tag.t-after { background: #ffffff; color: var(--success); border: 1px solid var(--success); }
+  .pivot-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 28px;
+  }
+  .pivot-numbers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+    padding: 24px;
+    background: var(--bg-alt);
+    border-radius: 4px;
+  }
+  .pivot-card.after .pivot-numbers { background: rgba(255, 255, 255, 0.6); }
+  .pivot-number-item .label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .pivot-number-item .val {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  .pivot-card.before .pivot-number-item .val { color: var(--warning); }
+  .pivot-card.after .pivot-number-item .val { color: var(--success); }
+  .pivot-card p {
+    font-size: 19px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-top: auto;
+  }
+  .pivot-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .pivot-arrow-icon {
+    font-size: 60px;
+    line-height: 1;
+    color: var(--accent);
+    font-weight: 300;
+  }
+  .pivot-arrow-label {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    writing-mode: horizontal-tb;
+  }
+
+  /* ============ COMPARATIVO MAR VS ABR ============ */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 0.55fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 12px;
+    align-items: stretch;
+  }
+  .compare-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px 32px;
+  }
+  .compare-card.fev {
+    border-top: 3px solid var(--text-mute);
+    background: var(--bg-alt);
+    display: flex;
+    flex-direction: column;
+  }
+  .compare-card.fev .compare-title { color: var(--text-mute); }
+  .compare-card.fev .compare-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 16px;
+    color: var(--text-mute);
+  }
+  .compare-card.fev .compare-empty-icon {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 500;
+    color: var(--text-mute);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .compare-card.fev .compare-empty-text {
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 180px;
+    color: var(--text-mute);
+  }
+  .compare-card.mar { border-top: 3px solid var(--navy); }
+  .compare-card.abr { border-top: 3px solid var(--warning); }
+  .compare-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-title {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .compare-card.mar .compare-title { color: var(--navy); }
+  .compare-card.abr .compare-title { color: var(--warning); }
+  .compare-period {
+    font-size: 12px;
+    color: var(--text-mute);
+    font-weight: 500;
+  }
+  .compare-row {
+    display: grid;
+    grid-template-columns: 1fr 140px 56px;
+    gap: 12px;
+    padding: 12px 0;
+    font-size: 14px;
+    align-items: center;
+    border-bottom: 1px dashed var(--border-soft);
+  }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-row .metric { color: var(--text-mute); font-size: 13px; }
+  .compare-row .value {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    white-space: nowrap;
+    text-align: right;
+  }
+  .compare-row .delta {
+    font-size: 10.5px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+    padding: 3px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+    line-height: 1;
+    text-align: center;
+    justify-self: start;
+  }
+  .compare-row .delta.down { color: var(--warning); background: var(--warning-soft); }
+  .compare-row .delta.neutral { color: var(--text-mute); background: var(--border-soft); }
+
+  /* ============ DIAGNÓSTICO ============ */
+  .diag-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 20px;
+  }
+  .diag-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--warning);
+    border-radius: 4px;
+    padding: 44px 40px;
+  }
+  .diag-num {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warning);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .diag-card h4 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    line-height: 1.25;
+  }
+  .diag-card p {
+    font-size: 18px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+  .diag-stat {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 600;
+    color: var(--warning);
+    line-height: 1;
+    margin: 24px 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  /* ============ PARTE II — PLACEHOLDER ============ */
+  .part-divider {
+    background: var(--text);
+    color: var(--bg);
+    padding: 90px 0;
+    text-align: center;
+    border-bottom: none;
+  }
+  .part-divider .section-eyebrow { color: var(--accent); justify-content: center; }
+  .part-divider .section-eyebrow::before { background: var(--accent); }
+  .part-divider h2 {
+    font-size: 52px;
+    font-weight: 500;
+    color: var(--bg);
+    max-width: 1000px;
+    margin: 0 auto 18px;
+  }
+  .part-divider h2 em { color: var(--accent); font-style: italic; }
+  .part-divider p {
+    color: #c9ccd3;
+    font-size: 17px;
+    max-width: 780px;
+    margin: 0 auto;
+    line-height: 1.55;
+  }
+
+  .placeholder-strategy {
+    background: var(--bg-alt);
+    padding: 80px 0;
+  }
+  .placeholder-card {
+    background: var(--surface);
+    border: 2px dashed var(--accent);
+    border-radius: 8px;
+    padding: 56px 48px;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .placeholder-card h3 {
+    font-size: 30px;
+    margin-bottom: 14px;
+    color: var(--accent-dark);
+  }
+  .placeholder-card p {
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .placeholder-card .label {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 14px;
+    padding: 4px 12px;
+    background: var(--accent-soft);
+    border-radius: 3px;
+  }
+
+  /* ============ FUNIL ============ */
+  .funnel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 960px;
+    margin: 56px auto 0;
+    gap: 0;
+  }
+  .funnel-stage {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 32px 40px;
+    background: var(--surface);
+    transition: transform .2s;
+  }
+  .funnel-stage.topo { width: 100%; }
+  .funnel-stage.meio { width: 80%; background: var(--accent-soft); border-color: var(--accent); }
+  .funnel-stage.fundo { width: 60%; background: var(--navy); border-color: var(--navy); color: var(--bg); }
+  .funnel-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .funnel-tag {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--accent-dark);
+  }
+  .funnel-stage.fundo .funnel-tag { color: var(--accent); }
+  .funnel-budget {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    font-weight: 500;
+  }
+  .funnel-stage.fundo .funnel-budget { color: #c9ccd3; }
+  .funnel-title {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+  .funnel-msg {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--text-dim);
+  }
+  .funnel-stage.fundo .funnel-msg { color: #d0d4dc; }
+  .funnel-connector {
+    width: 2px;
+    height: 24px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* ============ FRENTES (4 CARDS) ============ */
+  .frentes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .frente-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .frente-reach {
+    font-family: 'Fraunces', serif;
+    font-size: 44px;
+    font-weight: 600;
+    color: var(--accent-dark);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .frente-reach-label {
+    font-size: 11px;
+    color: var(--text-mute);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+    margin-bottom: 22px;
+  }
+  .frente-name {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .frente-niche {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* ============ TIMELINE ============ */
+  .timeline {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 48px;
+  }
+  .timeline-point {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 26px 24px;
+    text-align: center;
+  }
+  .timeline-when {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--accent-dark);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .timeline-what {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .timeline-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--accent);
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  /* ============ META FINAL ============ */
+  .meta-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .meta-stat {
+    padding: 40px 24px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+  }
+  .meta-stat-value {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 600;
+    color: var(--accent-dark);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .meta-stat-label {
+    font-size: 13px;
+    color: var(--text-mute);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+
+  /* ============ TIPOS DE PASSAPORTE ============ */
+  .types-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .type-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .type-row.top { background: var(--accent-soft); border-color: var(--accent); }
+  .type-name {
+    font-size: 17px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .type-count {
+    font-family: 'Fraunces', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .type-row.top .type-count { color: var(--accent-dark); }
+
+  /* ============ PIES POR MÊS ============ */
+  .pies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 48px;
+  }
+  .pie-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .pie-month {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .pie-total {
+    font-size: 13px;
+    color: var(--text-mute);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-top: 4px;
+    margin-bottom: 28px;
+  }
+  .pie {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .pie::after {
+    content: '';
+    position: absolute;
+    inset: 30%;
+    background: var(--surface);
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px var(--border);
+  }
+  .pie-legend {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .pie-legend li {
+    display: grid;
+    grid-template-columns: 14px 1fr auto auto;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 14px;
+    color: var(--text);
+  }
+  .pie-legend li:last-child { border-bottom: none; }
+  .pie-legend li.empty { color: var(--text-mute); }
+  .pie-legend li strong {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 17px;
+    text-align: right;
+    padding-right: 10px;
+  }
+  .pie-legend .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+  .pie-legend .pct {
+    font-size: 12px;
+    color: var(--text-mute);
+    letter-spacing: 0.03em;
+    min-width: 36px;
+    text-align: right;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 48px 0 60px;
+    text-align: center;
+    background: var(--bg-alt);
+  }
+  footer .footer-mark {
+    display: inline-block;
+    width: 36px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 18px;
+  }
+  footer h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  footer p {
+    font-size: 13px;
+    color: var(--text-mute);
+    max-width: 640px;
+    margin: 0 auto 4px;
+  }
+
+  /* ============ SIDE NAV (compacto por default, expande no hover) ============ */
+  .side-nav {
+    position: fixed;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    z-index: 40;
+    pointer-events: none;
+  }
+  .side-nav-inner {
+    background: rgba(250, 248, 243, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 14px;
+    pointer-events: auto;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 20px rgba(17, 24, 39, 0.06);
+    width: 52px;
+    overflow: hidden;
+  }
+  .side-nav-inner:hover {
+    width: 240px;
+    background: rgba(250, 248, 243, 0.98);
+  }
+  .side-nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 6px;
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.3;
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: color 0.15s, background 0.15s;
+  }
+  .side-nav a:hover { color: var(--text); background: rgba(184, 137, 58, 0.08); }
+  .side-nav-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .side-nav a:hover .side-nav-dot { background: var(--accent); }
+  .side-nav a.active .side-nav-dot {
+    background: var(--accent);
+    width: 8px;
+    height: 8px;
+    margin-left: -1px;
+    margin-right: -1px;
+  }
+  .side-nav a.active .side-nav-dot::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translate(-50%, -50%);
+    animation: sideNavPulse 2.2s ease-out infinite;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .side-nav a.active { color: var(--text); font-weight: 600; }
+  @keyframes sideNavPulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+  }
+  .side-nav-txt {
+    opacity: 0;
+    transition: opacity 0.2s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .side-nav-inner:hover .side-nav-txt { opacity: 1; }
+
+  @media (max-width: 1400px) {
+    .container { padding: 0 40px; }
+    .hero h1 { font-size: 64px; }
+    section h2 { font-size: 48px; }
+    .hero-stat-value { font-size: 46px; }
+    .month-value { font-size: 54px; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .pivot-grid { grid-template-columns: 1fr; }
+    .pivot-arrow { flex-direction: row; padding: 20px 0; }
+    .diag-grid { grid-template-columns: 1fr; }
+    .side-nav { display: none; }
+    .part-divider h2 { font-size: 54px; }
+    .pies-grid { grid-template-columns: 1fr; gap: 24px; }
+    .frentes-grid { grid-template-columns: repeat(2, 1fr); }
+    .timeline { flex-direction: column; gap: 8px; }
+    .timeline-arrow { transform: rotate(90deg); justify-content: center; }
+    .meta-stats { grid-template-columns: 1fr; }
+    .funnel-stage.meio { width: 92%; }
+    .funnel-stage.fundo { width: 82%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ SIDE NAV ============ -->
+<aside class="side-nav" id="sideNav" aria-label="Navegação">
+  <div class="side-nav-inner">
+    <a href="#start" class="active"><span class="side-nav-dot"></span><span class="side-nav-txt">Início</span></a>
+    <a href="#mes-a-mes"><span class="side-nav-dot"></span><span class="side-nav-txt">Mês a mês</span></a>
+    <a href="#origem"><span class="side-nav-dot"></span><span class="side-nav-txt">Origem das vendas</span></a>
+    <a href="#mar-vs-abr"><span class="side-nav-dot"></span><span class="side-nav-txt">Março vs Abril</span></a>
+    <a href="#tipos"><span class="side-nav-dot"></span><span class="side-nav-txt">Vendas por lote</span></a>
+    <a href="#tipos-mes"><span class="side-nav-dot"></span><span class="side-nav-txt">Tipos por mês</span></a>
+    <a href="#parte-ii"><span class="side-nav-dot"></span><span class="side-nav-txt">Nova estratégia</span></a>
+    <a href="#funil"><span class="side-nav-dot"></span><span class="side-nav-txt">Funil</span></a>
+    <a href="#frentes"><span class="side-nav-dot"></span><span class="side-nav-txt">Frentes por nicho</span></a>
+    <a href="#cronograma"><span class="side-nav-dot"></span><span class="side-nav-txt">Cronograma</span></a>
+    <a href="#meta-final"><span class="side-nav-dot"></span><span class="side-nav-txt">Meta</span></a>
+  </div>
+</aside>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="start">
+  <div class="container">
+    <div class="hero-brand">DSX 2026 · Status e Virada · 22 de abril</div>
+    <h1>Onde estamos. <em>Pra onde vamos</em>.</h1>
+    <p class="hero-sub">
+      Resultados consolidados da operação de vendas DSX 2026 entre 1º de fevereiro e 22 de abril, e a virada estratégica a partir daqui.
+      Faltam 92 dias pro evento.
+    </p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-label">Passaportes vendidos</div>
+        <div class="hero-stat-value">150</div>
+        <div class="hero-stat-sub">Hubla + Sympla · até 22/04</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-label">Faturamento</div>
+        <div class="hero-stat-value accent">R$ 63,9k</div>
+        <div class="hero-stat-sub">Receita consolidada</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-label">Compras confirmadas</div>
+        <div class="hero-stat-value">76</div>
+        <div class="hero-stat-sub">Ticket médio R$ 841 por compra</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-label">Dias pro evento</div>
+        <div class="hero-stat-value navy">92</div>
+        <div class="hero-stat-sub">23 e 24 de julho</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MÊS A MÊS ============ -->
+<section class="alt" id="mes-a-mes">
+  <div class="container">
+    <div class="section-eyebrow">Linha do Tempo</div>
+    <h2>Como as vendas se <em>distribuíram</em> nos 4 meses.</h2>
+    <p class="section-lead">
+      Passaportes, compras e receita por mês.
+    </p>
+
+    <div class="months-grid">
+
+      <div class="month-card m-zero">
+        <div class="month-label">Janeiro</div>
+        <div class="month-tag">Pré-operação</div>
+        <div class="month-value">0</div>
+        <div class="month-unit">passaportes</div>
+        <div class="month-stats">
+          <div class="month-stat-row"><span class="label">Compras</span><span class="value">0</span></div>
+          <div class="month-stat-row"><span class="label">Receita</span><span class="value">R$ 0</span></div>
+        </div>
+      </div>
+
+      <div class="month-card m-low">
+        <div class="month-label">Fevereiro</div>
+        <div class="month-tag">Abertura Hubla</div>
+        <div class="month-value">9</div>
+        <div class="month-unit">passaportes</div>
+        <div class="month-stats">
+          <div class="month-stat-row"><span class="label">Compras</span><span class="value">9</span></div>
+          <div class="month-stat-row"><span class="label">Receita</span><span class="value">R$ 2.818</span></div>
+        </div>
+      </div>
+
+      <div class="month-card m-peak">
+        <div class="month-label">Março</div>
+        <div class="month-tag">Transição + mídia</div>
+        <div class="month-value">94</div>
+        <div class="month-unit">passaportes</div>
+        <div class="month-stats">
+          <div class="month-stat-row"><span class="label">Compras</span><span class="value">50</span></div>
+          <div class="month-stat-row"><span class="label">Receita</span><span class="value">R$ 35.830</span></div>
+        </div>
+      </div>
+
+      <div class="month-card m-curr">
+        <div class="month-label">Abril <span style="font-size: 16px; color: var(--text-mute); font-family: 'Inter', sans-serif;">(até 22)</span></div>
+        <div class="month-tag">Em andamento</div>
+        <div class="month-value">47</div>
+        <div class="month-unit">passaportes</div>
+        <div class="month-stats">
+          <div class="month-stat-row"><span class="label">Compras</span><span class="value">17</span></div>
+          <div class="month-stat-row"><span class="label">Receita</span><span class="value">R$ 25.256</span></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ ORIGEM DAS VENDAS ============ -->
+<section id="origem">
+  <div class="container">
+    <div class="section-eyebrow">Origem das Vendas</div>
+    <h2>De onde vieram os <em>150 passaportes</em>.</h2>
+    <p class="section-lead">
+      Distribuição por canal de origem, classificada pelo parâmetro UTM registrado em cada venda. A maior fatia, mais da metade,
+      chegou sem UTM rastreado. Esse é o dado mais importante da tabela e precisa ser lido com cuidado.
+    </p>
+
+    <div class="origin-wrap">
+      <table class="origin-table">
+        <thead>
+          <tr>
+            <th style="width: 220px;">Canal</th>
+            <th style="width: 220px;">Volume</th>
+            <th class="num">Passaportes</th>
+            <th class="num">% do total</th>
+            <th class="num">Receita</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td class="origin-name"><strong>Sem UTM · não mensurado</strong></td>
+            <td class="origin-bar-cell"><span class="origin-bar"><span class="origin-bar-fill" style="width: 100%;"></span></span></td>
+            <td class="num"><strong>87</strong></td>
+            <td class="num"><strong>58,0%</strong></td>
+            <td class="num"><strong>R$ 34.583</strong></td>
+          </tr>
+          <tr>
+            <td class="origin-name">Comercial</td>
+            <td class="origin-bar-cell"><span class="origin-bar"><span class="origin-bar-fill" style="width: 19.5%;"></span></span></td>
+            <td class="num">17</td>
+            <td class="num">11,3%</td>
+            <td class="num">R$ 8.768</td>
+          </tr>
+          <tr>
+            <td class="origin-name">Meta Ads (UTM)</td>
+            <td class="origin-bar-cell"><span class="origin-bar"><span class="origin-bar-fill" style="width: 17.2%;"></span></span></td>
+            <td class="num">15</td>
+            <td class="num">10,0%</td>
+            <td class="num">R$ 8.160</td>
+          </tr>
+          <tr>
+            <td class="origin-name">Inbound (RD Station)</td>
+            <td class="origin-bar-cell"><span class="origin-bar"><span class="origin-bar-fill" style="width: 16.1%;"></span></span></td>
+            <td class="num">14</td>
+            <td class="num">9,3%</td>
+            <td class="num">R$ 7.696</td>
+          </tr>
+          <tr>
+            <td class="origin-name">Instagram Orgânico</td>
+            <td class="origin-bar-cell"><span class="origin-bar"><span class="origin-bar-fill" style="width: 9.2%;"></span></span></td>
+            <td class="num">8</td>
+            <td class="num">5,3%</td>
+            <td class="num">R$ 2.605</td>
+          </tr>
+          <tr>
+            <td class="origin-name">Corporativo (vendido por fora)</td>
+            <td class="origin-bar-cell"><span class="origin-bar"><span class="origin-bar-fill" style="width: 6.9%;"></span></span></td>
+            <td class="num">6</td>
+            <td class="num">4,0%</td>
+            <td class="num"><span style="color: var(--text-mute); font-size: 15px;">(fora Sympla)</span></td>
+          </tr>
+          <tr>
+            <td class="origin-name">Grupo VIP</td>
+            <td class="origin-bar-cell"><span class="origin-bar"><span class="origin-bar-fill" style="width: 3.4%;"></span></span></td>
+            <td class="num">3</td>
+            <td class="num">2,0%</td>
+            <td class="num">R$ 2.091</td>
+          </tr>
+          <tr class="total">
+            <td>Total</td>
+            <td></td>
+            <td class="num">150</td>
+            <td class="num">100%</td>
+            <td class="num">R$ 63.903</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="insight-box warning">
+      <strong>Os 58% sem UTM</strong> são vendas reais e faturadas. A atribuição do canal se perdeu, não a venda.
+    </div>
+
+    <div class="section-eyebrow" style="margin-top: 72px;">Passaportes por origem × mês</div>
+    <h2 style="font-size: 32px; margin-bottom: 28px;">Como cada canal <em>evoluiu</em> nos três meses.</h2>
+
+    <div class="origin-wrap">
+      <table class="origin-table">
+        <thead>
+          <tr>
+            <th>Origem</th>
+            <th class="num">Fevereiro</th>
+            <th class="num">Março</th>
+            <th class="num">Abril</th>
+            <th class="num">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td class="origin-name"><strong>Sem UTM</strong></td>
+            <td class="num">7</td>
+            <td class="num">54</td>
+            <td class="num">26</td>
+            <td class="num"><strong>87</strong></td>
+          </tr>
+          <tr>
+            <td class="origin-name">Comercial</td>
+            <td class="num" style="color: var(--text-mute);">—</td>
+            <td class="num">10</td>
+            <td class="num">7</td>
+            <td class="num"><strong>17</strong></td>
+          </tr>
+          <tr>
+            <td class="origin-name">Meta Ads (Pixel)</td>
+            <td class="num" style="color: var(--text-mute);">—</td>
+            <td class="num">30</td>
+            <td class="num">7</td>
+            <td class="num"><strong>37</strong></td>
+          </tr>
+          <tr>
+            <td class="origin-name">Inbound (RD Station)</td>
+            <td class="num">1</td>
+            <td class="num">8</td>
+            <td class="num">5</td>
+            <td class="num"><strong>14</strong></td>
+          </tr>
+          <tr>
+            <td class="origin-name">Instagram Orgânico</td>
+            <td class="num">1</td>
+            <td class="num">7</td>
+            <td class="num" style="color: var(--text-mute);">—</td>
+            <td class="num"><strong>8</strong></td>
+          </tr>
+          <tr>
+            <td class="origin-name">Corporativo</td>
+            <td class="num" style="color: var(--text-mute);">—</td>
+            <td class="num" style="color: var(--text-mute);">—</td>
+            <td class="num">6</td>
+            <td class="num"><strong>6</strong></td>
+          </tr>
+          <tr>
+            <td class="origin-name">Grupo VIP</td>
+            <td class="num" style="color: var(--text-mute);">—</td>
+            <td class="num">2</td>
+            <td class="num">1</td>
+            <td class="num"><strong>3</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ MARÇO VS ABRIL ============ -->
+<section class="alt" id="mar-vs-abr">
+  <div class="container">
+    <div class="section-eyebrow">Meta Ads · Performance Mensal</div>
+    <h2>Como o tráfego pago se comportou em <em>março e abril</em>.</h2>
+    <p class="section-lead">
+      Leitura objetiva do pixel da Meta em cada mês: quanto foi investido, quanto a plataforma entregou de alcance, cliques e vendas.
+      Os números mostram uma queda significativa entre os dois períodos.
+    </p>
+
+    <div class="compare-grid">
+
+      <div class="compare-card fev">
+        <div class="compare-header">
+          <div class="compare-title">Fevereiro</div>
+          <div class="compare-period">Sem operação</div>
+        </div>
+        <div class="compare-empty">
+          <div class="compare-empty-icon">—</div>
+          <div class="compare-empty-text">Mídia paga não ativa neste mês</div>
+        </div>
+      </div>
+
+      <div class="compare-card mar">
+        <div class="compare-header">
+          <div class="compare-title">Março</div>
+          <div class="compare-period">01 a 31 · 31 dias</div>
+        </div>
+        <div class="compare-row">
+          <span class="metric">Investimento</span>
+          <span class="value">R$ 14.006</span><span></span>
+        </div>
+        <div class="compare-row">
+          <span class="metric">Alcance</span>
+          <span class="value">279.772</span><span></span>
+        </div>
+        <div class="compare-row">
+          <span class="metric">Impressões</span>
+          <span class="value">1.056.665</span><span></span>
+        </div>
+        <div class="compare-row">
+          <span class="metric">Cliques no link</span>
+          <span class="value">14.628</span><span></span>
+        </div>
+        <div class="compare-row">
+          <span class="metric">CTR</span>
+          <span class="value">2,02%</span><span></span>
+        </div>
+        <div class="compare-row">
+          <span class="metric">Leads captados</span>
+          <span class="value">604</span><span></span>
+        </div>
+        <div class="compare-row critical">
+          <span class="metric">Compras (pixel)</span>
+          <span class="value">30</span><span></span>
+        </div>
+        <div class="compare-row critical">
+          <span class="metric">Receita atribuída</span>
+          <span class="value">R$ 21.784</span><span></span>
+        </div>
+        <div class="compare-row critical">
+          <span class="metric">CAC</span>
+          <span class="value">R$ 467</span><span></span>
+        </div>
+        <div class="compare-row critical">
+          <span class="metric">ROAS</span>
+          <span class="value">1,55×</span><span></span>
+        </div>
+      </div>
+
+      <div class="compare-card abr">
+        <div class="compare-header">
+          <div class="compare-title">Abril</div>
+          <div class="compare-period">01 a 22 · 22 dias</div>
+        </div>
+        <div class="compare-row">
+          <span class="metric">Investimento</span>
+          <span class="value">R$ 10.180</span><span></span>
+        </div>
+        <div class="compare-row">
+          <span class="metric">Alcance</span>
+          <span class="value">170.127</span><span class="delta down">−39%</span>
+        </div>
+        <div class="compare-row">
+          <span class="metric">Impressões</span>
+          <span class="value">601.551</span><span class="delta down">−43%</span>
+        </div>
+        <div class="compare-row">
+          <span class="metric">Cliques no link</span>
+          <span class="value">2.965</span><span class="delta down">−80%</span>
+        </div>
+        <div class="compare-row">
+          <span class="metric">CTR</span>
+          <span class="value">0,96%</span><span class="delta down">−52%</span>
+        </div>
+        <div class="compare-row">
+          <span class="metric">Leads captados</span>
+          <span class="value">407</span><span class="delta neutral">estável</span>
+        </div>
+        <div class="compare-row critical">
+          <span class="metric">Compras (pixel)</span>
+          <span class="value">7</span><span class="delta down">−77%</span>
+        </div>
+        <div class="compare-row critical">
+          <span class="metric">Receita atribuída</span>
+          <span class="value">R$ 7.270</span><span class="delta down">−67%</span>
+        </div>
+        <div class="compare-row critical">
+          <span class="metric">CAC</span>
+          <span class="value">R$ 1.454</span><span class="delta down">+211%</span>
+        </div>
+        <div class="compare-row critical">
+          <span class="metric">ROAS</span>
+          <span class="value">0,71×</span><span class="delta down">−54%</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="insight-box">
+      Em março, <strong>ROAS de 1,55× — o tráfego pago se pagou</strong>. CAC cai conforme o evento se aproxima.
+    </div>
+  </div>
+</section>
+
+<!-- ============ VENDAS POR LOTE ============ -->
+<section id="tipos">
+  <div class="container">
+    <div class="section-eyebrow">Vendas por Lote</div>
+    <h2>Distribuição por <em>lote e tipo</em> de passaporte.</h2>
+    <p class="section-lead">
+      Os 150 passaportes abertos por lote e tipo. Permite identificar qual período de preço concentrou mais vendas
+      e onde cada categoria de produto (Standard, VIP, Grupo) respondeu melhor.
+    </p>
+
+    <div class="origin-wrap">
+      <table class="origin-table">
+        <thead>
+          <tr>
+            <th>Lote</th>
+            <th class="num">Standard</th>
+            <th class="num">VIP</th>
+            <th class="num">Grupo <span style="font-weight: 400; opacity: .6;">×5</span></th>
+            <th class="num">Grupo <span style="font-weight: 400; opacity: .6;">×10</span></th>
+            <th class="num">Total</th>
+            <th class="num">% do total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="origin-name">Hubla (pré-lote)</td>
+            <td class="num">21</td>
+            <td class="num">4</td>
+            <td class="num" style="color: var(--text-mute);">·</td>
+            <td class="num" style="color: var(--text-mute);">·</td>
+            <td class="num"><strong>25</strong></td>
+            <td class="num">16,7%</td>
+          </tr>
+          <tr>
+            <td class="origin-name">Lote 1</td>
+            <td class="num">26</td>
+            <td class="num" style="color: var(--text-mute);">·</td>
+            <td class="num">5 <span style="font-size: 12px; opacity: .55; font-weight: 400;">· 1 pack</span></td>
+            <td class="num" style="color: var(--text-mute);">·</td>
+            <td class="num"><strong>31</strong></td>
+            <td class="num">20,7%</td>
+          </tr>
+          <tr class="highlight" style="background: var(--accent-soft); color: var(--accent-dark);">
+            <td class="origin-name"><strong>Lote 2</strong></td>
+            <td class="num"><strong>27</strong></td>
+            <td class="num"><strong>8</strong></td>
+            <td class="num"><strong>10</strong> <span style="font-size: 12px; opacity: .6; font-weight: 400;">· 2 packs</span></td>
+            <td class="num"><strong>10</strong> <span style="font-size: 12px; opacity: .6; font-weight: 400;">· 1 pack</span></td>
+            <td class="num"><strong>55</strong></td>
+            <td class="num"><strong>36,7%</strong></td>
+          </tr>
+          <tr>
+            <td class="origin-name">Lote 3</td>
+            <td class="num">18</td>
+            <td class="num" style="color: var(--text-mute);">·</td>
+            <td class="num">5 <span style="font-size: 12px; opacity: .55; font-weight: 400;">· 1 pack</span></td>
+            <td class="num">10 <span style="font-size: 12px; opacity: .55; font-weight: 400;">· 1 pack</span></td>
+            <td class="num"><strong>33</strong></td>
+            <td class="num">22,0%</td>
+          </tr>
+          <tr>
+            <td class="origin-name">Corporativo</td>
+            <td class="num">6</td>
+            <td class="num" style="color: var(--text-mute);">·</td>
+            <td class="num" style="color: var(--text-mute);">·</td>
+            <td class="num" style="color: var(--text-mute);">·</td>
+            <td class="num"><strong>6</strong></td>
+            <td class="num">4,0%</td>
+          </tr>
+          <tr class="total">
+            <td><strong>Total</strong></td>
+            <td class="num"><strong>98</strong></td>
+            <td class="num"><strong>12</strong></td>
+            <td class="num"><strong>20</strong> <span style="font-size: 12px; opacity: .6; font-weight: 500;">· 4 packs</span></td>
+            <td class="num"><strong>20</strong> <span style="font-size: 12px; opacity: .6; font-weight: 500;">· 2 packs</span></td>
+            <td class="num"><strong>150</strong></td>
+            <td class="num"><strong>100%</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIPOS POR MÊS ============ -->
+<section class="alt" id="tipos-mes">
+  <div class="container">
+    <div class="section-eyebrow">Tipos por Mês</div>
+    <h2>Mix de <em>tipos de passaporte</em> em cada mês.</h2>
+    <p class="section-lead">
+      Composição mensal por categoria — Standard, VIP, Grupo de 5 e Grupo de 10.
+      Mostra como o perfil de compra evoluiu conforme o evento se aproxima.
+    </p>
+
+    <div class="pies-grid">
+      <!-- Fevereiro -->
+      <div class="pie-card">
+        <div class="pie-month">Fevereiro</div>
+        <div class="pie-total">9 passaportes</div>
+        <div class="pie" style="background: conic-gradient(var(--pie-std) 0 100%);"></div>
+        <ul class="pie-legend">
+          <li><span class="dot" style="background: var(--pie-std);"></span>Standard <strong>9</strong> <span class="pct">100%</span></li>
+          <li class="empty"><span class="dot" style="background: var(--border);"></span>VIP <span class="pct">—</span></li>
+          <li class="empty"><span class="dot" style="background: var(--border);"></span>Grupo 5 <span class="pct">—</span></li>
+          <li class="empty"><span class="dot" style="background: var(--border);"></span>Grupo 10 <span class="pct">—</span></li>
+        </ul>
+      </div>
+
+      <!-- Março -->
+      <div class="pie-card">
+        <div class="pie-month">Março</div>
+        <div class="pie-total">94 passaportes</div>
+        <div class="pie" style="background: conic-gradient(var(--pie-std) 0 68.1%, var(--pie-vip) 68.1% 73.4%, var(--pie-g5) 73.4% 89.4%, var(--pie-g10) 89.4% 100%);"></div>
+        <ul class="pie-legend">
+          <li><span class="dot" style="background: var(--pie-std);"></span>Standard <strong>64</strong> <span class="pct">68%</span></li>
+          <li><span class="dot" style="background: var(--pie-vip);"></span>VIP <strong>5</strong> <span class="pct">5%</span></li>
+          <li><span class="dot" style="background: var(--pie-g5);"></span>Grupo 5 <strong>15</strong> <span class="pct">16%</span></li>
+          <li><span class="dot" style="background: var(--pie-g10);"></span>Grupo 10 <strong>10</strong> <span class="pct">11%</span></li>
+        </ul>
+      </div>
+
+      <!-- Abril -->
+      <div class="pie-card">
+        <div class="pie-month">Abril <span style="font-weight: 400; opacity: .6; font-size: 14px;">· até 22/04</span></div>
+        <div class="pie-total">47 passaportes</div>
+        <div class="pie" style="background: conic-gradient(var(--pie-std) 0 53.2%, var(--pie-vip) 53.2% 68.1%, var(--pie-g5) 68.1% 78.7%, var(--pie-g10) 78.7% 100%);"></div>
+        <ul class="pie-legend">
+          <li><span class="dot" style="background: var(--pie-std);"></span>Standard <strong>25</strong> <span class="pct">53%</span></li>
+          <li><span class="dot" style="background: var(--pie-vip);"></span>VIP <strong>7</strong> <span class="pct">15%</span></li>
+          <li><span class="dot" style="background: var(--pie-g5);"></span>Grupo 5 <strong>5</strong> <span class="pct">11%</span></li>
+          <li><span class="dot" style="background: var(--pie-g10);"></span>Grupo 10 <strong>10</strong> <span class="pct">21%</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIVISOR PARTE II ============ -->
+<section class="part-divider" id="parte-ii">
+  <div class="container">
+    <div class="section-eyebrow">Parte II</div>
+    <h2>Nova estratégia.</h2>
+  </div>
+</section>
+
+<!-- ============ FUNIL VISUAL ============ -->
+<section id="funil" class="alt">
+  <div class="container">
+    <div class="section-eyebrow">Funil segmentado</div>
+    <h2>Três etapas. Três mensagens.</h2>
+
+    <div class="funnel">
+      <div class="funnel-stage topo">
+        <div class="funnel-meta">
+          <span class="funnel-tag">Topo</span>
+          <span class="funnel-budget">Público frio · segmentado por nicho</span>
+        </div>
+        <div class="funnel-title">Match palestrante × nicho</div>
+        <div class="funnel-msg">Conteúdo específico de 1 palestrante pra 1 nicho profissional.</div>
+      </div>
+      <div class="funnel-connector"></div>
+      <div class="funnel-stage meio">
+        <div class="funnel-meta">
+          <span class="funnel-tag">Meio</span>
+          <span class="funnel-budget">Já engajou · ainda não comprou</span>
+        </div>
+        <div class="funnel-title">Evento como experiência</div>
+        <div class="funnel-msg">Line-up completo, prova social da edição passada, networking.</div>
+      </div>
+      <div class="funnel-connector"></div>
+      <div class="funnel-stage fundo">
+        <div class="funnel-meta">
+          <span class="funnel-tag">Fundo</span>
+          <span class="funnel-budget">Público quente · visitou / virou lead</span>
+        </div>
+        <div class="funnel-title">Remarketing pro checkout</div>
+        <div class="funnel-msg">Escassez do 3º lote, urgência, CTA direto pro Sympla.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOPO · 4 FRENTES ============ -->
+<section id="frentes">
+  <div class="container">
+    <div class="section-eyebrow">Topo · 4 frentes</div>
+    <h2>1 palestrante. 1 nicho. 1 frente.</h2>
+
+    <div class="frentes-grid">
+      <div class="frente-card">
+        <div class="frente-reach">2.0M</div>
+        <div class="frente-reach-label">seguidores</div>
+        <div class="frente-name">Netão Bom Beef</div>
+        <div class="frente-niche">Donos de restaurante · delivery · food service</div>
+      </div>
+      <div class="frente-card">
+        <div class="frente-reach">1.0M</div>
+        <div class="frente-reach-label">seguidores</div>
+        <div class="frente-name">João Kepler</div>
+        <div class="frente-niche">Empreendedores · startups · investidores anjo</div>
+      </div>
+      <div class="frente-card">
+        <div class="frente-reach">908k</div>
+        <div class="frente-reach-label">seguidores</div>
+        <div class="frente-name">Fernando Miranda</div>
+        <div class="frente-niche">Executivos · gestão empresarial · finanças</div>
+      </div>
+      <div class="frente-card">
+        <div class="frente-reach">635k</div>
+        <div class="frente-reach-label">seguidores</div>
+        <div class="frente-name">Giullya Becker</div>
+        <div class="frente-niche">Creators · social media · creator economy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CRONOGRAMA ============ -->
+<section id="cronograma" class="alt">
+  <div class="container">
+    <div class="section-eyebrow">Cronograma</div>
+    <h2>Do setup à escala em 14 dias.</h2>
+
+    <div class="timeline">
+      <div class="timeline-point">
+        <div class="timeline-when">D+0 → D+2</div>
+        <div class="timeline-what">Estrutura montada, pausada, pronta pra aprovação</div>
+      </div>
+      <div class="timeline-arrow">→</div>
+      <div class="timeline-point">
+        <div class="timeline-when">D+3</div>
+        <div class="timeline-what">Aprovação da diretoria · go-live</div>
+      </div>
+      <div class="timeline-arrow">→</div>
+      <div class="timeline-point">
+        <div class="timeline-when">D+7</div>
+        <div class="timeline-what">1ª leitura · qual nicho converte melhor</div>
+      </div>
+      <div class="timeline-arrow">→</div>
+      <div class="timeline-point">
+        <div class="timeline-when">D+10 → D+14</div>
+        <div class="timeline-what">Escala dos nichos vencedores</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ META FINAL ============ -->
+<section id="meta-final">
+  <div class="container" style="text-align: center;">
+    <div class="section-eyebrow">Meta até 23/07</div>
+    <h2 style="margin-bottom: 48px;">A meta não mudou.</h2>
+
+    <div class="meta-stats">
+      <div class="meta-stat">
+        <div class="meta-stat-value">3.000</div>
+        <div class="meta-stat-label">passaportes</div>
+      </div>
+      <div class="meta-stat">
+        <div class="meta-stat-value">R$ 1,5M</div>
+        <div class="meta-stat-label">em faturamento</div>
+      </div>
+      <div class="meta-stat">
+        <div class="meta-stat-value">23/07</div>
+        <div class="meta-stat-label">dia do evento</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-mark"></div>
+    <h3>DSX 2026 · Status e Virada</h3>
+    <p>Digital Comunicação · 22 de abril de 2026</p>
+    <p style="margin-top: 8px;">Gestão de tráfego: Igor Andrade</p>
+  </div>
+</footer>
+
+<!-- ============ SIDE NAV — Active tracking ============ -->
+<script>
+(function initSideNav() {
+  const navLinks = document.querySelectorAll('.side-nav a');
+  if (!navLinks.length) return;
+  const sections = Array.from(navLinks)
+    .map(a => {
+      const id = a.getAttribute('href').replace(/^#/, '');
+      return document.getElementById(id);
+    })
+    .filter(Boolean);
+  if (!sections.length) return;
+
+  const setActive = (id) => {
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+    });
+  };
+
+  if (sections[0]) setActive(sections[0].id);
+
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if (visible.length) setActive(visible[0].target.id);
+  }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+})();
+</script>
+
+</body>
+</html>
