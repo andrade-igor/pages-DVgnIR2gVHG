@@ -543,6 +543,275 @@
     letter-spacing: -0.02em;
   }
 
+  /* HERO DESTAQUE - Achado do Período */
+  .achado-section {
+    padding: 28px 0 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .achado-label {
+    display: inline-block;
+    background: var(--gold);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 5px 14px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(184,148,63,0.35);
+  }
+
+  .achado-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .achado-subtitle {
+    font-size: 13px;
+    color: var(--text-2);
+    margin-bottom: 20px;
+  }
+
+  .achado-card {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 24px;
+    align-items: stretch;
+    background: linear-gradient(135deg, var(--accent) 0%, #6e2238 100%);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(74,20,40,0.25);
+  }
+
+  .achado-thumb {
+    aspect-ratio: 4/5;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .achado-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .achado-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+  }
+
+  .achado-creative-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+
+  .achado-creative-name .achado-format-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: var(--gold-light);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .achado-roas {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 6px;
+  }
+
+  .achado-roas-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 18px;
+  }
+
+  .achado-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.18);
+  }
+
+  .achado-stat {
+    text-align: left;
+  }
+
+  .achado-stat-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 4px;
+  }
+
+  .achado-stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  .achado-narrative {
+    margin-top: 18px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text-2);
+    background: #faf6ee;
+    border-left: 3px solid var(--gold);
+    padding: 14px 16px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .achado-narrative strong { color: var(--text); }
+
+  /* Campeões de eficiência - mini cards */
+  .campeoes-section {
+    margin-top: 24px;
+  }
+
+  .campeoes-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-3);
+    margin-bottom: 12px;
+  }
+
+  .campeoes-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+  }
+
+  .campeoes-list .campeao-card { grid-column: span 2; }
+  .campeoes-list .campeao-card:nth-child(4) { grid-column: 2 / span 2; }
+  .campeoes-list .campeao-card:nth-child(5) { grid-column: 4 / span 2; }
+
+  .campeao-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  .campeao-thumb {
+    aspect-ratio: 4/5;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background: #f0f0f0;
+  }
+
+  .campeao-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .campeao-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 10px;
+    min-height: 30px;
+  }
+
+  .campeao-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .campeao-stat-cac, .campeao-stat-roas {
+    padding: 8px 6px;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .campeao-stat-cac {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .campeao-stat-roas {
+    background: #faf6ee;
+    border: 1px solid #ead8a8;
+    color: var(--text-2);
+  }
+
+  .campeao-stats span {
+    display: block;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 3px;
+  }
+
+  .campeao-stat-cac span { color: rgba(255,255,255,0.55); }
+  .campeao-stat-roas span { color: var(--text-3); }
+
+  .campeao-stats strong {
+    font-size: 18px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .campeao-stat-cac strong { color: var(--gold-light); }
+  .campeao-stat-roas strong { color: var(--gold); }
+
+  .campeao-rev {
+    font-size: 12px;
+    color: var(--text-2);
+    text-align: center;
+    padding: 8px 6px;
+    background: #f7f7f7;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .campeao-rev strong {
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
   .footer {
     padding: 16px 36px;
     border-top: 1px solid var(--border);
@@ -589,6 +858,16 @@
     .funnel-s { padding: 10px; }
     .funnel-s-v { font-size: 16px; }
     .funnel-s-n { font-size: 10px; }
+    .achado-card { grid-template-columns: 1fr; gap: 16px; padding: 18px; }
+    .achado-thumb { max-width: 200px; margin: 0 auto; }
+    .achado-roas { font-size: 44px; }
+    .achado-stats { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .achado-stat-value { font-size: 16px; }
+    .campeoes-list { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .campeoes-list .campeao-card,
+    .campeoes-list .campeao-card:nth-child(4),
+    .campeoes-list .campeao-card:nth-child(5) { grid-column: auto; }
+    .campeao-name { min-height: 32px; }
     .footer { flex-direction: column; gap: 6px; align-items: flex-start; }
   }
 
@@ -681,6 +960,113 @@
 
       <div class="note">
         <strong>CAC R$ 36,93 - 63% abaixo do alvo da campanha (R$ 100).</strong> A semana da virada entregou o melhor patamar de CAC desde o início da campanha. A operação combinou duas frentes complementares: <strong>fundo (R$ 512,66 / 15 vendas / CAC R$ 34,18 / ROAS 14,13x)</strong> com criativos de gatilho temporal (preço sobe amanhã) convertendo o público quente que estava em cima do muro, e <strong>topo (R$ 447,41 / 11 vendas / CAC R$ 40,67 / ROAS 13,55x)</strong> com apresentação contínua da Cíntia Chagas trazendo público frio e morno em paralelo.
+      </div>
+    </div>
+
+    <!-- DESTAQUE - Achado do Período -->
+    <div class="achado-section">
+      <div class="achado-label">⭐ Destaque do Período</div>
+      <h2 class="achado-title">O Anúncio que Vendeu R$ 597 com R$ 2,94</h2>
+      <p class="achado-subtitle">Um único REELS de apresentação da Cíntia entregou o resultado mais expressivo da operação.</p>
+
+      <div class="achado-card">
+        <div class="achado-thumb">
+          <img src="sintonia-de-mulher-virada-1lote-25-27abr-img/ad29-cintia-1v2.jpg" alt="AD 29 - Cíntia Chagas - Comunicar-se bem é uma dádiva">
+        </div>
+        <div class="achado-info">
+          <div class="achado-creative-name">"Cíntia Chagas - Comunicar-se bem é uma dádiva"<span class="achado-format-tag">REELS Topo</span></div>
+          <div class="achado-roas-label">ROAS</div>
+          <div class="achado-roas">203,06x</div>
+          <div class="achado-stats">
+            <div class="achado-stat">
+              <div class="achado-stat-label">Investido</div>
+              <div class="achado-stat-value">R$ 2,94</div>
+            </div>
+            <div class="achado-stat">
+              <div class="achado-stat-label">Vendas</div>
+              <div class="achado-stat-value">1</div>
+            </div>
+            <div class="achado-stat">
+              <div class="achado-stat-label">Faturamento</div>
+              <div class="achado-stat-value">R$ 597</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="achado-narrative">
+        <strong>Pra cada R$ 1 investido, voltaram R$ 203.</strong> Frame da Cíntia em entrevista institucional (Sociedade Médica) com a quote "Comunicar-se bem é uma dádiva". Entrou no fim de semana, pegou pouco budget do CBO e converteu rápido. É o tipo de criativo que justifica manter um pool diverso de apresentação rodando em paralelo aos anúncios de virada - quando o vídeo certo acerta o público certo, a economia de CAC é absurda.
+      </div>
+
+      <div class="campeoes-section">
+        <div class="campeoes-title">Outros campeões com CAC abaixo de R$ 20</div>
+
+        <div class="campeoes-list">
+          <!-- AD 21 Últimas Horas - CAC R$ 3,85 -->
+          <div class="campeao-card">
+            <div class="campeao-thumb">
+              <img src="sintonia-de-mulher-virada-1lote-25-27abr-img/ad21-ultimas-horas.jpg" alt="AD 21 - Últimas Horas">
+            </div>
+            <div class="campeao-name">"Últimas Horas" - Cronômetro (Fundo Virada)</div>
+            <div class="campeao-stats">
+              <div class="campeao-stat-cac"><span>CAC</span><strong>R$ 3,85</strong></div>
+              <div class="campeao-stat-roas"><span>ROAS</span><strong>129x</strong></div>
+            </div>
+            <div class="campeao-rev">2 vendas · <strong>R$ 994</strong></div>
+          </div>
+
+          <!-- AD 20 Últimos Dias - CAC R$ 7,74 -->
+          <div class="campeao-card">
+            <div class="campeao-thumb">
+              <img src="sintonia-de-mulher-virada-1lote-25-27abr-img/ad20-ultimos-dias.jpg" alt="AD 20 - Últimos Dias do 1º Lote">
+            </div>
+            <div class="campeao-name">"Últimos Dias do 1º Lote" - Cíntia (Fundo Virada)</div>
+            <div class="campeao-stats">
+              <div class="campeao-stat-cac"><span>CAC</span><strong>R$ 7,74</strong></div>
+              <div class="campeao-stat-roas"><span>ROAS</span><strong>64x</strong></div>
+            </div>
+            <div class="campeao-rev">1 venda · <strong>R$ 497</strong></div>
+          </div>
+
+          <!-- AD 01 Bid Cap Atenção Manaus - CAC R$ 14,66 -->
+          <div class="campeao-card">
+            <div class="campeao-thumb">
+              <img src="sintonia-de-mulher-virada-1lote-25-27abr-img/ad01-bidcap-atencao-manaus.jpg" alt="AD 01 Bid Cap - Atenção Manaus">
+            </div>
+            <div class="campeao-name">"Atenção Manaus" Bid Cap (Topo iOS)</div>
+            <div class="campeao-stats">
+              <div class="campeao-stat-cac"><span>CAC</span><strong>R$ 14,66</strong></div>
+              <div class="campeao-stat-roas"><span>ROAS</span><strong>34x</strong></div>
+            </div>
+            <div class="campeao-rev">2 vendas · <strong>R$ 994</strong></div>
+          </div>
+
+          <!-- AD 24 Cíntia Manaus Corte - CAC R$ 16,25 -->
+          <div class="campeao-card">
+            <div class="campeao-thumb">
+              <img src="sintonia-de-mulher-virada-1lote-25-27abr-img/ad24-cintia-manaus-corte.jpg" alt="AD 24 - Cíntia em Manaus Corte Podcast">
+            </div>
+            <div class="campeao-name">"Cíntia em Manaus - Corte Podcast" (Topo)</div>
+            <div class="campeao-stats">
+              <div class="campeao-stat-cac"><span>CAC</span><strong>R$ 16,25</strong></div>
+              <div class="campeao-stat-roas"><span>ROAS</span><strong>33x</strong></div>
+            </div>
+            <div class="campeao-rev">3 vendas · <strong>R$ 1.591</strong></div>
+          </div>
+
+          <!-- AD 23 Comunicar-se bem - CAC R$ 16,94 -->
+          <div class="campeao-card">
+            <div class="campeao-thumb">
+              <img src="sintonia-de-mulher-virada-1lote-25-27abr-img/ad23-comunicar-dadiva.jpg" alt="AD 23 - Comunicar-se bem é uma dádiva">
+            </div>
+            <div class="campeao-name">"Comunicar-se bem é uma dádiva" (Topo)</div>
+            <div class="campeao-stats">
+              <div class="campeao-stat-cac"><span>CAC</span><strong>R$ 16,94</strong></div>
+              <div class="campeao-stat-roas"><span>ROAS</span><strong>35x</strong></div>
+            </div>
+            <div class="campeao-rev">1 venda · <strong>R$ 594</strong></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -801,9 +1187,9 @@
 
             <div class="creative-kpis">
               <div class="creative-kpi full"><span>Invest.</span><strong>R$ 67,74</strong></div>
-              <div class="creative-kpi em"><span>Vendas</span><strong>2</strong></div>
-              <div class="creative-kpi em"><span>CAC</span><strong>R$ 33,87</strong></div>
-              <div class="creative-kpi full"><span>ROAS</span><strong>14,68x</strong></div>
+              <div class="creative-kpi em"><span>Vendas</span><strong>3</strong></div>
+              <div class="creative-kpi em"><span>CAC</span><strong>R$ 22,58</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>23,44x</strong></div>
             </div>
           </div>
         </div>
@@ -813,9 +1199,9 @@
           <div class="funnel-s"><div class="funnel-s-v">12</div><div class="funnel-s-n">Cliques no anúncio</div></div>
           <div class="funnel-s"><div class="funnel-s-v">7</div><div class="funnel-s-n">Abriram a LP</div><div class="funnel-s-pct">58,3% dos cliques</div></div>
           <div class="funnel-s"><div class="funnel-s-v">1</div><div class="funnel-s-n">Iniciou a compra</div><div class="funnel-s-pct">14,3% da LP</div></div>
-          <div class="funnel-s last"><div class="funnel-s-v">2</div><div class="funnel-s-n">Compraram</div><div class="funnel-s-pct">+1 via 1d_view</div></div>
+          <div class="funnel-s last"><div class="funnel-s-v">3</div><div class="funnel-s-n">Compraram</div><div class="funnel-s-pct">+1 via 1d_view</div></div>
         </div>
-        <div class="funnel-bottom">Faturamento gerado: <strong>R$ 994</strong></div>
+        <div class="funnel-bottom">Faturamento gerado: <strong>R$ 1.588</strong></div>
       </div>
 
       <!-- AD 20 Últimos Dias do 1º Lote -->
@@ -908,28 +1294,6 @@
 
       <h2 style="margin-top: 32px;">Anúncios de Topo Paralelo - Apresentação que Também Converteu</h2>
       <p>Enquanto o fundo da virada empurrava decisão de quem já conhecia o evento, os anúncios de topo (apresentação contínua da Cíntia Chagas) seguiram trazendo público novo - <strong>11 vendas em paralelo, R$ 6.061 de faturamento, CAC R$ 40,67</strong>. Cada anúncio que converteu:</p>
-
-      <!-- AD 29 Cíntia 1 v2 - HERO do topo (CAC R$ 2,94) -->
-      <div class="creative-block hero">
-        <div class="creative-grid">
-          <div class="creative-thumb">
-            <img src="sintonia-de-mulher-virada-1lote-25-27abr-img/ad29-cintia-1v2.jpg" alt="AD 29 - Cíntia Chagas - Comunicar-se bem é uma dádiva">
-            <span class="creative-tag">CAC R$ 2,94 ⭐</span>
-          </div>
-          <div class="creative-info">
-            <div class="creative-title">"Cíntia Chagas - Comunicar-se bem é uma dádiva" <span class="creative-format">REELS</span></div>
-            <div class="creative-meta">Subido 25/abr noite · ativo · CTA Saiba Mais · 4 ativações em LP + Bid Cap Escala</div>
-
-            <div class="creative-kpis">
-              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 2,94</strong></div>
-              <div class="creative-kpi em"><span>Vendas</span><strong>1</strong></div>
-              <div class="creative-kpi em"><span>CAC</span><strong>R$ 2,94</strong></div>
-              <div class="creative-kpi full"><span>ROAS</span><strong>203,06x</strong></div>
-            </div>
-          </div>
-        </div>
-        <div class="funnel-bottom">Faturamento gerado: <strong>R$ 597</strong></div>
-      </div>
 
       <!-- AD 24 Cíntia em Manaus Corte Podcast (mais consistente do topo) -->
       <div class="creative-block">
@@ -1086,7 +1450,7 @@
       </div>
 
       <div class="note">
-        <strong>Destaque absoluto do topo: AD 29 "Comunicar-se bem é uma dádiva"</strong> (REELS Cíntia em entrevista da Sociedade Médica) - vendeu com apenas <strong>R$ 2,94 de investimento</strong> e ROAS de 203x. O <strong>AD 24 "Cíntia em Manaus - Corte Podcast"</strong> foi o mais consistente: 3 vendas em 3 dias com CAC R$ 16,25. O <strong>AD 17 "Vagas Limitadas"</strong> do Remarketing - único ad atemporal que sobreviveu à virada (não menciona "1° lote" no visual ou na copy) - segue rodando pós-virada e já converteu 1 venda. <em>A soma individual dos blocos acima (12 vendas) supera o total agregado (11) por dedup cross-attribution do Meta: quando uma compra é creditada parcialmente a 2+ anúncios, o agregado da campanha conta apenas uma vez.</em>
+        <strong>Mais consistente do topo: AD 24 "Cíntia em Manaus - Corte Podcast"</strong> - 3 vendas em 3 dias com CAC R$ 16,25. Os REELS do Bid Cap Escala (AD 01 e AD 02) também converteram público frio iOS broad. O <strong>AD 17 "Vagas Limitadas"</strong> do Remarketing - único ad atemporal que sobreviveu à virada (não menciona "1° lote" no visual ou na copy) - segue rodando pós-virada e já converteu 1 venda. <em>A soma individual dos blocos acima (11 vendas) supera o total agregado (10) por dedup cross-attribution do Meta: quando uma compra é creditada parcialmente a 2+ anúncios, o agregado da campanha conta apenas uma vez.</em>
       </div>
     </div>
 
