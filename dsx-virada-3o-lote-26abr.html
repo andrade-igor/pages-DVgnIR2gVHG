@@ -246,9 +246,8 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     margin: 18px 0 28px;
-    border-top: 1px solid var(--rule-strong);
-    border-bottom: 1px solid var(--rule-strong);
-    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.045);
   }
 
   .kpis-4 { grid-template-columns: repeat(4, 1fr); }
@@ -258,7 +257,7 @@
     padding: 26px 18px 22px;
     text-align: left;
     position: relative;
-    border-right: 1px solid var(--rule);
+    border-right: 1px solid rgba(255,255,255,0.06);
   }
 
   .kpi:last-child { border-right: none; }
@@ -345,8 +344,8 @@
 
   /* ========== NOTE ========== */
   .note {
-    background: rgba(0,0,0,0.4);
-    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
     border-left: 2px solid var(--orange);
     padding: 18px 22px 18px 26px;
     font-size: 12px;
@@ -362,8 +361,8 @@
   .chart-box {
     margin: 24px 0 16px;
     padding: 28px 24px 16px;
-    background: rgba(0,0,0,0.35);
-    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.10);
     overflow-x: auto;
     position: relative;
   }
@@ -402,9 +401,8 @@
     padding: 28px 32px 24px;
     margin: 24px 0;
     background:
-      linear-gradient(135deg, rgba(245,166,35,0.10) 0%, rgba(0,0,0,0.5) 70%),
-      var(--ink-2);
-    border: 1px solid var(--rule);
+      linear-gradient(135deg, rgba(245,166,35,0.14) 0%, rgba(255,255,255,0.04) 70%);
+    border: 1px solid rgba(255,255,255,0.10);
     border-left: 3px solid var(--orange);
     position: relative;
   }
@@ -515,9 +513,9 @@
 
   /* ========== CREATIVE BLOCK ========== */
   .creative-block {
-    padding: 28px 28px 24px;
+    padding: 32px 28px 26px;
     margin-bottom: 18px;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.5);
     border: 1px solid var(--rule);
     position: relative;
     transition: border-color 0.2s ease;
@@ -529,8 +527,8 @@
 
   .creative-block.hero {
     background:
-      linear-gradient(135deg, rgba(245,166,35,0.10) 0%, rgba(0,0,0,0.45) 60%),
-      rgba(0,0,0,0.4);
+      linear-gradient(135deg, rgba(245,166,35,0.12) 0%, rgba(0,0,0,0.55) 60%),
+      rgba(0,0,0,0.5);
     border: 1px solid var(--orange-line);
     border-left: 3px solid var(--orange);
   }
@@ -555,10 +553,8 @@
   .creative-thumb {
     position: relative;
     aspect-ratio: 4/5;
-    overflow: hidden;
-    background: #0a0a0a;
-    border: 1px solid var(--rule);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+    overflow: visible;
+    background: transparent;
   }
 
   .creative-thumb img {
@@ -566,28 +562,33 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    border: 1px solid var(--rule);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.65);
   }
 
   .creative-tag {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: -10px;
+    left: -4px;
     background: var(--orange);
     color: #000;
     font-size: 9px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    padding: 4px 10px;
+    padding: 5px 11px;
     white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+    z-index: 5;
   }
 
   .creative-tag.t-good { background: var(--ok); color: #001f0c; }
   .creative-tag.t-warm { background: var(--warn); color: #fff; }
   .creative-tag.t-mid {
-    background: rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.12);
     color: var(--paper-2);
     border: 1px solid var(--rule-strong);
+    backdrop-filter: blur(6px);
   }
 
   .creative-info { display: flex; flex-direction: column; }
@@ -626,15 +627,14 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 0;
     margin-bottom: 0;
-    border-top: 1px solid var(--rule-strong);
-    border-bottom: 1px solid var(--rule-strong);
-    background: rgba(0,0,0,0.25);
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.10);
   }
 
   .creative-kpi {
-    padding: 14px 12px 12px;
+    padding: 16px 12px 14px;
     text-align: center;
-    border-right: 1px solid var(--rule);
+    border-right: 1px solid rgba(255,255,255,0.06);
     position: relative;
   }
 
@@ -706,8 +706,8 @@
   }
 
   .funnel-s {
-    background: rgba(0,0,0,0.45);
-    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.10);
     border-right: none;
     padding: 18px 10px;
     text-align: center;
@@ -715,7 +715,7 @@
   }
 
   .funnel-s:last-child {
-    border-right: 1px solid var(--rule);
+    border-right: 1px solid rgba(255,255,255,0.10);
   }
 
   /* Connector chevron entre etapas */
@@ -727,9 +727,9 @@
     transform: translateY(-50%) rotate(45deg);
     width: 12px;
     height: 12px;
-    background: var(--ink-2);
-    border-top: 1px solid var(--rule);
-    border-right: 1px solid var(--rule);
+    background: #1f1f26;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    border-right: 1px solid rgba(255,255,255,0.10);
     z-index: 2;
   }
 
@@ -1030,7 +1030,7 @@
         <strong>5 vendas em 1 dia útil de exposição.</strong> Os 4 anúncios principais subiram em 25/abr (sábado) e foram pausados automaticamente em 26/abr 23:59 pela ad rule. Resultado obtido em ~12–18h efetivas de exposição no domingo. Domingo é o dia estruturalmente mais fraco da semana em eventos similares (queda 62–70% vs dias úteis) — a virada de lote <strong>rompe esse drag</strong>, ainda que não o supere por completo: caso a virada caísse em terça ou quinta (dias historicamente fortes), o resultado tenderia a ser ainda maior pelo somatório do gatilho temporal com a força estrutural do dia útil.
       </div>
 
-      <div class="note" style="background: linear-gradient(135deg, rgba(245,166,35,0.10) 0%, rgba(0,0,0,0.5) 100%); border-color: var(--orange-line);">
+      <div class="note" style="background: linear-gradient(135deg, rgba(245,166,35,0.16) 0%, rgba(255,255,255,0.05) 70%); border-color: var(--orange-line);">
         <strong>Como funcionam as 2 vendas atribuídas ao dia 27.</strong> O Meta usa janela de atribuição de 7 dias: quando uma pessoa clica num anúncio e compra dentro de 7 dias — mesmo que a compra final tenha vindo por outro canal (busca no Google, link da bio, e-mail marketing) — a venda é atribuída ao anúncio. <strong>Isso não é venda "residual" no sentido de algo que não vale.</strong> É o reconhecimento de que o anúncio teve papel relevante na jornada de decisão da pessoa: ela viu o ad, interagiu, considerou a compra, e quando decidiu fechar, o Meta cruza o histórico e credita a fonte que originou o interesse. Por isso essas 2 vendas são contadas no resultado da campanha mesmo com a campanha já pausada em 27/abr — quem comprou hoje teve a decisão influenciada pelos ads que rodaram no fim de semana.
       </div>
     </div>
