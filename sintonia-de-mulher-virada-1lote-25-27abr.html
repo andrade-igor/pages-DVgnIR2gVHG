@@ -429,9 +429,13 @@
 
   .creative-kpis {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 6px;
     margin-bottom: 10px;
+  }
+
+  .creative-kpi.full {
+    grid-column: span 2;
   }
 
   .creative-kpi {
@@ -577,8 +581,10 @@
     .creative-grid { grid-template-columns: 1fr; gap: 12px; }
     .creative-thumb { max-width: 180px; margin: 0 auto; aspect-ratio: 4/5; }
     .creative-kpis { grid-template-columns: repeat(2, 1fr); }
-    .funnel-steps, .funnel-steps.funnel-3 { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-    .funnel-s-v { font-size: 16px; }
+    .funnel-steps, .funnel-steps.funnel-3 { grid-template-columns: 1fr; gap: 6px; }
+    .funnel-s { padding: 12px; }
+    .funnel-s-v { font-size: 20px; }
+    .funnel-s-n { font-size: 11px; }
     .footer { flex-direction: column; gap: 6px; align-items: flex-start; }
   }
 
@@ -760,10 +766,10 @@
             <div class="creative-meta">Subido 25/abr · pausado 26/abr 23:50 · CTA Compre Agora · 5 ativações em LP + Remarketing</div>
 
             <div class="creative-kpis">
-              <div class="creative-kpi"><span>Invest.</span><strong>R$ 210,98</strong></div>
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 210,98</strong></div>
               <div class="creative-kpi em"><span>Vendas</span><strong>6</strong></div>
               <div class="creative-kpi em"><span>CAC</span><strong>R$ 35,16</strong></div>
-              <div class="creative-kpi"><span>ROAS</span><strong>13,16x</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>13,16x</strong></div>
             </div>
           </div>
         </div>
@@ -789,10 +795,10 @@
             <div class="creative-meta">Subido 25/abr · pausado 26/abr 23:50 · CTA Compre Agora · 5 ativações em LP + Remarketing</div>
 
             <div class="creative-kpis">
-              <div class="creative-kpi"><span>Invest.</span><strong>R$ 67,74</strong></div>
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 67,74</strong></div>
               <div class="creative-kpi em"><span>Vendas</span><strong>2</strong></div>
               <div class="creative-kpi em"><span>CAC</span><strong>R$ 33,87</strong></div>
-              <div class="creative-kpi"><span>ROAS</span><strong>14,68x</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>14,68x</strong></div>
             </div>
           </div>
         </div>
@@ -818,10 +824,10 @@
             <div class="creative-meta">Subido 25/abr · pausado 26/abr 23:50 · CTA Compre Agora · 5 ativações em LP + Remarketing</div>
 
             <div class="creative-kpis">
-              <div class="creative-kpi"><span>Invest.</span><strong>R$ 76,91</strong></div>
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 76,91</strong></div>
               <div class="creative-kpi em"><span>Vendas</span><strong>2</strong></div>
               <div class="creative-kpi em"><span>CAC</span><strong>R$ 38,46</strong></div>
-              <div class="creative-kpi"><span>ROAS</span><strong>10,32x</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>10,32x</strong></div>
             </div>
           </div>
         </div>
@@ -847,10 +853,10 @@
             <div class="creative-meta">Subido 25/abr noite · pausado 26/abr 23:50 · CTA Compre Agora · 5 ativações em LP + Remarketing</div>
 
             <div class="creative-kpis">
-              <div class="creative-kpi"><span>Invest.</span><strong>R$ 66,12</strong></div>
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 66,12</strong></div>
               <div class="creative-kpi em"><span>Vendas</span><strong>2</strong></div>
               <div class="creative-kpi em"><span>CAC</span><strong>R$ 33,06</strong></div>
-              <div class="creative-kpi"><span>ROAS</span><strong>15,03x</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>15,03x</strong></div>
             </div>
           </div>
         </div>
@@ -872,7 +878,7 @@
             <div class="creative-meta">Subido 25/abr · pausado 26/abr 23:50 · CTA Compre Agora · 5 ativações em LP + Remarketing</div>
 
             <div class="creative-kpis">
-              <div class="creative-kpi"><span>Invest.</span><strong>R$ 87,30</strong></div>
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 87,30</strong></div>
               <div class="creative-kpi"><span>Levou à página</span><strong>28</strong></div>
               <div class="creative-kpi em"><span>Checkouts</span><strong>1</strong></div>
               <div class="creative-kpi"><span>Vendas</span><strong>0</strong></div>
@@ -900,10 +906,10 @@
             <div class="creative-meta">Subido 25/abr noite · ativo · CTA Saiba Mais · 4 ativações em LP + Bid Cap Escala</div>
 
             <div class="creative-kpis">
-              <div class="creative-kpi"><span>Invest.</span><strong>R$ 2,94</strong></div>
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 2,94</strong></div>
               <div class="creative-kpi em"><span>Vendas</span><strong>1</strong></div>
               <div class="creative-kpi em"><span>CAC</span><strong>R$ 2,94</strong></div>
-              <div class="creative-kpi"><span>ROAS</span><strong>203,06x</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>203,06x</strong></div>
             </div>
           </div>
         </div>
@@ -922,10 +928,10 @@
             <div class="creative-meta">Subido 25/abr · ativo · CTA Saiba Mais · 4 ativações em LP + Bid Cap Escala</div>
 
             <div class="creative-kpis">
-              <div class="creative-kpi"><span>Invest.</span><strong>R$ 48,76</strong></div>
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 48,76</strong></div>
               <div class="creative-kpi em"><span>Vendas</span><strong>3</strong></div>
               <div class="creative-kpi em"><span>CAC</span><strong>R$ 16,25</strong></div>
-              <div class="creative-kpi"><span>ROAS</span><strong>32,63x</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>32,63x</strong></div>
             </div>
           </div>
         </div>
@@ -944,10 +950,10 @@
             <div class="creative-meta">Ativo · CTA Saiba Mais · campanha Bid Cap R$ 95 (público frio iOS broad)</div>
 
             <div class="creative-kpis">
-              <div class="creative-kpi"><span>Invest.</span><strong>R$ 29,31</strong></div>
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 29,31</strong></div>
               <div class="creative-kpi em"><span>Vendas</span><strong>2</strong></div>
               <div class="creative-kpi em"><span>CAC</span><strong>R$ 14,66</strong></div>
-              <div class="creative-kpi"><span>ROAS</span><strong>33,91x</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>33,91x</strong></div>
             </div>
           </div>
         </div>
@@ -966,10 +972,10 @@
             <div class="creative-meta">Subido 23/abr · ativo · CTA Saiba Mais · 3 ativações em LP Compras</div>
 
             <div class="creative-kpis">
-              <div class="creative-kpi"><span>Invest.</span><strong>R$ 47,82</strong></div>
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 47,82</strong></div>
               <div class="creative-kpi em"><span>Vendas</span><strong>2</strong></div>
               <div class="creative-kpi em"><span>CAC</span><strong>R$ 23,91</strong></div>
-              <div class="creative-kpi"><span>ROAS</span><strong>20,79x</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>20,79x</strong></div>
             </div>
           </div>
         </div>
@@ -988,10 +994,10 @@
             <div class="creative-meta">Subido 23/abr · ativo · CTA Saiba Mais · 3 ativações em LP Compras</div>
 
             <div class="creative-kpis">
-              <div class="creative-kpi"><span>Invest.</span><strong>R$ 16,94</strong></div>
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 16,94</strong></div>
               <div class="creative-kpi em"><span>Vendas</span><strong>1</strong></div>
               <div class="creative-kpi em"><span>CAC</span><strong>R$ 16,94</strong></div>
-              <div class="creative-kpi"><span>ROAS</span><strong>35,06x</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>35,06x</strong></div>
             </div>
           </div>
         </div>
@@ -1010,10 +1016,10 @@
             <div class="creative-meta">Subido 23/abr · ativo · CTA Saiba Mais · 3 ativações em LP Compras</div>
 
             <div class="creative-kpis">
-              <div class="creative-kpi"><span>Invest.</span><strong>R$ 36,43</strong></div>
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 36,43</strong></div>
               <div class="creative-kpi em"><span>Vendas</span><strong>1</strong></div>
               <div class="creative-kpi em"><span>CAC</span><strong>R$ 36,43</strong></div>
-              <div class="creative-kpi"><span>ROAS</span><strong>16,30x</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>16,30x</strong></div>
             </div>
           </div>
         </div>
@@ -1032,10 +1038,10 @@
             <div class="creative-meta">Ativo · CTA Saiba Mais · campanha Bid Cap R$ 95 (público frio iOS broad)</div>
 
             <div class="creative-kpis">
-              <div class="creative-kpi"><span>Invest.</span><strong>R$ 55,62</strong></div>
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 55,62</strong></div>
               <div class="creative-kpi em"><span>Vendas</span><strong>1</strong></div>
               <div class="creative-kpi em"><span>CAC</span><strong>R$ 55,62</strong></div>
-              <div class="creative-kpi"><span>ROAS</span><strong>17,87x</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>17,87x</strong></div>
             </div>
           </div>
         </div>
@@ -1054,10 +1060,10 @@
             <div class="creative-meta">Subido 23/abr · ativo · CTA Compre Agora · 2 ativações em Remarketing Urgência · sobreviveu à virada</div>
 
             <div class="creative-kpis">
-              <div class="creative-kpi"><span>Invest.</span><strong>R$ 26,19</strong></div>
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 26,19</strong></div>
               <div class="creative-kpi em"><span>Vendas</span><strong>1</strong></div>
               <div class="creative-kpi em"><span>CAC</span><strong>R$ 26,19</strong></div>
-              <div class="creative-kpi"><span>ROAS</span><strong>11,34x</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>11,34x</strong></div>
             </div>
           </div>
         </div>
