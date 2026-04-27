@@ -858,14 +858,46 @@
     .creative-block, .creative-block.hero { padding: 22px 18px; }
     .creative-grid { grid-template-columns: 1fr; gap: 16px; }
     .creative-thumb { max-width: 200px; margin: 0 auto; aspect-ratio: 4/5; }
-    .creative-kpis { grid-template-columns: repeat(2, 1fr); }
-    .creative-kpi { border-bottom: 1px solid var(--rule); }
-    .creative-kpi:nth-last-child(-n+2) { border-bottom: none; }
-    .funnel-steps, .funnel-steps.funnel-4 { grid-template-columns: repeat(2, 1fr); gap: 0; }
-    .funnel-s { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-    .funnel-s:nth-child(2n) { border-right: 1px solid var(--rule); }
+
+    /* KPIs do creative-block em mobile: linha 1 (Invest full) + linha 2 (Vendas/CAC ou Sympla/Checkouts) + linha 3 (ROAS/Vendas full) */
+    .creative-kpis {
+      grid-template-columns: 1fr 1fr;
+      border: none;
+      background: transparent;
+      gap: 0;
+    }
+    .creative-kpi {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-bottom: none;
+      padding: 16px 12px;
+    }
+    .creative-kpi:nth-child(1) {
+      grid-column: 1 / -1;
+    }
+    .creative-kpi:nth-child(2) {
+      border-right: none;
+    }
+    .creative-kpi:nth-child(4) {
+      grid-column: 1 / -1;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    /* Funnel em mobile: 1 coluna empilhada */
+    .funnel-steps, .funnel-steps.funnel-4 {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .funnel-s {
+      border: 1px solid rgba(255,255,255,0.12);
+      border-bottom: none;
+    }
+    .funnel-s:last-child {
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .funnel-s.last { border-color: var(--orange); }
     .funnel-s::after { display: none; }
-    .funnel-s-v { font-size: 16px; }
+    .funnel-s-v { font-size: 18px; }
   }
 
   @media print {
