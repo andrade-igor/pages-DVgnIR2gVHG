@@ -12,11 +12,11 @@
     --accent-2: #f4b840;
     --accent-light: rgba(245,166,35,0.10);
     --gold: #f5a623;
-    --border: #2a2a2a;
-    --border-soft: #1f1f1f;
-    --bg: #141414;
-    --bg-elev: #1c1c1c;
-    --bg-page: #ededed;
+    --border: rgba(255,255,255,0.10);
+    --border-soft: rgba(255,255,255,0.06);
+    --bg: #2e3034;
+    --bg-elev: rgba(0,0,0,0.30);
+    --bg-page: #000000;
     --text: #ffffff;
     --text-2: #c8c8c8;
     --text-3: #888;
@@ -39,8 +39,8 @@
   .page {
     max-width: 820px;
     margin: 24px auto;
-    background: var(--bg);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15);
+    background: linear-gradient(145deg, #4d5055 0%, #2e3034 45%, #1c1e22 100%);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 2px 12px rgba(0,0,0,0.4);
     border-radius: 6px;
     overflow: hidden;
   }
@@ -258,7 +258,7 @@
     border-radius: 4px;
     padding: 16px 18px;
     margin: 10px 0;
-    background: linear-gradient(135deg, #1f1a10 0%, #141414 60%);
+    background: linear-gradient(135deg, rgba(245,166,35,0.12) 0%, rgba(0,0,0,0.35) 60%);
   }
 
   .pax-header {
@@ -361,7 +361,7 @@
 
   .creative-block.hero {
     border-left: 4px solid var(--accent);
-    background: linear-gradient(90deg, #1f1a10 0%, #1c1c1c 50%);
+    background: linear-gradient(90deg, rgba(245,166,35,0.10) 0%, rgba(0,0,0,0.30) 60%);
   }
 
   .creative-grid {
@@ -879,7 +879,7 @@
         <strong>5 vendas em 1 dia útil de exposição.</strong> Os 4 anúncios principais subiram em 25/abr (sábado) e foram pausados automaticamente em 26/abr 23:59 pela ad rule. Resultado obtido em ~12–18h efetivas de exposição no domingo. Domingo é o dia estruturalmente mais fraco da semana em eventos similares (queda 62–70% vs dias úteis) — a virada de lote <strong>rompe esse drag</strong>, ainda que não o supere por completo: caso a virada caísse em terça ou quinta (dias historicamente fortes), o resultado tenderia a ser ainda maior pelo somatório do gatilho temporal com a força estrutural do dia útil.
       </div>
 
-      <div class="note" style="border-left-color: var(--accent); background: #1f1a10;">
+      <div class="note" style="border-left-color: var(--accent); background: linear-gradient(135deg, rgba(245,166,35,0.14) 0%, rgba(0,0,0,0.35) 100%);">
         <strong>Como funcionam as 2 vendas atribuídas ao dia 27.</strong> O Meta usa janela de atribuição de 7 dias: quando uma pessoa clica num anúncio e compra dentro de 7 dias — mesmo que a compra final tenha vindo por outro canal (busca no Google, link da bio, e-mail marketing) — a venda é atribuída ao anúncio. <strong>Isso não é venda "residual" no sentido de algo que não vale.</strong> É o reconhecimento de que o anúncio teve papel relevante na jornada de decisão da pessoa: ela viu o ad, interagiu, considerou a compra, e quando decidiu fechar, o Meta cruza o histórico e credita a fonte que originou o interesse. Por isso essas 2 vendas são contadas no resultado da campanha mesmo com a campanha já pausada em 27/abr — quem comprou hoje teve a decisão influenciada pelos ads que rodaram no fim de semana.
       </div>
     </div>
