@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório de Performance - Sintonia de Mulher 2026 - 03 a 28 abr</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #4a1428;
+    --accent-light: rgba(74,20,40,0.06);
+    --gold: #b8943f;
+    --gold-light: #e8d4a8;
+    --border: #e5e5e5;
+    --bg: #ffffff;
+    --bg-page: #f3f3f3;
+    --text: #1a1a1a;
+    --text-2: #555;
+    --text-3: #999;
+    --green: #0f7b3f;
+    --green-bg: #eefbf2;
+    --red: #c0392b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.55;
+    background: var(--bg-page);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 820px;
+    margin: 24px auto;
+    background: var(--bg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  .header {
+    padding: 28px 36px 24px;
+    border-bottom: 3px solid var(--accent);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .header h1 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+
+  .header .sub {
+    font-size: 12px;
+    color: var(--text-2);
+    font-weight: 400;
+    margin-top: 1px;
+  }
+
+  .header-meta {
+    text-align: right;
+    font-size: 11px;
+    color: var(--text-3);
+    line-height: 1.8;
+  }
+
+  .header-meta strong { color: var(--text-2); font-weight: 600; }
+
+  .summary {
+    padding: 24px 36px;
+    background: var(--accent);
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .summary strong { color: var(--gold-light); }
+
+  .body { padding: 0 36px; }
+
+  .s {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .s:last-child { border-bottom: none; }
+
+  .s-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-3);
+    margin-bottom: 4px;
+  }
+
+  .s h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .s p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--text-2);
+    margin-bottom: 10px;
+  }
+
+  .s p strong { color: var(--text); }
+
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 4px 0 8px;
+  }
+
+  .kpis-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpis-3 { grid-template-columns: repeat(3, 1fr); }
+
+  .kpi {
+    padding: 14px 8px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+
+  .kpi:last-child { border-right: none; }
+
+  .kpi-n {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-3);
+    margin-bottom: 4px;
+  }
+
+  .kpi-v {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .kpi-d {
+    font-size: 10px;
+    color: var(--text-3);
+    margin-top: 2px;
+  }
+
+  .kpi.em { background: var(--accent); }
+  .kpi.em .kpi-n { color: rgba(255,255,255,0.45); }
+  .kpi.em .kpi-v { color: var(--gold-light); }
+  .kpi.em .kpi-d { color: rgba(255,255,255,0.4); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin: 8px 0;
+  }
+
+  table th {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: var(--text-3);
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+
+  table th:not(:first-child) { text-align: right; }
+
+  table td {
+    padding: 9px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  table td:not(:first-child) { text-align: right; font-weight: 600; }
+  table tr:last-child td { border-bottom: none; }
+
+  .row-hl { background: var(--green-bg); }
+  .row-hl td { color: var(--text); font-weight: 600; }
+  .g { color: var(--green) !important; }
+  .r { color: var(--red) !important; }
+
+  .row-total { background: #f7f7f7; }
+  .row-total td { font-weight: 700; border-top: 2px solid var(--border); }
+
+  .note {
+    background: #fafafa;
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--text-2);
+    margin: 10px 0;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .note strong { color: var(--text); }
+
+  .chart-box { margin: 10px 0; overflow-x: auto; position: relative; }
+  .chart-box svg { width: 100%; height: auto; min-width: 500px; }
+
+  .legend {
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+    color: var(--text-3);
+    margin: 6px 0 4px;
+  }
+
+  .legend span::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .legend .l-rev::before { background: var(--gold); }
+  .legend .l-spd::before { background: var(--accent); }
+  .legend .l-cac::before { background: var(--gold); }
+  .legend .l-meta::before { background: var(--red); height: 2px; border-radius: 0; width: 12px; margin-bottom: 2px; }
+
+  /* PASSAPORTES BLOCK */
+  .pax-block {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 18px;
+    margin: 10px 0;
+    background: linear-gradient(135deg, #faf6f0 0%, #fff 60%);
+  }
+
+  .pax-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 12px;
+  }
+
+  .pax-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-2);
+  }
+
+  .pax-sub {
+    font-size: 10px;
+    color: var(--text-3);
+    margin-top: 2px;
+  }
+
+  .pax-total {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  .pax-bar {
+    display: flex;
+    height: 34px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+
+  .pax-bar-full {
+    background: linear-gradient(90deg, var(--accent) 0%, #6e2238 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .pax-bar-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  .pax-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+  }
+
+  .pax-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-2);
+  }
+
+  .pax-legend-item strong { color: var(--text); font-weight: 700; }
+  .pax-legend-pct { color: var(--text-3); font-size: 11px; }
+
+  .pax-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  .pax-dot-1l { background: var(--accent); }
+  .pax-dot-vip { background: var(--accent); }
+  .pax-dot-pista { background: var(--gold); }
+
+  .pax-bar-vip {
+    background: linear-gradient(90deg, var(--accent) 0%, #6b1e3c 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .pax-bar-pista {
+    background: linear-gradient(90deg, var(--gold) 0%, #d4a94a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .pax-ticket {
+    margin-left: auto;
+    padding-left: 18px;
+    border-left: 1px solid var(--border);
+  }
+
+  /* CREATIVE BLOCK */
+  .creative-block {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px;
+    margin-bottom: 16px;
+    background: var(--bg);
+  }
+
+  .creative-block.hero {
+    border-left: 4px solid var(--gold);
+    background: linear-gradient(90deg, #faf6ee 0%, #fff 40%);
+  }
+
+  .creative-grid {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 18px;
+    margin-bottom: 14px;
+  }
+
+  .creative-thumb {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 4px;
+    background: #f0f0f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-top: 12px;
+  }
+
+  .creative-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+  }
+
+  .creative-tag {
+    position: absolute;
+    top: -10px;
+    left: 8px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    white-space: nowrap;
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+  }
+
+  .creative-tag.t-good { background: var(--green); }
+  .creative-tag.t-warm { background: var(--gold); }
+  .creative-tag.t-mid { background: #888; }
+
+  .creative-info { display: flex; flex-direction: column; }
+
+  .creative-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+
+  .creative-format {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 7px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+
+  .creative-meta {
+    font-size: 11px;
+    color: var(--text-3);
+    margin-bottom: 10px;
+  }
+
+  .creative-kpis {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .creative-kpi.full {
+    grid-column: span 2;
+  }
+
+  .creative-kpi {
+    background: #fafafa;
+    border-radius: 3px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+
+  .creative-kpi span {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-3);
+    margin-bottom: 4px;
+  }
+
+  .creative-kpi strong {
+    font-size: 18px;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  .creative-kpi.em {
+    background: var(--accent);
+  }
+  .creative-kpi.em span { color: rgba(255,255,255,0.5); }
+  .creative-kpi.em strong { color: var(--gold-light); }
+
+  /* FUNNEL STEPS */
+  .funnel-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-3);
+    margin-bottom: 6px;
+  }
+
+  .funnel-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+
+  .funnel-steps.funnel-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .funnel-s {
+    background: var(--accent-light);
+    padding: 10px 6px;
+    text-align: center;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .funnel-s.last {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .funnel-s.last .funnel-s-v { color: var(--gold-light); }
+  .funnel-s.last .funnel-s-n { color: rgba(255,255,255,0.7); }
+  .funnel-s.last .funnel-s-pct { color: rgba(255,255,255,0.5); }
+
+  .funnel-s-v {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  .funnel-s-n {
+    font-size: 10px;
+    color: var(--text-2);
+    margin-top: 4px;
+    line-height: 1.2;
+  }
+
+  .funnel-s-pct {
+    font-size: 9px;
+    color: var(--text-3);
+    margin-top: 2px;
+    font-weight: 600;
+  }
+
+  .funnel-bottom {
+    font-size: 13px;
+    color: var(--text-2);
+    margin-top: 10px;
+    text-align: center;
+    padding-top: 12px;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  .funnel-bottom strong {
+    color: var(--accent);
+    font-size: 18px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  /* HERO DESTAQUE - Achado do Período */
+  .achado-section {
+    padding: 28px 0 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .achado-label {
+    display: inline-block;
+    background: var(--gold);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 5px 14px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(184,148,63,0.35);
+  }
+
+  .achado-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .achado-subtitle {
+    font-size: 13px;
+    color: var(--text-2);
+    margin-bottom: 20px;
+  }
+
+  .achado-card {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 24px;
+    align-items: stretch;
+    background: linear-gradient(135deg, var(--accent) 0%, #6e2238 100%);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(74,20,40,0.25);
+  }
+
+  .achado-thumb {
+    aspect-ratio: 4/5;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .achado-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .achado-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+  }
+
+  .achado-creative-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+
+  .achado-creative-name .achado-format-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: var(--gold-light);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .achado-roas {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 6px;
+  }
+
+  .achado-roas-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 18px;
+  }
+
+  .achado-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.18);
+  }
+
+  .achado-stat {
+    text-align: left;
+  }
+
+  .achado-stat-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 4px;
+  }
+
+  .achado-stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  .achado-narrative {
+    margin-top: 18px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text-2);
+    background: #faf6ee;
+    border-left: 3px solid var(--gold);
+    padding: 14px 16px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .achado-narrative strong { color: var(--text); }
+
+  /* Campeões de eficiência - mini cards */
+  .campeoes-section {
+    margin-top: 24px;
+  }
+
+  .campeoes-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-3);
+    margin-bottom: 12px;
+  }
+
+  .campeoes-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+  }
+
+  .campeoes-list .campeao-card { grid-column: span 2; }
+  .campeoes-list .campeao-card:nth-child(4) { grid-column: 2 / span 2; }
+  .campeoes-list .campeao-card:nth-child(5) { grid-column: 4 / span 2; }
+
+  .campeao-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  .campeao-thumb {
+    aspect-ratio: 4/5;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background: #f0f0f0;
+  }
+
+  .campeao-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .campeao-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 10px;
+    min-height: 30px;
+  }
+
+  .campeao-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .campeao-stat-cac, .campeao-stat-roas {
+    padding: 8px 6px;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .campeao-stat-cac {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .campeao-stat-roas {
+    background: #faf6ee;
+    border: 1px solid #ead8a8;
+    color: var(--text-2);
+  }
+
+  .campeao-stats span {
+    display: block;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 3px;
+  }
+
+  .campeao-stat-cac span { color: rgba(255,255,255,0.55); }
+  .campeao-stat-roas span { color: var(--text-3); }
+
+  .campeao-stats strong {
+    font-size: 18px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .campeao-stat-cac strong { color: var(--gold-light); }
+  .campeao-stat-roas strong { color: var(--gold); }
+
+  .campeao-rev {
+    font-size: 12px;
+    color: var(--text-2);
+    text-align: center;
+    padding: 8px 6px;
+    background: #f7f7f7;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .campeao-rev strong {
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .footer {
+    padding: 16px 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: var(--text-3);
+  }
+
+  .footer .conf {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    font-size: 9px;
+  }
+
+  @media (max-width: 700px) {
+    .header { flex-direction: column; gap: 10px; padding: 20px 18px 16px; align-items: flex-start; }
+    .header-meta { text-align: left; }
+    .header h1 { font-size: 16px; }
+    .body, .footer { padding-left: 18px; padding-right: 18px; }
+    .summary { padding: 20px 18px; font-size: 13px; }
+    .kpis, .kpis-4, .kpis-3 { grid-template-columns: repeat(2, 1fr); }
+    .kpi { padding: 14px 10px; }
+    .kpi-v { font-size: 18px; }
+    .kpi.em { grid-column: 1 / -1; }
+    .kpi.em .kpi-v { font-size: 24px; }
+    table th, table td { padding: 8px 8px; font-size: 11px; }
+    .chart-box { overflow-x: hidden; }
+    .chart-box svg { min-width: 0; width: 100%; }
+    .pax-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .pax-total { font-size: 28px; }
+    .pax-legend { flex-direction: column; gap: 8px; }
+    .pax-ticket { margin-left: 0; padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 8px; }
+    .creative-grid { grid-template-columns: 1fr; gap: 12px; }
+    .creative-thumb { max-width: 180px; margin: 0 auto; aspect-ratio: 4/5; }
+    .creative-kpis { grid-template-columns: repeat(2, 1fr); }
+    .creative-kpi { padding: 14px 10px; }
+    .creative-kpi strong { font-size: 22px; }
+    .creative-kpi.em strong { font-size: 24px; }
+    .funnel-steps, .funnel-steps.funnel-3 { grid-template-columns: 1fr; gap: 6px; }
+    .funnel-s { padding: 10px; }
+    .funnel-s-v { font-size: 16px; }
+    .funnel-s-n { font-size: 10px; }
+    .achado-card { grid-template-columns: 1fr; gap: 16px; padding: 18px; }
+    .achado-thumb { max-width: 200px; margin: 0 auto; }
+    .achado-roas { font-size: 44px; }
+    .achado-stats { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .achado-stat-value { font-size: 16px; }
+    .campeoes-list { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .campeoes-list .campeao-card,
+    .campeoes-list .campeao-card:nth-child(4),
+    .campeoes-list .campeao-card:nth-child(5) { grid-column: auto; }
+    .campeao-name { min-height: 32px; }
+    .campeao-card { padding: 10px; }
+    .campeao-stats { gap: 3px; }
+    .campeao-stat-cac, .campeao-stat-roas { padding: 7px 4px; }
+    .campeao-stats strong { font-size: 15px; letter-spacing: -0.04em; }
+    .campeao-stats span { font-size: 8px; letter-spacing: 0.4px; margin-bottom: 2px; }
+    .footer { flex-direction: column; gap: 6px; align-items: flex-start; }
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="header">
+    <div>
+      <h1>Sintonia de Mulher 2026</h1>
+      <div class="sub">Relatório de Performance - Tráfego Pago - 03 a 28 abr</div>
+    </div>
+    <div class="header-meta">
+      <strong>Período:</strong> 03 - 28 abr 2026 (26 dias)<br>
+      <strong>Evento:</strong> 28 mai 2026 (D-29)<br>
+      <strong>Emissão:</strong> 29/04/2026
+    </div>
+  </header>
+
+  <div class="summary">
+    Em 26 dias de operação contínua, o tráfego pago entregou <strong>159 pedidos pagos</strong> com CAC de <strong>R$ 90,43</strong> e ROAS de <strong>5,97x</strong>. Faturamento atribuído de <strong>R$ 85.891</strong> sobre R$ 14.378 investidos, ticket médio de <strong>R$ 540</strong>. Cíntia Chagas é a âncora absoluta: o REELS de apresentação <strong>"Atenção Manaus"</strong>, sozinho, gerou <strong>58 vendas e R$ 30.596 de faturamento</strong> ao longo do período (37% do volume) - uma única peça criativa replicada em quatro adsets cobrindo todo o público da campanha. A operação evoluiu por três fases: estrutura inicial de topo com Cíntia Chagas (03-13/abr), entrada da camada de fundo com remarketing e criativos de escassez (14-22/abr) e abertura da camada Bid Cap Escala somada à sequência de virada de lote (23-28/abr).
+  </div>
+
+  <div class="body">
+
+<!-- 01 RESULTADOS -->
+    <div class="s">
+      <div class="s-label">01</div>
+      <h2>Resultados Consolidados - Tráfego Pago</h2>
+
+      <div class="kpis">
+        <div class="kpi">
+          <div class="kpi-n">Investimento</div>
+          <div class="kpi-v">R$ 14.378</div>
+          <div class="kpi-d">26 dias (03-28 abr)</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-n">Pedidos Pagos</div>
+          <div class="kpi-v">159</div>
+          <div class="kpi-d">via pixel Meta</div>
+        </div>
+        <div class="kpi em">
+          <div class="kpi-n">CAC</div>
+          <div class="kpi-v">R$ 90,43</div>
+          <div class="kpi-d">custo/pedido</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-n">ROAS</div>
+          <div class="kpi-v">5,97x</div>
+          <div class="kpi-d">retorno atribuído</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-n">Faturamento</div>
+          <div class="kpi-v">R$ 85.891</div>
+          <div class="kpi-d">via pixel Meta</div>
+        </div>
+      </div>
+
+      <!-- Passaportes: breakdown Sympla VIP / Standard -->
+      <div class="pax-block">
+        <div class="pax-header">
+          <div>
+            <div class="pax-label">Passaportes Atribuídos ao Tráfego Pago</div>
+            <div class="pax-sub">via UTM facebook/cpc (fonte: Sympla)</div>
+          </div>
+          <div class="pax-total">158</div>
+        </div>
+        <div class="pax-bar">
+          <div class="pax-bar-vip" style="width: 61.4%;">
+            <span class="pax-bar-label">VIP · 97</span>
+          </div>
+          <div class="pax-bar-pista" style="width: 38.6%;">
+            <span class="pax-bar-label">Standard · 61</span>
+          </div>
+        </div>
+        <div class="pax-legend">
+          <div class="pax-legend-item">
+            <span class="pax-dot pax-dot-vip"></span>
+            <strong>97 VIP</strong> <span class="pax-legend-pct">(61,4%)</span>
+          </div>
+          <div class="pax-legend-item">
+            <span class="pax-dot pax-dot-pista"></span>
+            <strong>61 Standard</strong> <span class="pax-legend-pct">(38,6%)</span>
+          </div>
+          <div class="pax-legend-item pax-ticket">
+            <span class="pax-legend-pct">Ticket médio (por pedido):</span>
+            <strong>R$ 540,20</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Público premium:</strong> 61% dos passaportes vendidos via tráfego pago são VIP - sinal de que o algoritmo está levando o público correto pra a oferta de maior valor. Já há 1 VIP do 2° lote vendido pós-virada (R$ 597), os outros 96 VIP foram do 1° lote (R$ 497). <strong>CAC R$ 90 e ROAS 5,97x consolidados em 26 dias</strong> - dentro do alvo da campanha (CAC R$ 100, ROAS piso 4x). 481 checkouts iniciados contra 159 pagos: 33% de conversão checkout → compra. O motor estrutural é a campanha LP Compras (R$ 11.610 / 128 pedidos / CAC R$ 91), com Remarketing Urgência atuando como amplificador de eficiência (R$ 799 / 15 pedidos / CAC R$ 53 / ROAS 8,94x) e a camada Bid Cap Escala em teste desde 23/abr.
+      </div>
+    </div>
+
+    <!-- DESTAQUE - Achado do Período -->
+    <div class="achado-section">
+      <div class="achado-label">⭐ Destaque do Período</div>
+      <h2 class="achado-title">O Anúncio que Vendeu R$ 1.194 com R$ 7,90</h2>
+      <p class="achado-subtitle">Um único REELS de apresentação da Cíntia entregou o melhor ROAS da operação.</p>
+
+      <div class="achado-card">
+        <div class="achado-thumb">
+          <img src="sintonia-de-mulher-03-28abr-img/ad29-cintia-1v2.jpg" alt="AD 29 - Cíntia Chagas - Comunicar-se bem é uma dádiva">
+        </div>
+        <div class="achado-info">
+          <div class="achado-creative-name">"Cíntia Chagas - Comunicar-se bem é uma dádiva"<span class="achado-format-tag">REELS Topo</span></div>
+          <div class="achado-roas-label">ROAS</div>
+          <div class="achado-roas">151,14x</div>
+          <div class="achado-stats">
+            <div class="achado-stat">
+              <div class="achado-stat-label">Investido</div>
+              <div class="achado-stat-value">R$ 7,90</div>
+            </div>
+            <div class="achado-stat">
+              <div class="achado-stat-label">Vendas</div>
+              <div class="achado-stat-value">2</div>
+            </div>
+            <div class="achado-stat">
+              <div class="achado-stat-label">Faturamento</div>
+              <div class="achado-stat-value">R$ 1.194</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="achado-narrative">
+        <strong>Pra cada R$ 1 investido, voltaram R$ 151.</strong> Frame da Cíntia em entrevista institucional (Sociedade Médica) com a quote "Comunicar-se bem é uma dádiva". Entrou na operação no fim de semana de 25/04, pegou pouco budget do CBO e converteu duas vendas em janela curta. É o tipo de peça que justifica manter um pool diverso de apresentação rodando em paralelo aos criativos de eixo - quando o vídeo certo acerta o público certo, a economia de CAC é absurda.
+      </div>
+
+      <div class="campeoes-section">
+        <div class="campeoes-title">Outros campeões de eficiência - CAC abaixo de R$ 50</div>
+
+        <div class="campeoes-list">
+          <!-- AD 21 Últimas Horas - CAC R$ 3,85 -->
+          <div class="campeao-card">
+            <div class="campeao-thumb">
+              <img src="sintonia-de-mulher-03-28abr-img/ad21-ultimas-horas.jpg" alt="AD 21 - Últimas Horas">
+            </div>
+            <div class="campeao-name">"Últimas Horas" - Cronômetro (Fundo)</div>
+            <div class="campeao-stats">
+              <div class="campeao-stat-cac"><span>CAC</span><strong>R$ 3,85</strong></div>
+              <div class="campeao-stat-roas"><span>ROAS</span><strong>129x</strong></div>
+            </div>
+            <div class="campeao-rev">2 vendas · <strong>R$ 994</strong></div>
+          </div>
+
+          <!-- AD 22 Daiana - CAC R$ 7,58 -->
+          <div class="campeao-card">
+            <div class="campeao-thumb">
+              <img src="sintonia-de-mulher-03-28abr-img/ad22-daiana.jpg" alt="AD 22 - Daiana Pereira">
+            </div>
+            <div class="campeao-name">"Daiana Pereira - Lote chegando ao fim" (Fundo)</div>
+            <div class="campeao-stats">
+              <div class="campeao-stat-cac"><span>CAC</span><strong>R$ 7,58</strong></div>
+              <div class="campeao-stat-roas"><span>ROAS</span><strong>65x</strong></div>
+            </div>
+            <div class="campeao-rev">2 vendas · <strong>R$ 994</strong></div>
+          </div>
+
+          <!-- AD 17 Vagas Limitadas - CAC R$ 35,44 -->
+          <div class="campeao-card">
+            <div class="campeao-thumb">
+              <img src="sintonia-de-mulher-03-28abr-img/ad17-vagas-limitadas.jpg" alt="AD 17 - Vagas Limitadas">
+            </div>
+            <div class="campeao-name">"Vagas Limitadas" - Atemporal (Remarketing)</div>
+            <div class="campeao-stats">
+              <div class="campeao-stat-cac"><span>CAC</span><strong>R$ 35,44</strong></div>
+              <div class="campeao-stat-roas"><span>ROAS</span><strong>13x</strong></div>
+            </div>
+            <div class="campeao-rev">3 vendas · <strong>R$ 1.391</strong></div>
+          </div>
+
+          <!-- AD 25 Virada de Lote - CAC R$ 45,02 -->
+          <div class="campeao-card">
+            <div class="campeao-thumb">
+              <img src="sintonia-de-mulher-03-28abr-img/ad25-virada-lote.jpg" alt="AD 25 - Virada de Lote">
+            </div>
+            <div class="campeao-name">"Virada de Lote" - Tabela de Preços (Fundo)</div>
+            <div class="campeao-stats">
+              <div class="campeao-stat-cac"><span>CAC</span><strong>R$ 45,02</strong></div>
+              <div class="campeao-stat-roas"><span>ROAS</span><strong>12x</strong></div>
+            </div>
+            <div class="campeao-rev">3 vendas · <strong>R$ 1.685</strong></div>
+          </div>
+
+          <!-- AD 23 Comunicar-se bem - CAC R$ 48,33 -->
+          <div class="campeao-card">
+            <div class="campeao-thumb">
+              <img src="sintonia-de-mulher-03-28abr-img/ad23-comunicar-dadiva.jpg" alt="AD 23 - Comunicar-se bem é uma dádiva">
+            </div>
+            <div class="campeao-name">"Comunicar-se bem é uma dádiva" - Card (Topo)</div>
+            <div class="campeao-stats">
+              <div class="campeao-stat-cac"><span>CAC</span><strong>R$ 48,33</strong></div>
+              <div class="campeao-stat-roas"><span>ROAS</span><strong>12x</strong></div>
+            </div>
+            <div class="campeao-rev">2 vendas · <strong>R$ 1.188</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 DISTRIBUIÇÃO POR JANELAS DE 3 DIAS -->
+    <div class="s">
+      <div class="s-label">02</div>
+      <h2>Distribuição em Janelas de 3 Dias - Investimento × Faturamento</h2>
+
+      <div class="legend">
+        <span class="l-rev">Faturamento (R$)</span>
+      </div>
+
+      <div class="chart-box">
+        <svg viewBox="0 0 640 300" preserveAspectRatio="xMidYMid meet">
+          <!-- Grid -->
+          <line x1="60" y1="30" x2="620" y2="30" stroke="#f0f0f0" stroke-width="1"/>
+          <line x1="60" y1="80" x2="620" y2="80" stroke="#f0f0f0" stroke-width="1"/>
+          <line x1="60" y1="130" x2="620" y2="130" stroke="#f0f0f0" stroke-width="1"/>
+          <line x1="60" y1="180" x2="620" y2="180" stroke="#f0f0f0" stroke-width="1"/>
+          <line x1="60" y1="230" x2="620" y2="230" stroke="#bbb" stroke-width="1"/>
+
+          <!-- Y axis (max 14000) -->
+          <text x="52" y="34" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">R$ 14.000</text>
+          <text x="52" y="84" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">R$ 10.500</text>
+          <text x="52" y="134" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">R$ 7.000</text>
+          <text x="52" y="184" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">R$ 3.500</text>
+          <text x="52" y="234" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">R$ 0</text>
+
+          <!-- 03-05/abr: rev 10334 (148px) -->
+          <rect x="90" y="82" width="20" height="148" fill="#b8943f"/>
+          <text x="100" y="78" text-anchor="middle" fill="#7a6228" font-size="9" font-family="Inter" font-weight="700">R$ 10,3k</text>
+          <text x="100" y="248" text-anchor="middle" fill="#555" font-size="10" font-family="Inter" font-weight="600">03-05/abr</text>
+          <text x="100" y="263" text-anchor="middle" fill="#0f7b3f" font-size="10" font-family="Inter" font-weight="700">19 vendas</text>
+          <text x="100" y="278" text-anchor="middle" fill="#4a1428" font-size="10" font-family="Inter" font-weight="600">CAC R$ 92</text>
+
+          <!-- 06-08/abr: rev 11225 (160) -->
+          <rect x="150" y="70" width="20" height="160" fill="#b8943f"/>
+          <text x="160" y="66" text-anchor="middle" fill="#7a6228" font-size="9" font-family="Inter" font-weight="700">R$ 11,2k</text>
+          <text x="160" y="248" text-anchor="middle" fill="#555" font-size="10" font-family="Inter" font-weight="600">06-08/abr</text>
+          <text x="160" y="263" text-anchor="middle" fill="#0f7b3f" font-size="10" font-family="Inter" font-weight="700">19 vendas</text>
+          <text x="160" y="278" text-anchor="middle" fill="#4a1428" font-size="10" font-family="Inter" font-weight="600">CAC R$ 87</text>
+
+          <!-- 09-11/abr: rev 12607 (180) ★ -->
+          <rect x="210" y="50" width="20" height="180" fill="#b8943f"/>
+          <text x="220" y="46" text-anchor="middle" fill="#7a6228" font-size="9" font-family="Inter" font-weight="700">R$ 12,6k</text>
+          <text x="220" y="248" text-anchor="middle" fill="#4a1428" font-size="10" font-family="Inter" font-weight="700">09-11/abr ★</text>
+          <text x="220" y="263" text-anchor="middle" fill="#0f7b3f" font-size="10" font-family="Inter" font-weight="700">25 vendas</text>
+          <text x="220" y="278" text-anchor="middle" fill="#4a1428" font-size="10" font-family="Inter" font-weight="700">CAC R$ 67</text>
+
+          <!-- 12-14/abr: rev 13898 (199) -->
+          <rect x="270" y="31" width="20" height="199" fill="#b8943f"/>
+          <text x="280" y="27" text-anchor="middle" fill="#7a6228" font-size="9" font-family="Inter" font-weight="700">R$ 13,9k</text>
+          <text x="280" y="248" text-anchor="middle" fill="#555" font-size="10" font-family="Inter" font-weight="600">12-14/abr</text>
+          <text x="280" y="263" text-anchor="middle" fill="#0f7b3f" font-size="10" font-family="Inter" font-weight="700">22 vendas</text>
+          <text x="280" y="278" text-anchor="middle" fill="#4a1428" font-size="10" font-family="Inter" font-weight="600">CAC R$ 75</text>
+
+          <!-- 15-17/abr: rev 9631 (138) -->
+          <rect x="330" y="92" width="20" height="138" fill="#b8943f"/>
+          <text x="340" y="88" text-anchor="middle" fill="#7a6228" font-size="9" font-family="Inter" font-weight="700">R$ 9,6k</text>
+          <text x="340" y="248" text-anchor="middle" fill="#555" font-size="10" font-family="Inter" font-weight="600">15-17/abr</text>
+          <text x="340" y="263" text-anchor="middle" fill="#0f7b3f" font-size="10" font-family="Inter" font-weight="700">21 vendas</text>
+          <text x="340" y="278" text-anchor="middle" fill="#4a1428" font-size="10" font-family="Inter" font-weight="600">CAC R$ 81</text>
+
+          <!-- 18-20/abr: rev 6455 (92) -->
+          <rect x="390" y="138" width="20" height="92" fill="#b8943f"/>
+          <text x="400" y="134" text-anchor="middle" fill="#7a6228" font-size="9" font-family="Inter" font-weight="700">R$ 6,4k</text>
+          <text x="400" y="248" text-anchor="middle" fill="#555" font-size="10" font-family="Inter" font-weight="600">18-20/abr</text>
+          <text x="400" y="263" text-anchor="middle" fill="#0f7b3f" font-size="10" font-family="Inter" font-weight="700">12 vendas</text>
+          <text x="400" y="278" text-anchor="middle" fill="#4a1428" font-size="10" font-family="Inter" font-weight="600">CAC R$ 142</text>
+
+          <!-- 21-23/abr: rev 4861 (69) -->
+          <rect x="450" y="161" width="20" height="69" fill="#b8943f"/>
+          <text x="460" y="157" text-anchor="middle" fill="#7a6228" font-size="9" font-family="Inter" font-weight="700">R$ 4,9k</text>
+          <text x="460" y="248" text-anchor="middle" fill="#555" font-size="10" font-family="Inter" font-weight="600">21-23/abr</text>
+          <text x="460" y="263" text-anchor="middle" fill="#0f7b3f" font-size="10" font-family="Inter" font-weight="700">8 vendas</text>
+          <text x="460" y="278" text-anchor="middle" fill="#4a1428" font-size="10" font-family="Inter" font-weight="600">CAC R$ 236</text>
+
+          <!-- 24-26/abr: rev 12904 (184) 🏆 -->
+          <rect x="510" y="46" width="20" height="184" fill="#b8943f"/>
+          <text x="520" y="42" text-anchor="middle" fill="#7a6228" font-size="9" font-family="Inter" font-weight="700">R$ 12,9k</text>
+          <text x="520" y="248" text-anchor="middle" fill="#4a1428" font-size="10" font-family="Inter" font-weight="700">24-26/abr 🏆</text>
+          <text x="520" y="263" text-anchor="middle" fill="#0f7b3f" font-size="10" font-family="Inter" font-weight="700">26 vendas</text>
+          <text x="520" y="278" text-anchor="middle" fill="#4a1428" font-size="10" font-family="Inter" font-weight="700">CAC R$ 54</text>
+
+          <!-- 27-28/abr: rev 3976 (57) — parcial 2 dias -->
+          <rect x="570" y="173" width="20" height="57" fill="#b8943f"/>
+          <text x="580" y="169" text-anchor="middle" fill="#7a6228" font-size="9" font-family="Inter" font-weight="700">R$ 4,0k</text>
+          <text x="580" y="248" text-anchor="middle" fill="#555" font-size="10" font-family="Inter" font-weight="600">27-28/abr</text>
+          <text x="580" y="263" text-anchor="middle" fill="#0f7b3f" font-size="10" font-family="Inter" font-weight="700">7 vendas</text>
+          <text x="580" y="278" text-anchor="middle" fill="#4a1428" font-size="10" font-family="Inter" font-weight="600">CAC R$ 137</text>
+        </svg>
+      </div>
+
+      <div class="note">
+        <strong>O período tem dois patamares claros de eficiência.</strong> Nos 15 primeiros dias (03-17/abr) o CAC ficou consistentemente abaixo do alvo de R$ 100, com pico de eficiência em <strong>09-11/abr (CAC R$ 67)</strong>. Entre 18-23/abr o CAC subiu - reflexo de saturação acumulada da audiência premium em Manaus (frequência de 6,4 em 26 dias) e do calendário de fim de semana. A operação reagiu com cascata de exclusões e abertura da camada Bid Cap Escala em 23/abr; a janela <strong>24-26/abr trouxe o melhor patamar (CAC R$ 54 e 26 vendas em 3 dias)</strong>, validando que o ajuste estrutural funcionou. Os 2 dias finais (27-28/abr) são parciais e refletem renovação criativa em curso - métrica não conclusiva.
+      </div>
+    </div>
+
+    <!-- 03 TENDÊNCIA CAC -->
+    <div class="s">
+      <div class="s-label">03</div>
+      <h2>Tendência do CAC - Janelas de 3 Dias</h2>
+
+      <div class="legend">
+        <span class="l-cac">CAC (custo/pedido)</span>
+        <span class="l-meta">Teto: R$ 100</span>
+      </div>
+
+      <div class="chart-box">
+        <svg viewBox="0 0 640 260" preserveAspectRatio="xMidYMid meet">
+          <!-- Grid -->
+          <line x1="60" y1="20" x2="620" y2="20" stroke="#f0f0f0" stroke-width="1"/>
+          <line x1="60" y1="70" x2="620" y2="70" stroke="#f0f0f0" stroke-width="1"/>
+          <line x1="60" y1="120" x2="620" y2="120" stroke="#f0f0f0" stroke-width="1"/>
+          <line x1="60" y1="170" x2="620" y2="170" stroke="#f0f0f0" stroke-width="1"/>
+          <line x1="60" y1="220" x2="620" y2="220" stroke="#f0f0f0" stroke-width="1"/>
+
+          <!-- Y axis -->
+          <text x="52" y="24" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">R$ 240</text>
+          <text x="52" y="74" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">R$ 180</text>
+          <text x="52" y="124" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">R$ 120</text>
+          <text x="52" y="174" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">R$ 60</text>
+          <text x="52" y="224" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">R$ 0</text>
+
+          <!-- Linha do teto R$ 100 -->
+          <line x1="60" y1="137" x2="620" y2="137" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+          <text x="614" y="132" text-anchor="end" fill="#c0392b" font-size="9" font-family="Inter" font-weight="600">TETO R$ 100</text>
+
+          <!-- X labels -->
+          <text x="85" y="244" text-anchor="middle" fill="#555" font-size="9" font-family="Inter" font-weight="600">03-05 abr</text>
+          <text x="150" y="244" text-anchor="middle" fill="#555" font-size="9" font-family="Inter" font-weight="600">06-08 abr</text>
+          <text x="215" y="244" text-anchor="middle" fill="#4a1428" font-size="9" font-family="Inter" font-weight="700">09-11 abr ★</text>
+          <text x="280" y="244" text-anchor="middle" fill="#555" font-size="9" font-family="Inter" font-weight="600">12-14 abr</text>
+          <text x="345" y="244" text-anchor="middle" fill="#555" font-size="9" font-family="Inter" font-weight="600">15-17 abr</text>
+          <text x="410" y="244" text-anchor="middle" fill="#555" font-size="9" font-family="Inter" font-weight="600">18-20 abr</text>
+          <text x="475" y="244" text-anchor="middle" fill="#555" font-size="9" font-family="Inter" font-weight="600">21-23 abr</text>
+          <text x="540" y="244" text-anchor="middle" fill="#4a1428" font-size="9" font-family="Inter" font-weight="700">24-26 abr 🏆</text>
+          <text x="605" y="244" text-anchor="middle" fill="#555" font-size="9" font-family="Inter" font-weight="600">27-28 abr</text>
+
+          <!-- CAC area fill -->
+          <path d="M 85,143 L 150,148 L 215,164 L 280,158 L 345,153 L 410,102 L 475,23 L 540,175 L 605,106 L 605,220 L 85,220 Z" fill="#b8943f" opacity="0.1"/>
+
+          <!-- CAC line -->
+          <polyline points="85,143 150,148 215,164 280,158 345,153 410,102 475,23 540,175 605,106" fill="none" stroke="#b8943f" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+
+          <!-- CAC dots -->
+          <circle cx="85" cy="143" r="5" fill="#b8943f" stroke="#fff" stroke-width="2"/>
+          <circle cx="150" cy="148" r="5" fill="#b8943f" stroke="#fff" stroke-width="2"/>
+          <circle cx="215" cy="164" r="6" fill="#4a1428" stroke="#fff" stroke-width="2"/>
+          <circle cx="280" cy="158" r="5" fill="#b8943f" stroke="#fff" stroke-width="2"/>
+          <circle cx="345" cy="153" r="5" fill="#b8943f" stroke="#fff" stroke-width="2"/>
+          <circle cx="410" cy="102" r="5" fill="#c0392b" stroke="#fff" stroke-width="2"/>
+          <circle cx="475" cy="23" r="5" fill="#c0392b" stroke="#fff" stroke-width="2"/>
+          <circle cx="540" cy="175" r="6" fill="#4a1428" stroke="#fff" stroke-width="2"/>
+          <circle cx="605" cy="106" r="5" fill="#c0392b" stroke="#fff" stroke-width="2"/>
+
+          <!-- CAC labels -->
+          <text x="85" y="133" text-anchor="middle" fill="#8a7235" font-size="11" font-family="Inter" font-weight="700">R$ 92</text>
+          <text x="150" y="138" text-anchor="middle" fill="#8a7235" font-size="11" font-family="Inter" font-weight="700">R$ 87</text>
+          <text x="215" y="154" text-anchor="middle" fill="#4a1428" font-size="11" font-family="Inter" font-weight="700">R$ 67 ★</text>
+          <text x="280" y="148" text-anchor="middle" fill="#8a7235" font-size="11" font-family="Inter" font-weight="700">R$ 75</text>
+          <text x="345" y="143" text-anchor="middle" fill="#8a7235" font-size="11" font-family="Inter" font-weight="700">R$ 81</text>
+          <text x="410" y="92" text-anchor="middle" fill="#c0392b" font-size="11" font-family="Inter" font-weight="700">R$ 142</text>
+          <text x="475" y="13" text-anchor="middle" fill="#c0392b" font-size="11" font-family="Inter" font-weight="700">R$ 236</text>
+          <text x="540" y="165" text-anchor="middle" fill="#4a1428" font-size="11" font-family="Inter" font-weight="700">R$ 54 🏆</text>
+          <text x="605" y="96" text-anchor="middle" fill="#c0392b" font-size="11" font-family="Inter" font-weight="700">R$ 137</text>
+
+          <!-- Sub labels (vendas) -->
+          <text x="85" y="205" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">19 vendas</text>
+          <text x="150" y="205" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">19 vendas</text>
+          <text x="215" y="205" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">25 vendas</text>
+          <text x="280" y="205" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">22 vendas</text>
+          <text x="345" y="205" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">21 vendas</text>
+          <text x="410" y="205" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">12 vendas</text>
+          <text x="475" y="205" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">8 vendas</text>
+          <text x="540" y="205" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">26 vendas</text>
+          <text x="605" y="205" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">7 vendas</text>
+        </svg>
+      </div>
+
+      <div class="note">
+        <strong>Curva em U dramática.</strong> Os 5 primeiros blocos (03-17/abr, 15 dias) mantiveram o CAC abaixo do teto de R$ 100, com pico de eficiência em <strong>09-11/abr (R$ 67)</strong>. Em seguida, duas janelas acima do teto (R$ 142 e R$ 236) - reflexo de saturação acumulada da audiência premium em Manaus (frequência 6,4 em 26 dias) somada ao calendário de fim de semana. A operação reagiu com cascata de exclusões e abertura da camada Bid Cap Escala em 23/abr, e a janela <strong>24-26/abr trouxe o melhor patamar do período inteiro (CAC R$ 54)</strong>, validando o ajuste estrutural. Os 2 dias finais (27-28/abr) são parciais e refletem renovação criativa em curso.
+      </div>
+    </div>
+
+    <!-- 04 PADRÃO SEMANAL -->
+    <div class="s">
+      <div class="s-label">04</div>
+      <h2>Padrão Semanal - Passaportes Vendidos por Dia</h2>
+      <p>Os 356 passaportes pagos do evento (Sympla, todos canais, sem cortesia, desde o lançamento até 28/abr) redistribuídos por dia da semana mostram <strong>terça-feira como o motor de vendas</strong> - 74 passaportes em 6 terças (12,3/dia), seguida por domingo com 56 (11,2/dia). Sexta vem em terceiro.</p>
+
+      <div class="legend">
+        <span class="l-rev">Passaportes pagos (Sympla, todos canais)</span>
+      </div>
+
+      <div class="chart-box">
+        <svg viewBox="0 0 640 315" preserveAspectRatio="xMidYMid meet">
+          <!-- Grid -->
+          <line x1="60" y1="30" x2="620" y2="30" stroke="#f0f0f0" stroke-width="1"/>
+          <line x1="60" y1="80" x2="620" y2="80" stroke="#f0f0f0" stroke-width="1"/>
+          <line x1="60" y1="130" x2="620" y2="130" stroke="#f0f0f0" stroke-width="1"/>
+          <line x1="60" y1="180" x2="620" y2="180" stroke="#f0f0f0" stroke-width="1"/>
+          <line x1="60" y1="230" x2="620" y2="230" stroke="#bbb" stroke-width="1"/>
+
+          <!-- Y axis (passaportes - max 80) -->
+          <text x="52" y="34" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">80</text>
+          <text x="52" y="84" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">60</text>
+          <text x="52" y="134" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">40</text>
+          <text x="52" y="184" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">20</text>
+          <text x="52" y="234" text-anchor="end" fill="#bbb" font-size="9" font-family="Inter">0</text>
+
+          <!-- Seg: 46 passaportes - bar height 115, top y=115 -->
+          <rect x="84" y="115" width="50" height="115" fill="#b8943f" opacity="0.65"/>
+          <text x="109" y="107" text-anchor="middle" fill="#7a6228" font-size="13" font-family="Inter" font-weight="700">46</text>
+          <text x="109" y="248" text-anchor="middle" fill="#555" font-size="11" font-family="Inter" font-weight="600">Segunda</text>
+          <text x="109" y="263" text-anchor="middle" fill="#555" font-size="10" font-family="Inter" font-weight="600">7,7/dia</text>
+          <text x="109" y="278" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">6 dias</text>
+
+          <!-- Ter ⭐: 74 passaportes (motor) - bar height 185, top y=45 -->
+          <rect x="162" y="45" width="50" height="185" fill="#0f7b3f"/>
+          <text x="187" y="37" text-anchor="middle" fill="#0f7b3f" font-size="13" font-family="Inter" font-weight="700">74 ⭐</text>
+          <text x="187" y="248" text-anchor="middle" fill="#0f7b3f" font-size="11" font-family="Inter" font-weight="700">Terça</text>
+          <text x="187" y="263" text-anchor="middle" fill="#0f7b3f" font-size="10" font-family="Inter" font-weight="700">12,3/dia</text>
+          <text x="187" y="278" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">6 dias</text>
+
+          <!-- Qua: 43 passaportes - bar height 108, top y=122 -->
+          <rect x="240" y="122" width="50" height="108" fill="#b8943f" opacity="0.6"/>
+          <text x="265" y="114" text-anchor="middle" fill="#7a6228" font-size="13" font-family="Inter" font-weight="700">43</text>
+          <text x="265" y="248" text-anchor="middle" fill="#555" font-size="11" font-family="Inter" font-weight="600">Quarta</text>
+          <text x="265" y="263" text-anchor="middle" fill="#555" font-size="10" font-family="Inter" font-weight="600">8,6/dia</text>
+          <text x="265" y="278" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">5 dias</text>
+
+          <!-- Qui: 43 passaportes - bar height 108, top y=122 -->
+          <rect x="318" y="122" width="50" height="108" fill="#b8943f" opacity="0.6"/>
+          <text x="343" y="114" text-anchor="middle" fill="#7a6228" font-size="13" font-family="Inter" font-weight="700">43</text>
+          <text x="343" y="248" text-anchor="middle" fill="#555" font-size="11" font-family="Inter" font-weight="600">Quinta</text>
+          <text x="343" y="263" text-anchor="middle" fill="#555" font-size="10" font-family="Inter" font-weight="600">8,6/dia</text>
+          <text x="343" y="278" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">5 dias</text>
+
+          <!-- Sex: 48 passaportes - bar height 120, top y=110 -->
+          <rect x="396" y="110" width="50" height="120" fill="#b8943f" opacity="0.85"/>
+          <text x="421" y="102" text-anchor="middle" fill="#7a6228" font-size="13" font-family="Inter" font-weight="700">48</text>
+          <text x="421" y="248" text-anchor="middle" fill="#555" font-size="11" font-family="Inter" font-weight="600">Sexta</text>
+          <text x="421" y="263" text-anchor="middle" fill="#555" font-size="10" font-family="Inter" font-weight="600">9,6/dia</text>
+          <text x="421" y="278" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">5 dias</text>
+
+          <!-- Sáb: 46 passaportes - bar height 115, top y=115 -->
+          <rect x="474" y="115" width="50" height="115" fill="#b8943f" opacity="0.65"/>
+          <text x="499" y="107" text-anchor="middle" fill="#7a6228" font-size="13" font-family="Inter" font-weight="700">46</text>
+          <text x="499" y="248" text-anchor="middle" fill="#555" font-size="11" font-family="Inter" font-weight="600">Sábado</text>
+          <text x="499" y="263" text-anchor="middle" fill="#555" font-size="10" font-family="Inter" font-weight="600">9,2/dia</text>
+          <text x="499" y="278" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">5 dias</text>
+
+          <!-- Dom: 56 passaportes - bar height 140, top y=90 -->
+          <rect x="552" y="90" width="50" height="140" fill="#0f7b3f" opacity="0.75"/>
+          <text x="577" y="82" text-anchor="middle" fill="#0f7b3f" font-size="13" font-family="Inter" font-weight="700">56</text>
+          <text x="577" y="248" text-anchor="middle" fill="#0f7b3f" font-size="11" font-family="Inter" font-weight="700">Domingo</text>
+          <text x="577" y="263" text-anchor="middle" fill="#0f7b3f" font-size="10" font-family="Inter" font-weight="700">11,2/dia</text>
+          <text x="577" y="278" text-anchor="middle" fill="#999" font-size="9" font-family="Inter">5 dias</text>
+        </svg>
+      </div>
+
+      <div class="note">
+        <strong>Terça-feira é o dia mais produtivo do evento</strong>: 74 passaportes em 6 terças (12,3/dia) - bem acima da média do período (8,7/dia). <strong>Domingo é o segundo motor</strong> com 56 passaportes em 5 domingos (11,2/dia), seguido por sexta com 48 (9,6/dia). Quarta, quinta e sábado ficam em torno de 8,6-9,2/dia, e segunda no patamar mais baixo entre os dias úteis (7,7/dia em 6 segundas). A leitura prática: a operação tem dois picos semanais claros - terça (meio de semana) e domingo (fechamento de semana) - que sustentam o ritmo de venda. Olhando isoladamente o domingo da virada (26/abr) vendeu 20 passaportes via todos os canais; mesmo descontando esse pico, os outros 4 domingos ainda entregaram 9,0/dia, mantendo o domingo na liderança estrutural junto com a terça.
+      </div>
+    </div>
+
+    <!-- 05 ANÚNCIOS QUE MAIS VENDERAM -->
+    <div class="s">
+      <div class="s-label">05</div>
+      <h2>Anúncios que Mais Venderam - Os Motores do Volume</h2>
+      <p>Os criativos que mais entregaram pedidos pagos no período (cada peça rodou em múltiplos adsets - números agregados por creative):</p>
+
+      <!-- HERO: AD 01 Cíntia "Atenção Manaus" -->
+      <div class="creative-block hero">
+        <div class="creative-grid">
+          <div class="creative-thumb">
+            <img src="sintonia-de-mulher-03-28abr-img/ad01-cintia-atencao-manaus.jpg" alt="AD 01 - Cíntia Chagas - Atenção Manaus">
+            <span class="creative-tag">Âncora do Período</span>
+          </div>
+          <div class="creative-info">
+            <div class="creative-title">"Cíntia Chagas - Atenção Manaus" <span class="creative-format">REELS</span></div>
+            <div class="creative-meta">Ativo desde 03/abr · CTA Saiba Mais · 5 ativações em LP Compras + Bid Cap · 37% de todas as vendas do período</div>
+
+            <div class="creative-kpis">
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 4.468,76</strong></div>
+              <div class="creative-kpi em"><span>Vendas</span><strong>58</strong></div>
+              <div class="creative-kpi em"><span>CAC</span><strong>R$ 77,05</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>6,85x</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="funnel-title">Jornada: clique → compra</div>
+        <div class="funnel-steps funnel-4">
+          <div class="funnel-s"><div class="funnel-s-v">3.417</div><div class="funnel-s-n">Cliques no anúncio</div></div>
+          <div class="funnel-s"><div class="funnel-s-v">4.167</div><div class="funnel-s-n">Abriram a LP</div><div class="funnel-s-pct">via diferentes fontes</div></div>
+          <div class="funnel-s"><div class="funnel-s-v">217</div><div class="funnel-s-n">Iniciaram a compra</div><div class="funnel-s-pct">5,2% da LP</div></div>
+          <div class="funnel-s last"><div class="funnel-s-v">58</div><div class="funnel-s-n">Compraram</div><div class="funnel-s-pct">26,7% dos checkouts</div></div>
+        </div>
+        <div class="funnel-bottom">Faturamento gerado: <strong>R$ 30.596</strong></div>
+      </div>
+
+      <!-- AD 14 Virada de Lote REELS -->
+      <div class="creative-block">
+        <div class="creative-grid">
+          <div class="creative-thumb">
+            <img src="sintonia-de-mulher-03-28abr-img/ad14-virada-lote-reels.jpg" alt="AD 14 - Virada de Lote REELS">
+            <span class="creative-tag t-good">Volume de Fundo</span>
+          </div>
+          <div class="creative-info">
+            <div class="creative-title">"Virada de Lote" - REELS de Escassez <span class="creative-format">REELS</span></div>
+            <div class="creative-meta">Subido 16/abr · CTA Compre Agora · 2 ativações entre LP e Remarketing</div>
+
+            <div class="creative-kpis">
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 1.811,90</strong></div>
+              <div class="creative-kpi em"><span>Vendas</span><strong>16</strong></div>
+              <div class="creative-kpi em"><span>CAC</span><strong>R$ 113,24</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>4,38x</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="funnel-title">Jornada: clique → compra</div>
+        <div class="funnel-steps funnel-4">
+          <div class="funnel-s"><div class="funnel-s-v">1.104</div><div class="funnel-s-n">Cliques no anúncio</div></div>
+          <div class="funnel-s"><div class="funnel-s-v">1.428</div><div class="funnel-s-n">Abriram a LP</div></div>
+          <div class="funnel-s"><div class="funnel-s-v">43</div><div class="funnel-s-n">Iniciaram a compra</div><div class="funnel-s-pct">3,0% da LP</div></div>
+          <div class="funnel-s last"><div class="funnel-s-v">16</div><div class="funnel-s-n">Compraram</div><div class="funnel-s-pct">37,2% dos checkouts</div></div>
+        </div>
+        <div class="funnel-bottom">Faturamento gerado: <strong>R$ 7.946</strong></div>
+      </div>
+
+      <!-- AD 13 Últimas vagas 1° lote -->
+      <div class="creative-block">
+        <div class="creative-grid">
+          <div class="creative-thumb">
+            <img src="sintonia-de-mulher-03-28abr-img/ad13-ultimas-vagas.jpg" alt="AD 13 - Últimas vagas 1° lote">
+            <span class="creative-tag t-good">Eficiência de Fundo</span>
+          </div>
+          <div class="creative-info">
+            <div class="creative-title">"Últimas vagas do 1° lote" <span class="creative-format">CARD</span></div>
+            <div class="creative-meta">Subido 14/abr · CTA Compre Agora · 2 ativações entre LP e Remarketing</div>
+
+            <div class="creative-kpis">
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 837,78</strong></div>
+              <div class="creative-kpi em"><span>Vendas</span><strong>12</strong></div>
+              <div class="creative-kpi em"><span>CAC</span><strong>R$ 69,82</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>8,17x</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="funnel-title">Jornada: clique → compra</div>
+        <div class="funnel-steps funnel-4">
+          <div class="funnel-s"><div class="funnel-s-v">344</div><div class="funnel-s-n">Cliques no anúncio</div></div>
+          <div class="funnel-s"><div class="funnel-s-v">441</div><div class="funnel-s-n">Abriram a LP</div></div>
+          <div class="funnel-s"><div class="funnel-s-v">24</div><div class="funnel-s-n">Iniciaram a compra</div><div class="funnel-s-pct">5,4% da LP</div></div>
+          <div class="funnel-s last"><div class="funnel-s-v">12</div><div class="funnel-s-n">Compraram</div><div class="funnel-s-pct">50,0% dos checkouts</div></div>
+        </div>
+        <div class="funnel-bottom">Faturamento gerado: <strong>R$ 6.849</strong></div>
+      </div>
+
+      <!-- AD 12 Cíntia no carro -->
+      <div class="creative-block">
+        <div class="creative-grid">
+          <div class="creative-thumb">
+            <img src="sintonia-de-mulher-03-28abr-img/ad12-cintia-no-carro.jpg" alt="AD 12 - Cíntia Chagas - Atenção Manaus no carro">
+            <span class="creative-tag t-good">Variação Topo</span>
+          </div>
+          <div class="creative-info">
+            <div class="creative-title">"Cíntia Chagas - Atenção Manaus no carro" <span class="creative-format">REELS</span></div>
+            <div class="creative-meta">Subido 10/abr · CTA Saiba Mais · 2 ativações em LP Compras</div>
+
+            <div class="creative-kpis">
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 1.056,36</strong></div>
+              <div class="creative-kpi em"><span>Vendas</span><strong>11</strong></div>
+              <div class="creative-kpi em"><span>CAC</span><strong>R$ 96,03</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>6,20x</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="funnel-title">Jornada: clique → compra</div>
+        <div class="funnel-steps funnel-4">
+          <div class="funnel-s"><div class="funnel-s-v">683</div><div class="funnel-s-n">Cliques no anúncio</div></div>
+          <div class="funnel-s"><div class="funnel-s-v">881</div><div class="funnel-s-n">Abriram a LP</div></div>
+          <div class="funnel-s"><div class="funnel-s-v">38</div><div class="funnel-s-n">Iniciaram a compra</div><div class="funnel-s-pct">4,3% da LP</div></div>
+          <div class="funnel-s last"><div class="funnel-s-v">11</div><div class="funnel-s-n">Compraram</div><div class="funnel-s-pct">28,9% dos checkouts</div></div>
+        </div>
+        <div class="funnel-bottom">Faturamento gerado: <strong>R$ 6.552</strong></div>
+      </div>
+
+      <!-- AD 08 Presença Clareza Autoridade -->
+      <div class="creative-block">
+        <div class="creative-grid">
+          <div class="creative-thumb">
+            <img src="sintonia-de-mulher-03-28abr-img/ad08-presenca-clareza.jpg" alt="AD 08 - Presença. Clareza. Autoridade.">
+            <span class="creative-tag t-good">Conversor de Topo</span>
+          </div>
+          <div class="creative-info">
+            <div class="creative-title">"Presença. Clareza. Autoridade." <span class="creative-format">CARD</span></div>
+            <div class="creative-meta">Subido 04/abr · CTA Saiba Mais · 2 ativações em LP Compras</div>
+
+            <div class="creative-kpis">
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 501,98</strong></div>
+              <div class="creative-kpi em"><span>Vendas</span><strong>8</strong></div>
+              <div class="creative-kpi em"><span>CAC</span><strong>R$ 62,75</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>8,50x</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="funnel-title">Jornada: clique → compra</div>
+        <div class="funnel-steps funnel-4">
+          <div class="funnel-s"><div class="funnel-s-v">133</div><div class="funnel-s-n">Cliques no anúncio</div></div>
+          <div class="funnel-s"><div class="funnel-s-v">179</div><div class="funnel-s-n">Abriram a LP</div></div>
+          <div class="funnel-s"><div class="funnel-s-v">16</div><div class="funnel-s-n">Iniciaram a compra</div><div class="funnel-s-pct">8,9% da LP</div></div>
+          <div class="funnel-s last"><div class="funnel-s-v">8</div><div class="funnel-s-n">Compraram</div><div class="funnel-s-pct">50,0% dos checkouts</div></div>
+        </div>
+        <div class="funnel-bottom">Faturamento gerado: <strong>R$ 4.267</strong></div>
+      </div>
+
+      <div class="note">
+        <strong>5 criativos respondem por 67% do faturamento total do período.</strong> O AD 01 "Atenção Manaus" sozinho carregou 37% das vendas - é o vídeo que mais converteu, replicado em 5 ativações entre LP Compras e Bid Cap. AD 14 e AD 13 cobriram a frente de fundo (escassez por tempo + escassez por vagas), AD 12 e AD 08 reforçaram o topo com variações da apresentação da Cíntia. <strong>O resto do faturamento (R$ 28k / 33%) saiu de 30+ outros criativos rodando em paralelo</strong> - confirmando que a operação não depende de um único motor: o pool é diverso e cada peça contribui no perfil em que entrega melhor.
+      </div>
+
+      <h2 style="margin-top: 32px;">Outros Anúncios que Também Venderam</h2>
+      <p>Quatro peças adicionais que entregaram volume relevante no período, com ângulos complementares:</p>
+
+      <!-- AD 21 Cíntia Corte Podcast Oratória -->
+      <div class="creative-block">
+        <div class="creative-grid">
+          <div class="creative-thumb">
+            <img src="sintonia-de-mulher-03-28abr-img/ad21-corte-oratoria.jpg" alt="AD 21 - Cíntia Chagas - Corte Podcast Oratória">
+            <span class="creative-tag t-good">4 Vendas</span>
+          </div>
+          <div class="creative-info">
+            <div class="creative-title">"Cíntia Chagas - Corte Podcast Oratória" <span class="creative-format">REELS</span></div>
+            <div class="creative-meta">Subido 23/abr · ativo · CTA Saiba Mais · LP Compras</div>
+
+            <div class="creative-kpis">
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 252,04</strong></div>
+              <div class="creative-kpi em"><span>Vendas</span><strong>4</strong></div>
+              <div class="creative-kpi em"><span>CAC</span><strong>R$ 63,01</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>7,09x</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="funnel-bottom">Faturamento gerado: <strong>R$ 1.788</strong></div>
+      </div>
+
+      <!-- AD 24 Cíntia em Manaus Corte -->
+      <div class="creative-block">
+        <div class="creative-grid">
+          <div class="creative-thumb">
+            <img src="sintonia-de-mulher-03-28abr-img/ad24-cintia-manaus-corte.jpg" alt="AD 24 - Cíntia em Manaus - Corte Podcast">
+            <span class="creative-tag t-good">3 Vendas</span>
+          </div>
+          <div class="creative-info">
+            <div class="creative-title">"Cíntia em Manaus - Corte Podcast" <span class="creative-format">REELS</span></div>
+            <div class="creative-meta">Subido 25/abr · ativo · CTA Saiba Mais · 4 ativações em LP + Bid Cap</div>
+
+            <div class="creative-kpis">
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 179,46</strong></div>
+              <div class="creative-kpi em"><span>Vendas</span><strong>3</strong></div>
+              <div class="creative-kpi em"><span>CAC</span><strong>R$ 59,82</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>8,87x</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="funnel-bottom">Faturamento gerado: <strong>R$ 1.591</strong></div>
+      </div>
+
+      <!-- AD 22 Oratória Postura Posicionamento -->
+      <div class="creative-block">
+        <div class="creative-grid">
+          <div class="creative-thumb">
+            <img src="sintonia-de-mulher-03-28abr-img/ad22-oratoria-postura.jpg" alt="AD 22 - Oratória. Postura. Posicionamento.">
+            <span class="creative-tag t-good">2 Vendas</span>
+          </div>
+          <div class="creative-info">
+            <div class="creative-title">"Oratória. Postura. Posicionamento." <span class="creative-format">CARD</span></div>
+            <div class="creative-meta">Subido 23/abr · ativo · CTA Saiba Mais · LP Compras</div>
+
+            <div class="creative-kpis">
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 160,54</strong></div>
+              <div class="creative-kpi em"><span>Vendas</span><strong>2</strong></div>
+              <div class="creative-kpi em"><span>CAC</span><strong>R$ 80,27</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>6,80x</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="funnel-bottom">Faturamento gerado: <strong>R$ 1.091</strong></div>
+      </div>
+
+      <!-- AD 05 Apresentação Cíntia Motion -->
+      <div class="creative-block">
+        <div class="creative-grid">
+          <div class="creative-thumb">
+            <img src="sintonia-de-mulher-03-28abr-img/ad05-cintia-motion.jpg" alt="AD 05 - Apresentação Cíntia Chagas Motion">
+            <span class="creative-tag t-good">Eficiência de Topo</span>
+          </div>
+          <div class="creative-info">
+            <div class="creative-title">"Cíntia Chagas Confirmada" - Apresentação Motion <span class="creative-format">REELS</span></div>
+            <div class="creative-meta">Subido 03/abr · CTA Saiba Mais · LP Compras (apresentação institucional do evento)</div>
+
+            <div class="creative-kpis">
+              <div class="creative-kpi full"><span>Invest.</span><strong>R$ 57,64</strong></div>
+              <div class="creative-kpi em"><span>Vendas</span><strong>2</strong></div>
+              <div class="creative-kpi em"><span>CAC</span><strong>R$ 28,82</strong></div>
+              <div class="creative-kpi full"><span>ROAS</span><strong>20,61x</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="funnel-bottom">Faturamento gerado: <strong>R$ 1.188</strong></div>
+      </div>
+
+      <div class="note">
+        Os <strong>4 cortes diferentes da Cíntia</strong> (Atenção Manaus, no carro, Corte Podcast Oratória e Cíntia em Manaus) somam <strong>76 vendas e R$ 39.969</strong> no período - mais da metade de todo o faturamento. Cada corte funcionou como um ângulo diferente da mesma autoridade, evitando saturação e mantendo o público engajado ao longo de quase um mês de operação.
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <span class="conf">Confidencial</span>
+    <span>Gestão de tráfego com operação assistida por IA - 29/04/2026</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
