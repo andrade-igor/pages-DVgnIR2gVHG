@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morada Cafe - Estrategia de Trafego Pago | Maio 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f0f13;
+            --bg-secondary: #1a1a24;
+            --bg-tertiary: #22222e;
+            --bg-card: #1e1e2a;
+            --bg-card-hover: #252535;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6b6b80;
+            --accent: #8b5cf6;
+            --accent-light: #a78bfa;
+            --accent-dim: rgba(139, 92, 246, 0.15);
+            --green: #25d366;
+            --green-dim: rgba(37, 211, 102, 0.12);
+            --green-text: #34e87a;
+            --yellow: #f59e0b;
+            --yellow-dim: rgba(245, 158, 11, 0.12);
+            --yellow-text: #fbbf24;
+            --red: #ef4444;
+            --red-dim: rgba(239, 68, 68, 0.12);
+            --red-text: #f87171;
+            --blue: #3b82f6;
+            --blue-dim: rgba(59, 130, 246, 0.12);
+            --border: #2a2a3a;
+            --border-light: #333346;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .hero {
+            padding: 64px 0 48px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--yellow));
+            border-radius: 2px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-dim);
+            color: var(--accent-light);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Sections */
+        .section {
+            padding: 56px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-header {
+            margin-bottom: 36px;
+        }
+
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 6px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: var(--border-light);
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title .icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .info-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+
+        .info-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .info-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .info-value.accent { color: var(--accent-light); }
+        .info-value.green { color: var(--green-text); }
+        .info-value.yellow { color: var(--yellow-text); }
+
+        .info-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Metric Highlights */
+        .metric-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .metric-number.accent { color: var(--accent-light); }
+        .metric-number.green { color: var(--green-text); }
+        .metric-number.yellow { color: var(--yellow-text); }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .metric-detail {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Structure Block */
+        .structure-block {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin: 24px 0;
+            font-family: 'Inter', monospace;
+        }
+
+        .structure-level {
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .structure-level + .structure-level {
+            padding-left: 28px;
+        }
+
+        .structure-level + .structure-level + .structure-level {
+            padding-left: 56px;
+        }
+
+        .structure-tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+
+        .tag-campaign { background: var(--accent-dim); color: var(--accent-light); }
+        .tag-adset { background: var(--blue-dim); color: var(--blue); }
+        .tag-ads { background: var(--green-dim); color: var(--green-text); }
+
+        .structure-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .structure-detail {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            padding-left: 2px;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .badge-green { background: var(--green-dim); color: var(--green-text); }
+        .badge-red { background: var(--red-dim); color: var(--red-text); }
+        .badge-yellow { background: var(--yellow-dim); color: var(--yellow-text); }
+        .badge-accent { background: var(--accent-dim); color: var(--accent-light); }
+        .badge-blue { background: var(--blue-dim); color: var(--blue); }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        thead th {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 12px 16px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        tbody td {
+            padding: 12px 16px;
+            border-top: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        tbody tr:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .td-number {
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .td-highlight {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        .td-green {
+            color: var(--green-text);
+            font-weight: 600;
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .comparison-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+
+        .comparison-card.winner {
+            border-color: var(--green);
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(37, 211, 102, 0.04) 100%);
+        }
+
+        .comparison-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .comparison-items {
+            list-style: none;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .comparison-items li {
+            padding: 6px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .comparison-items li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .comparison-card.winner .comparison-items li::before {
+            background: var(--green);
+        }
+
+        .comparison-card:not(.winner) .comparison-items li::before {
+            background: var(--red);
+        }
+
+        /* Insight Cards */
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin: 24px 0;
+        }
+
+        .insight-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+        }
+
+        .insight-number {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-light);
+            margin-bottom: 6px;
+        }
+
+        .insight-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* CTA Button */
+        .cta-wrapper {
+            text-align: center;
+            margin: 32px 0;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+        }
+
+        .cta-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        .cta-button svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Spy accordion */
+        .spy-details { margin-top: 36px; }
+        .spy-summary {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 22px 32px;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            border: none;
+            border-radius: var(--radius);
+            color: #000;
+            font-weight: 700;
+            font-size: 17px;
+            cursor: pointer;
+            list-style: none;
+            transition: all 0.25s;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+        }
+        .spy-summary::-webkit-details-marker { display: none; }
+        .spy-summary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.45);
+            filter: brightness(1.08);
+        }
+        .spy-summary svg { color: #000; }
+        .spy-summary .spy-hint {
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.6);
+        }
+        .spy-summary .chevron {
+            margin-left: auto;
+            font-size: 14px;
+            transition: transform 0.3s;
+            color: #000;
+        }
+        .spy-details[open] .spy-summary {
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+        .spy-details[open] .chevron { transform: rotate(180deg); }
+        .spy-iframe-wrap {
+            border: 2px solid rgba(245, 158, 11, 0.4);
+            border-top: none;
+            border-radius: 0 0 var(--radius) var(--radius);
+            overflow: hidden;
+        }
+        .spy-iframe {
+            width: 100%;
+            height: 85vh;
+            border: none;
+            background: #08090d;
+        }
+
+        /* Content Blocks: FAZER MAIS / EVITAR */
+        .content-block {
+            margin-bottom: 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .content-block-header {
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .content-block-header.green-header {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.08) 0%, rgba(37, 211, 102, 0.02) 100%);
+            border-bottom: 1px solid rgba(37, 211, 102, 0.15);
+        }
+
+        .content-block-header.red-header {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(239, 68, 68, 0.02) 100%);
+            border-bottom: 1px solid rgba(239, 68, 68, 0.15);
+        }
+
+        .content-block-number {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .green-header .content-block-number {
+            background: var(--green-dim);
+            color: var(--green-text);
+        }
+
+        .red-header .content-block-number {
+            background: var(--red-dim);
+            color: var(--red-text);
+        }
+
+        .content-block-title {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .content-block-body {
+            padding: 16px 20px;
+            background: var(--bg-card);
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .content-block-body strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Feed Stats */
+        .feed-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin: 24px 0;
+        }
+
+        .feed-stat {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            text-align: center;
+        }
+
+        .feed-stat-number {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent-light);
+        }
+
+        .feed-stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Ranked List */
+        .ranked-list {
+            margin: 20px 0;
+        }
+
+        .ranked-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ranked-item:last-child {
+            border-bottom: none;
+        }
+
+        .rank-number {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-dim);
+            color: var(--accent-light);
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .rank-number.gold {
+            background: var(--yellow-dim);
+            color: var(--yellow-text);
+        }
+
+        .ranked-content {
+            flex: 1;
+        }
+
+        .ranked-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .ranked-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .ranked-stats {
+            display: flex;
+            gap: 16px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+            align-self: center;
+        }
+
+        .ranked-stats span {
+            font-weight: 600;
+        }
+
+        /* Diagnosis */
+        .diagnosis-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .diagnosis-list li {
+            padding: 10px 0 10px 24px;
+            position: relative;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(42, 42, 58, 0.5);
+        }
+
+        .diagnosis-list li:last-child {
+            border-bottom: none;
+        }
+
+        .diagnosis-list li::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 16px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .diagnosis-list li.positive::before { background: var(--green); }
+        .diagnosis-list li.negative::before { background: var(--red); }
+        .diagnosis-list li.neutral::before { background: var(--yellow); }
+
+        .diagnosis-list li strong {
+            color: var(--text-primary);
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            margin: 24px 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: border-color 0.2s;
+        }
+
+        .checklist li:hover {
+            border-color: var(--border-light);
+        }
+
+        .checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--border-light);
+            border-radius: 6px;
+            flex-shrink: 0;
+            margin-top: 1px;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .checklist li:hover .checkbox {
+            border-color: var(--accent);
+        }
+
+        .check-text {
+            flex: 1;
+        }
+
+        .check-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .check-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+            margin: 8px 0;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 0.3px;
+        }
+
+        .footer-text span {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-light);
+            border-radius: 3px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 30px; }
+            .info-grid { grid-template-columns: repeat(2, 1fr); }
+            .metric-row { grid-template-columns: repeat(3, 1fr); }
+            .comparison-grid { grid-template-columns: 1fr 1fr; }
+            .insight-grid { grid-template-columns: repeat(2, 1fr); }
+            .feed-stats { grid-template-columns: repeat(2, 1fr); }
+            .ranked-item { flex-direction: column; gap: 8px; }
+            .ranked-stats { align-self: flex-start; }
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 0 16px; }
+            .hero { padding: 40px 0 32px; }
+            .hero h1 { font-size: 24px; }
+            .section { padding: 40px 0; }
+            .section-title { font-size: 22px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .metric-row { grid-template-columns: 1fr; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .insight-grid { grid-template-columns: 1fr; }
+            .feed-stats { grid-template-columns: repeat(2, 1fr); }
+            .info-value { font-size: 16px; }
+            .metric-number { font-size: 24px; }
+            .content-block-body { padding: 14px 16px; }
+            table { font-size: 12px; }
+            thead th, tbody td { padding: 10px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                Briefing Estrategico
+            </div>
+            <h1>Morada Cafe</h1>
+            <p>Estrategia de Trafego Pago - Briefing pro Time | Maio 2026</p>
+        </div>
+    </header>
+
+    <!-- SECAO 1: ESTRATEGIA -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2 class="section-title">Estrategia de Trafego Pago</h2>
+                <p class="section-subtitle">Campanha de delivery via WhatsApp com dados reais da campanha Dia das Maes</p>
+            </div>
+
+            <!-- Infos basicas -->
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Objetivo</div>
+                    <div class="info-value green">Pedidos de delivery</div>
+                    <div class="info-note">Via WhatsApp (Click-to-WhatsApp)</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Budget mensal</div>
+                    <div class="info-value yellow">R$ 1.500/mes</div>
+                    <div class="info-note">R$ 50/dia</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Plataforma</div>
+                    <div class="info-value accent">Meta Ads</div>
+                    <div class="info-note">Instagram only - Facebook cortado</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Por que so Instagram?</div>
+                    <div class="info-value" style="font-size: 14px; line-height: 1.5;">Custo por conversa no IG: R$ 4,16 vs FB: R$ 6,15</div>
+                    <div class="info-note">Analise de 12 meses confirmou IG 32% mais barato</div>
+                </div>
+            </div>
+
+            <!-- Estrutura da campanha -->
+            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">Estrutura da Campanha</h3>
+            <div class="structure-block">
+                <div class="structure-level">
+                    <span class="structure-tag tag-campaign">Campanha</span>
+                    <span class="structure-text">1 campanha - R$ 50/dia (orcamento automatico)</span>
+                    <div class="structure-detail">Objetivo: gerar conversas no WhatsApp</div>
+                </div>
+                <div class="structure-level">
+                    <span class="structure-tag tag-adset">Segmentacao</span>
+                    <span class="structure-text">Bairros AB Centro-Sul de Manaus</span>
+                    <div class="structure-detail">Adrianopolis, Aleixo, N. Sra. das Gracas, Vieiralves, Parque 10, Flores, Chapada, Dom Pedro, Ponta Negra</div>
+                    <div class="structure-detail">Idade 25-54 | Placements: IG Feed + Stories + Reels</div>
+                </div>
+                <div class="structure-level">
+                    <span class="structure-tag tag-ads">Ads</span>
+                    <span class="structure-text">4-6 ads ativos</span>
+                    <div class="structure-detail">Mix de formatos testando cards, videos e food porn</div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- Resultados Dia das Maes -->
+            <h3 style="font-size: 16px; font-weight: 600; margin: 28px 0 16px; color: var(--text-primary);">O que ja sabemos que funciona</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Dados reais da campanha Dia das Maes (07-10/mai) - 4 dias, R$ 161 de spend</p>
+
+            <div class="metric-row">
+                <div class="metric-card">
+                    <div class="metric-number green">R$ 2,64</div>
+                    <div class="metric-label">Custo por conversa</div>
+                    <div class="metric-detail">Alvo era R$ 3,00</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number accent">61</div>
+                    <div class="metric-label">Conversas iniciadas</div>
+                    <div class="metric-detail">Em 4 dias</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-number yellow">88%</div>
+                    <div class="metric-label">Feed + Stories</div>
+                    <div class="metric-detail">Concentracao natural do spend</div>
+                </div>
+            </div>
+
+            <!-- Tom Afetivo vs Informativo -->
+            <div class="comparison-grid">
+                <div class="comparison-card winner">
+                    <div class="comparison-label">Tom Afetivo (vencedor)</div>
+                    <div style="font-size: 24px; font-weight: 800; color: var(--green-text); margin-bottom: 8px;">R$ 2,24 por conversa</div>
+                    <ul class="comparison-items">
+                        <li>8,7x mais conversas que informativo</li>
+                        <li>Card emocional sem preco: R$ 1,18 por conversa</li>
+                        <li>Video "Preparando presente": R$ 2,81 por conversa</li>
+                    </ul>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-label">Tom Informativo</div>
+                    <div style="font-size: 24px; font-weight: 800; color: var(--red-text); margin-bottom: 8px;">R$ 5,99 por conversa</div>
+                    <ul class="comparison-items">
+                        <li>Custo 2,7x maior por conversa</li>
+                        <li>Descritivo sem emocao performa pior</li>
+                        <li>Publico nao responde a tom comercial</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card" style="background: var(--bg-secondary);">
+                <div class="card-title" style="color: var(--yellow-text);">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    Perfil do publico que mais converte
+                </div>
+                <p style="font-size: 14px; color: var(--text-secondary);">
+                    <strong style="color: var(--text-primary);">Homens 35-44</strong> lideraram com 25% das conversas. <strong style="color: var(--text-primary);">Mulheres 25-34</strong> em segundo com 18%. Sweet spot confirmado: 25-44 = 66% de todas as conversas do teste.
+                </p>
+            </div>
+
+            <div class="section-divider"></div>
+
+        </div>
+    </section>
+
+    <!-- SECAO 2: ESPIONAGEM -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2 class="section-title">Espionagem do Concorrente</h2>
+                <p class="section-subtitle">Art Cafe Manaus - 6 insights principais da analise de Ads Library</p>
+            </div>
+
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <div class="insight-number">01</div>
+                    <div class="insight-text"><strong>100% video.</strong> Nenhum card, nenhuma imagem estatica. Aposta total em food porn filmado.</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-number">02</div>
+                    <div class="insight-text"><strong>1 influencer so.</strong> Dependencia de um unico rosto para toda comunicacao de ads.</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-number">03</div>
+                    <div class="insight-text"><strong>Copy repetitiva.</strong> 7 de 11 ads ativos reutilizam a mesma copy. Zero variacao de mensagem.</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-number">04</div>
+                    <div class="insight-text"><strong>Migrando pra WhatsApp.</strong> Ads mais recentes ja direcionam pra WPP, abandonando Neemo.</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-number">05</div>
+                    <div class="insight-text"><strong>Food porn e o ativo principal.</strong> Close de pratos, ingredientes, montagem. Funciona e eles sabem.</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-number">06</div>
+                    <div class="insight-text"><strong>Budget estimado: R$ 1.500-3.000/mes.</strong> Volume de ads e tempo ativo sugerem investimento nessa faixa.</div>
+                </div>
+            </div>
+
+            <details class="spy-details">
+                <summary class="spy-summary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;flex-shrink:0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    <span style="position:relative;z-index:1;display:flex;flex-direction:column;gap:4px">
+                        <span>Ver analise completa dos 11 ads do concorrente</span>
+                        <span class="spy-hint">Toque para expandir - 11 videos com roteiro, argumentos e oportunidades</span>
+                    </span>
+                    <span class="chevron" style="position:relative;z-index:1">&#9660;</span>
+                </summary>
+                <div class="spy-iframe-wrap">
+                    <iframe src="report.html" class="spy-iframe" loading="lazy"></iframe>
+                </div>
+            </details>
+
+            <h3 style="font-size: 16px; font-weight: 600; margin: 36px 0 16px; color: var(--text-primary);">Onde a Morada ganha do Art Cafe</h3>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">Com base na analise acima, esses sao os pontos onde nossa estrategia ja supera o concorrente:</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ponto</th>
+                            <th>Morada Cafe</th>
+                            <th>Art Cafe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Destino</td>
+                            <td class="td-green">WhatsApp direto</td>
+                            <td>Neemo - link externo com friccao</td>
+                        </tr>
+                        <tr>
+                            <td>Tom</td>
+                            <td class="td-green">Afetivo (custo 2,7x menor)</td>
+                            <td>Descritivo generico</td>
+                        </tr>
+                        <tr>
+                            <td>Preco</td>
+                            <td class="td-green">Mostra preco/combo</td>
+                            <td>Nenhum dos 11 ads mostra preco</td>
+                        </tr>
+                        <tr>
+                            <td>Copy</td>
+                            <td class="td-green">Personalizada por ad</td>
+                            <td>Mesma copy em 7 de 11 ads</td>
+                        </tr>
+                        <tr>
+                            <td>Formatos</td>
+                            <td class="td-green">Mix: cards + videos</td>
+                            <td>100% video</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECAO 3: ANALISE DO FEED -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2 class="section-title">Analise do Feed da Morada Cafe</h2>
+                <p class="section-subtitle">30 posts organicos recentes (marco-maio 2026) - @moradacafemanaus</p>
+            </div>
+
+            <div class="feed-stats">
+                <div class="feed-stat">
+                    <div class="feed-stat-number">30</div>
+                    <div class="feed-stat-label">Posts analisados</div>
+                </div>
+                <div class="feed-stat">
+                    <div class="feed-stat-number" style="color: var(--yellow-text);">38.7k</div>
+                    <div class="feed-stat-label">Seguidores</div>
+                </div>
+                <div class="feed-stat">
+                    <div class="feed-stat-number" style="color: var(--green-text);">~4/sem</div>
+                    <div class="feed-stat-label">Frequencia</div>
+                </div>
+                <div class="feed-stat">
+                    <div class="feed-stat-number">73/27</div>
+                    <div class="feed-stat-label">% Imagem / Video</div>
+                </div>
+            </div>
+
+            <!-- Engajamento por tipo -->
+            <h3 style="font-size: 16px; font-weight: 600; margin: 28px 0 16px; color: var(--text-primary);">Engajamento por tipo de conteudo</h3>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Posts</th>
+                            <th>Likes (media)</th>
+                            <th>Comentarios (media)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge badge-accent">Video/Reel</span></td>
+                            <td class="td-number">8</td>
+                            <td class="td-highlight">62 likes/post</td>
+                            <td class="td-highlight">5,8 comments/post</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-blue">Imagem</span></td>
+                            <td class="td-number">22</td>
+                            <td>14 likes/post</td>
+                            <td>0,5 comments/post</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Top 5 posts -->
+            <h3 style="font-size: 16px; font-weight: 600; margin: 28px 0 16px; color: var(--text-primary);">Top 5 posts por engajamento</h3>
+
+            <div class="ranked-list">
+                <div class="ranked-item">
+                    <div class="rank-number gold">1</div>
+                    <div class="ranked-content">
+                        <div class="ranked-title">Oficina Pintura Dia das Maes</div>
+                        <div class="ranked-meta"><span class="badge badge-accent" style="font-size: 10px;">Video</span></div>
+                    </div>
+                    <div class="ranked-stats">
+                        <span style="color: var(--accent-light);">217 likes</span>
+                        <span style="color: var(--yellow-text);">24 comments</span>
+                    </div>
+                </div>
+                <div class="ranked-item">
+                    <div class="rank-number gold">2</div>
+                    <div class="ranked-content">
+                        <div class="ranked-title">Cesta Cafe da Manha Dia das Maes</div>
+                        <div class="ranked-meta"><span class="badge badge-accent" style="font-size: 10px;">Video</span></div>
+                    </div>
+                    <div class="ranked-stats">
+                        <span style="color: var(--accent-light);">123 likes</span>
+                        <span style="color: var(--yellow-text);">3 comments</span>
+                    </div>
+                </div>
+                <div class="ranked-item">
+                    <div class="rank-number">3</div>
+                    <div class="ranked-content">
+                        <div class="ranked-title">"Se sentir em casa" + equipe</div>
+                        <div class="ranked-meta"><span class="badge badge-blue" style="font-size: 10px;">Imagem</span></div>
+                    </div>
+                    <div class="ranked-stats">
+                        <span style="color: var(--accent-light);">51 likes</span>
+                        <span style="color: var(--yellow-text);">6 comments</span>
+                    </div>
+                </div>
+                <div class="ranked-item">
+                    <div class="rank-number">4</div>
+                    <div class="ranked-content">
+                        <div class="ranked-title">Dia do Trabalhador</div>
+                        <div class="ranked-meta"><span class="badge badge-accent" style="font-size: 10px;">Video</span></div>
+                    </div>
+                    <div class="ranked-stats">
+                        <span style="color: var(--accent-light);">42 likes</span>
+                        <span style="color: var(--yellow-text);">2 comments</span>
+                    </div>
+                </div>
+                <div class="ranked-item">
+                    <div class="rank-number">5</div>
+                    <div class="ranked-content">
+                        <div class="ranked-title">"Variedade que agrada" tapioca</div>
+                        <div class="ranked-meta"><span class="badge badge-accent" style="font-size: 10px;">Video</span></div>
+                    </div>
+                    <div class="ranked-stats">
+                        <span style="color: var(--accent-light);">38 likes</span>
+                        <span style="color: var(--yellow-text);">1 comment</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diagnostico -->
+            <h3 style="font-size: 16px; font-weight: 600; margin: 28px 0 16px; color: var(--text-primary);">Diagnostico</h3>
+
+            <ul class="diagnosis-list">
+                <li class="positive"><strong>Videos geram 4,4x mais likes e 11,6x mais comentarios</strong> que imagens. O formato de video e claramente superior em engajamento.</li>
+                <li class="positive"><strong>Conteudo com PESSOAS</strong> (equipe, familia, preparacao) engaja muito mais que fotos de produto isoladas. Post "se sentir em casa" com a equipe = 3x a media de imagens.</li>
+                <li class="negative"><strong>Muitas imagens genericas com copy institucional</strong> ("Seu cafe merece...", "A pausa perfeita...") gerando apenas 7-15 likes. Conteudo de preenchimento que nao converte.</li>
+                <li class="negative"><strong>ZERO conteudo focado em delivery.</strong> Tudo e "venha nos visitar". Se o objetivo e delivery, o feed precisa falar de delivery.</li>
+                <li class="negative"><strong>ZERO mencao a preco ou combo.</strong> O publico nao sabe quanto custa sem perguntar.</li>
+                <li class="positive"><strong>Highlights bem organizados</strong> (Horario, Endereco, Eventos, Reunioes, Cestas, Espaco Pet, Personagens) mostram boa estrutura de marca. Base solida pra construir em cima.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SECAO 4: BRIEFING PRO TIME -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2 class="section-title">Briefing pro Time: O Que Produzir</h2>
+                <p class="section-subtitle">Orientacoes praticas baseadas nos dados de performance e analise do feed</p>
+            </div>
+
+            <!-- FAZER MAIS -->
+            <div style="margin-bottom: 36px;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                    <span class="badge badge-green" style="font-size: 13px; padding: 6px 14px;">FAZER MAIS</span>
+                    <span style="font-size: 13px; color: var(--text-muted);">O que converte</span>
+                </div>
+
+                <div class="content-block">
+                    <div class="content-block-header green-header">
+                        <div class="content-block-number">1</div>
+                        <div class="content-block-title">Food porn em close (15-20s)</div>
+                    </div>
+                    <div class="content-block-body">
+                        Close de tapioca sendo cortada, cuscuz na colher, prato sendo montado. <strong>Celular bom + luz natural + mesa bonita.</strong> O concorrente vive disso e funciona. Pode usar como Reel organico E como ad.
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <div class="content-block-header green-header">
+                        <div class="content-block-number">2</div>
+                        <div class="content-block-title">Videos de preparacao afetivos (20-30s)</div>
+                    </div>
+                    <div class="content-block-body">
+                        Mostrar a equipe preparando o pedido com carinho, embalando pra delivery, escrevendo bilhete. Tom: <strong>"seu pedido ta sendo preparado com carinho".</strong> O AD 04 do Dia das Maes ("Preparando presente") foi o video campeao com custo de R$ 2,81 por conversa.
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <div class="content-block-header green-header">
+                        <div class="content-block-number">3</div>
+                        <div class="content-block-title">Cards de produto com preco (imagem estatica)</div>
+                    </div>
+                    <div class="content-block-body">
+                        Foto bonita do prato + nome + preco + "Peca pelo WhatsApp". <strong>O card emocional do Dia das Maes custou apenas R$ 1,18 por conversa</strong> - cards funcionam quando bem feitos. O concorrente nao faz isso - vantagem competitiva direta.
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <div class="content-block-header green-header">
+                        <div class="content-block-number">4</div>
+                        <div class="content-block-title">Conteudo com pessoas reais</div>
+                    </div>
+                    <div class="content-block-body">
+                        Equipe, clientes (com permissao), bastidores. O post "se sentir em casa" com foto da equipe teve <strong>51 likes - 3x mais que a media de imagens.</strong> Humaniza a marca e gera conexao emocional.
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <div class="content-block-header green-header">
+                        <div class="content-block-number">5</div>
+                        <div class="content-block-title">Combos de delivery</div>
+                    </div>
+                    <div class="content-block-body">
+                        "Combo cafe da manha R$ XX: cafe + tapioca + suco" ou "Combo almoco executivo delivery". <strong>Urgencia: "Peca ate 10h30 pro almoco".</strong> Facilita a decisao do cliente e aumenta ticket medio.
+                    </div>
+                </div>
+            </div>
+
+            <!-- EVITAR -->
+            <div style="margin-bottom: 36px;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                    <span class="badge badge-red" style="font-size: 13px; padding: 6px 14px;">EVITAR</span>
+                    <span style="font-size: 13px; color: var(--text-muted);">O que nao converte</span>
+                </div>
+
+                <div class="content-block">
+                    <div class="content-block-header red-header">
+                        <div class="content-block-number">1</div>
+                        <div class="content-block-title">Fotos genericas com copy institucional</div>
+                    </div>
+                    <div class="content-block-body">
+                        "Seu cafe merece mais...", "A pausa perfeita..." geram <strong>7-15 likes e zero conversao.</strong> E conteudo de preenchimento, nao de resultado. Bonito no feed, inutil pra vender.
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <div class="content-block-header red-header">
+                        <div class="content-block-number">2</div>
+                        <div class="content-block-title">Posts de data comemorativa sem CTA</div>
+                    </div>
+                    <div class="content-block-body">
+                        Pascoa, Dia do Consumidor, Dia do Cafe ficam bonitos no feed mas nao vendem delivery. Se for data comemorativa, <strong>vincular com oferta</strong> ("No Dia do Cuscuz, combo cuscuz + cafe R$ XX pelo delivery").
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <div class="content-block-header red-header">
+                        <div class="content-block-number">3</div>
+                        <div class="content-block-title">Imagem estatica SEM informacao</div>
+                    </div>
+                    <div class="content-block-body">
+                        Foto do prato sem nome, sem preco, sem CTA. O espectador ve, acha bonito e passa. <strong>Precisa saber O QUE e, QUANTO custa e COMO pedir.</strong>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <div class="content-block-header red-header">
+                        <div class="content-block-number">4</div>
+                        <div class="content-block-title">Copy reutilizada</div>
+                    </div>
+                    <div class="content-block-body">
+                        Nao repetir a mesma copy em varios ads/posts. <strong>Erro do concorrente: 7 de 11 ads com a mesma copy.</strong> Cada peca precisa ter mensagem propria pra testar o que funciona e evitar fadiga.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabela de referencias de formato -->
+            <h3 style="font-size: 16px; font-weight: 600; margin: 28px 0 16px; color: var(--text-primary);">Referencias de formato</h3>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Formato</th>
+                            <th>Duracao</th>
+                            <th>Exemplo</th>
+                            <th>Pra que serve</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Food porn close</strong></td>
+                            <td class="td-number">15-20s</td>
+                            <td>Close da tapioca + texto "Peca pelo delivery"</td>
+                            <td><span class="badge badge-green">Ad principal WhatsApp</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Preparacao afetiva</strong></td>
+                            <td class="td-number">20-30s</td>
+                            <td>Equipe montando combo + embalando</td>
+                            <td><span class="badge badge-green">Ad emocional WhatsApp</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Card produto + preco</strong></td>
+                            <td class="td-number">Estatico</td>
+                            <td>Foto + nome + R$ XX + WhatsApp</td>
+                            <td><span class="badge badge-green">Ad direto WhatsApp</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bastidores/equipe</strong></td>
+                            <td class="td-number">15-30s</td>
+                            <td>Cozinha, preparo, equipe sorrindo</td>
+                            <td><span class="badge badge-accent">Organico + ad</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Combo do dia</strong></td>
+                            <td class="td-number">Estatico</td>
+                            <td>"Combo segunda: X + Y por R$ XX"</td>
+                            <td><span class="badge badge-yellow">Stories + ad</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">powered by <span>Eva</span> - Agente de Performance | Maio 2026</p>
+        </div>
+    </footer>
+
+</body>
+</html>
