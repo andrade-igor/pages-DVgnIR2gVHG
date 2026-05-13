@@ -33,11 +33,13 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Include DSX2026 static page in artifact
+      - name: Include static pages in artifact
         run: |
           mkdir -p dist/assets
           cp -f DSX2026.html dist/DSX2026.html
           cp -rf assets/* dist/assets/
+          for f in *.html; do [ "$f" != "DSX2026.html" ] && cp -f "$f" dist/ || true; done
+          for d in *-img morada-cafe-briefing dsx-2026-lp-vendas; do [ -d "$d" ] && cp -rf "$d" dist/ || true; done
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
