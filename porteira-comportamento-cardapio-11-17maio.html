@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comportamento no Cardápio - Porteira - 11 a 17 de Maio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --accent: #e02020;
+    --gold: #c49a2e;
+    --gold-light: #f5e6c4;
+    --border: #e5e5e5;
+    --bg: #ffffff;
+    --bg-page: #f3f3f3;
+    --text: #1a1a1a;
+    --text-2: #555;
+    --text-3: #999;
+    --green: #0f7b3f;
+    --green-bg: #eefbf2;
+    --red: #c0392b;
+    --red-bg: #fbeeee;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.55;
+    background: var(--bg-page);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 980px;
+    margin: 24px auto;
+    background: var(--bg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  .header {
+    padding: 28px 36px 24px;
+    border-bottom: 3px solid var(--accent);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .header h1 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+
+  .header .sub {
+    font-size: 12px;
+    color: var(--text-2);
+    font-weight: 400;
+    margin-top: 1px;
+  }
+
+  .header-meta {
+    text-align: right;
+    font-size: 11px;
+    color: var(--text-3);
+    line-height: 1.8;
+  }
+
+  .header-meta strong { color: var(--text-2); font-weight: 600; }
+
+  .summary {
+    padding: 24px 36px;
+    background: #1a1a1a;
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .summary strong { color: var(--gold-light); }
+
+  .body { padding: 0 36px; }
+
+  .s {
+    padding: 26px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .s:last-child { border-bottom: none; }
+
+  .s-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-3);
+    margin-bottom: 4px;
+  }
+
+  .s h2 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .s p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--text-2);
+    margin-bottom: 10px;
+  }
+
+  /* Comparison cards */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 14px 0 8px;
+  }
+
+  .compare-block {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 18px 20px;
+  }
+
+  .compare-block.pre { background: #fafafa; }
+  .compare-block.pos { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+  .compare-block.pos .cb-label { color: rgba(255,255,255,0.55); }
+  .compare-block.pos .cb-title { color: #fff; }
+  .compare-block.pos .cb-sub { color: rgba(255,255,255,0.65); }
+
+  .cb-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-3);
+    margin-bottom: 4px;
+  }
+
+  .cb-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+    letter-spacing: -0.01em;
+  }
+
+  .cb-sub {
+    font-size: 11px;
+    color: var(--text-3);
+    margin-bottom: 14px;
+  }
+
+  .cb-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cb-stat-label {
+    font-size: 10px;
+    color: var(--text-3);
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .compare-block.pos .cb-stat-label { color: rgba(255,255,255,0.5); }
+
+  .cb-stat-value {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .compare-block.pos .cb-stat-value { color: #fff; }
+
+  /* Delta strip */
+  .delta-strip {
+    margin: 16px 0 0;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .delta-row {
+    display: grid;
+    grid-template-columns: 1.6fr 0.9fr 0.9fr 0.9fr;
+    align-items: center;
+    padding: 11px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 12px;
+    gap: 8px;
+  }
+
+  .delta-row:last-child { border-bottom: none; }
+
+  .delta-row.head {
+    background: #fafafa;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    font-weight: 700;
+    color: var(--text-3);
+    padding: 10px 16px;
+  }
+
+  .delta-row .name { font-weight: 600; color: var(--text); }
+  .delta-row .name .sub {
+    display: block;
+    font-size: 10px;
+    color: var(--text-3);
+    font-weight: 400;
+    margin-top: 1px;
+  }
+
+  .delta-row .v {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--text-2);
+  }
+
+  .delta-row .v.dlt {
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  /* Chart cards */
+  .chart-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 18px 20px 16px;
+    margin: 14px 0;
+    background: #fff;
+  }
+
+  .chart-card .ct {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+
+  .chart-card .cs {
+    font-size: 11px;
+    color: var(--text-3);
+    margin-bottom: 12px;
+  }
+
+  .chart-wrap {
+    position: relative;
+    height: 320px;
+  }
+
+  .chart-wrap.tall { height: 380px; }
+  .chart-wrap.small { height: 200px; }
+
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 14px 0;
+  }
+
+  .charts-grid .chart-card { margin: 0; }
+
+  /* Note */
+  .note {
+    background: #fafafa;
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--text-2);
+    margin: 14px 0 4px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .note strong { color: var(--text); }
+
+  /* Footer */
+  .footer {
+    padding: 16px 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: var(--text-3);
+  }
+
+  .footer .conf {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    font-size: 9px;
+  }
+
+  /* Responsive */
+  @media (max-width: 760px) {
+    .header { flex-direction: column; gap: 10px; padding: 20px 18px 16px; align-items: flex-start; }
+    .header-meta { text-align: left; }
+    .header h1 { font-size: 16px; }
+    .body, .footer { padding-left: 18px; padding-right: 18px; }
+    .summary { padding: 20px 18px; font-size: 13px; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .charts-grid { grid-template-columns: 1fr; }
+    .chart-wrap { height: 280px; }
+    .chart-wrap.tall { height: 320px; }
+    .footer { flex-direction: column; gap: 6px; align-items: flex-start; }
+    .delta-row { grid-template-columns: 1.4fr 0.7fr 0.7fr 0.7fr; gap: 4px; padding: 10px 12px; }
+    .delta-row.head { padding: 8px 12px; }
+    .cb-stats { grid-template-columns: 1fr 1fr; }
+    .cb-stat-value { font-size: 15px; }
+  }
+
+  @media (max-width: 480px) {
+    .header h1 { font-size: 15px; }
+    .cb-stats { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div style="text-align:center;padding:24px 36px 0;">
+    <img src="porteira-comportamento-cardapio-11-17maio-img/logo-porteira.png" alt="Porteira" style="width:180px;display:inline-block;">
+  </div>
+  <header class="header" style="padding-top:12px;">
+    <div>
+      <h1>Comportamento no Cardápio - Antes e Depois das Campanhas</h1>
+      <div class="sub">Por Igor Andrade</div>
+    </div>
+    <div class="header-meta">
+      <strong>Período:</strong> 11 a 17 de maio de 2026<br>
+      <strong>Fonte:</strong> Google Analytics 4<br>
+      <strong>Marco:</strong> 15/05 (sexta) - subida dos Combos Delivery
+    </div>
+  </header>
+
+  <div class="summary">
+    Subi as campanhas de Combos Delivery na <strong>sexta-feira 15/05</strong>. Pra entender se o esforço virou comportamento real no site, mapeei a volumetria de cada etapa do funil no cardápio web entre <strong>11/05 e 17/05</strong>. O recorte é antes (seg-qui) vs durante (sex-dom). O ganho não veio só de mais sessão - veio do usuário <strong>descendo mais fundo no funil</strong>: quem entrou no site nos dias de campanha tinha intenção de compra muito maior do que quem entrou nos dias anteriores.
+  </div>
+
+  <div class="body">
+
+<!-- 01 COMPARATIVO -->
+    <div class="s">
+      <div class="s-label">01</div>
+      <h2>Antes vs Durante - Média diária de cada etapa</h2>
+      <p>Pré-campanha = média dos 4 dias seg-qui (11-14/05). Durante campanha = média dos 3 dias sex-dom (15-17/05).</p>
+
+      <div class="compare-grid">
+        <div class="compare-block pre">
+          <div class="cb-label">Pré-campanha</div>
+          <div class="cb-title">Segunda a Quinta</div>
+          <div class="cb-sub">média diária - 4 dias</div>
+          <div class="cb-stats">
+            <div>
+              <div class="cb-stat-label">Sessões</div>
+              <div class="cb-stat-value">401</div>
+            </div>
+            <div>
+              <div class="cb-stat-label">Compras</div>
+              <div class="cb-stat-value">12,5</div>
+            </div>
+            <div>
+              <div class="cb-stat-label">Faturamento</div>
+              <div class="cb-stat-value">R$ 1.406</div>
+            </div>
+            <div>
+              <div class="cb-stat-label">Tx Compra</div>
+              <div class="cb-stat-value">3,1%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="compare-block pos">
+          <div class="cb-label">Durante campanha</div>
+          <div class="cb-title">Sexta a Domingo</div>
+          <div class="cb-sub">média diária - 3 dias</div>
+          <div class="cb-stats">
+            <div>
+              <div class="cb-stat-label">Sessões</div>
+              <div class="cb-stat-value">733</div>
+            </div>
+            <div>
+              <div class="cb-stat-label">Compras</div>
+              <div class="cb-stat-value">51,7</div>
+            </div>
+            <div>
+              <div class="cb-stat-label">Faturamento</div>
+              <div class="cb-stat-value">R$ 6.882</div>
+            </div>
+            <div>
+              <div class="cb-stat-label">Tx Compra</div>
+              <div class="cb-stat-value">7,1%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="delta-strip">
+        <div class="delta-row head">
+          <div>Etapa do Funil</div>
+          <div style="text-align:right">Pré (média/dia)</div>
+          <div style="text-align:right">Durante (média/dia)</div>
+          <div style="text-align:right">Crescimento</div>
+        </div>
+        <div class="delta-row">
+          <div class="name">Sessões<span class="sub">entradas no site</span></div>
+          <div class="v">401</div>
+          <div class="v">733</div>
+          <div class="v dlt">+83%</div>
+        </div>
+        <div class="delta-row">
+          <div class="name">Foram pro Cardápio<span class="sub">view_company_details</span></div>
+          <div class="v">131</div>
+          <div class="v">371</div>
+          <div class="v dlt">+183%</div>
+        </div>
+        <div class="delta-row">
+          <div class="name">Visualizaram Item<span class="sub">view_item</span></div>
+          <div class="v">64</div>
+          <div class="v">223</div>
+          <div class="v dlt">+248%</div>
+        </div>
+        <div class="delta-row">
+          <div class="name">Adicionaram ao Carrinho<span class="sub">add_to_cart</span></div>
+          <div class="v">35</div>
+          <div class="v">131</div>
+          <div class="v dlt">+278%</div>
+        </div>
+        <div class="delta-row">
+          <div class="name">Iniciaram Checkout<span class="sub">begin_checkout</span></div>
+          <div class="v">22</div>
+          <div class="v">87</div>
+          <div class="v dlt">+291%</div>
+        </div>
+        <div class="delta-row">
+          <div class="name">Compras<span class="sub">purchase</span></div>
+          <div class="v">12,5</div>
+          <div class="v">51,7</div>
+          <div class="v dlt">+313%</div>
+        </div>
+        <div class="delta-row">
+          <div class="name">Faturamento<span class="sub">purchase revenue</span></div>
+          <div class="v">R$ 1.406</div>
+          <div class="v">R$ 6.882</div>
+          <div class="v dlt">+389%</div>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>O crescimento se amplifica conforme desce o funil.</strong> Sessões +83%, mas compras +313% e faturamento +389%. Isso é assinatura de tráfego com mais intenção, não só mais volume. Se fosse só audiência ampliada, todos os degraus cresceriam proporcionalmente. Aqui, cada etapa do funil cresce mais que a anterior.
+      </div>
+    </div>
+
+<!-- 02 LINHA DO TEMPO -->
+    <div class="s">
+      <div class="s-label">02</div>
+      <h2>Linha do Tempo - O Salto Visível a Partir de Sexta</h2>
+      <p>Volume diário de cada etapa do funil entre 11/05 e 17/05. A linha vertical marca o início das campanhas Combos Delivery (sexta 15/05).</p>
+
+      <div class="chart-card">
+        <div class="ct">Sessões e Cardápio - Topo do Funil</div>
+        <div class="cs">Quantas pessoas entraram no site e quantas chegaram ao cardápio</div>
+        <div class="chart-wrap tall">
+          <canvas id="chartTopo"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="ct">Visualização de Produto, Carrinho, Checkout e Compra - Funil de Decisão</div>
+        <div class="cs">Como o comportamento de compra evoluiu dia a dia</div>
+        <div class="chart-wrap tall">
+          <canvas id="chartFunil"></canvas>
+        </div>
+      </div>
+    </div>
+
+<!-- 03 INDIVIDUAIS -->
+    <div class="s">
+      <div class="s-label">03</div>
+      <h2>Cada Etapa Isolada</h2>
+      <p>Cada gráfico mostra o salto pré e pós-sexta para uma etapa do funil. A linha tracejada marca a média da pré-campanha.</p>
+
+      <div class="charts-grid">
+        <div class="chart-card">
+          <div class="ct">Foram pro Cardápio</div>
+          <div class="cs">view_company_details - escolheu unidade</div>
+          <div class="chart-wrap small"><canvas id="chartCardapio"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="ct">Visualizou Produto</div>
+          <div class="cs">view_item - abriu um item específico</div>
+          <div class="chart-wrap small"><canvas id="chartItem"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="ct">Adicionou ao Carrinho</div>
+          <div class="cs">add_to_cart</div>
+          <div class="chart-wrap small"><canvas id="chartCarrinho"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="ct">Iniciou Checkout</div>
+          <div class="cs">begin_checkout</div>
+          <div class="chart-wrap small"><canvas id="chartCheckout"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+<!-- 04 FATURAMENTO -->
+    <div class="s">
+      <div class="s-label">04</div>
+      <h2>O Que Isso Virou em Caixa</h2>
+      <p>Compras finalizadas e faturamento diário, com a virada de sexta destacada.</p>
+
+      <div class="chart-card">
+        <div class="ct">Compras x Faturamento</div>
+        <div class="cs">Barras = compras finalizadas (eixo esquerdo). Linha = faturamento em R$ (eixo direito).</div>
+        <div class="chart-wrap tall">
+          <canvas id="chartRevenue"></canvas>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div>Porteira - Comportamento no Cardápio - 11 a 17 maio 2026 - GA4</div>
+    <div class="conf">Confidencial</div>
+  </footer>
+
+</div>
+
+<script>
+const labels = ['11/05 seg', '12/05 ter', '13/05 qua', '14/05 qui', '15/05 sex', '16/05 sáb', '17/05 dom'];
+
+const data = {
+  sessoes:   [431, 409, 388, 377, 831, 658, 709],
+  cardapio:  [142, 131, 131, 119, 251, 327, 535],
+  viewItem:  [68,  62,  66,  61,  118, 209, 341],
+  carrinho:  [31,  34,  40,  34,  57,  145, 192],
+  checkout:  [19,  18,  32,  20,  46,  79,  136],
+  compra:    [10,  12,  15,  13,  26,  48,  81],
+  revenue:   [958.10, 1308.80, 1623.80, 1735.10, 2832.90, 6170.40, 11643.03]
+};
+
+// Médias pré-campanha (seg a qui)
+const mean = arr => arr.reduce((a,b)=>a+b,0) / arr.length;
+const preMedias = {
+  cardapio: mean(data.cardapio.slice(0,4)),
+  viewItem: mean(data.viewItem.slice(0,4)),
+  carrinho: mean(data.carrinho.slice(0,4)),
+  checkout: mean(data.checkout.slice(0,4))
+};
+
+const cores = {
+  vermelho: '#e02020',
+  dourado: '#c49a2e',
+  preto: '#1a1a1a',
+  cinzaEscuro: '#555',
+  verde: '#0f7b3f',
+  bgVermelho: 'rgba(224,32,32,0.08)',
+  bgDourado: 'rgba(196,154,46,0.10)',
+  bgPreto: 'rgba(26,26,26,0.06)',
+  bgVerde: 'rgba(15,123,63,0.10)'
+};
+
+// Plugin: marco visual da sexta 15/05 (entre índice 3 e 4)
+const marcoSexta = {
+  id: 'marcoSexta',
+  beforeDatasetsDraw: (chart) => {
+    const {ctx, chartArea: {top, bottom}, scales: {x}} = chart;
+    const xPos = (x.getPixelForValue(3) + x.getPixelForValue(4)) / 2;
+    ctx.save();
+    ctx.fillStyle = 'rgba(224,32,32,0.04)';
+    ctx.fillRect(xPos, top, x.getPixelForValue(6) + (x.getPixelForValue(1)-x.getPixelForValue(0))/2 - xPos, bottom - top);
+    ctx.strokeStyle = '#e02020';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    ctx.moveTo(xPos, top);
+    ctx.lineTo(xPos, bottom);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#e02020';
+    ctx.font = 'bold 10px Inter';
+    ctx.textAlign = 'left';
+    ctx.fillText('▶ Campanhas no ar', xPos + 6, top + 14);
+    ctx.restore();
+  }
+};
+
+const baseOpts = {
+  responsive: true,
+  maintainAspectRatio: false,
+  interaction: { mode: 'index', intersect: false },
+  plugins: {
+    legend: {
+      position: 'top',
+      align: 'end',
+      labels: { boxWidth: 10, boxHeight: 10, padding: 14, font: { size: 11, family: 'Inter' } }
+    },
+    tooltip: {
+      backgroundColor: '#1a1a1a',
+      padding: 10,
+      titleFont: { family: 'Inter', size: 12 },
+      bodyFont: { family: 'Inter', size: 12 },
+      borderColor: 'rgba(255,255,255,0.1)',
+      borderWidth: 1
+    }
+  },
+  scales: {
+    x: { grid: { display: false }, ticks: { font: { size: 11, family: 'Inter' }, color: '#555' } },
+    y: { grid: { color: '#f0f0f0' }, beginAtZero: true, ticks: { font: { size: 10, family: 'Inter' }, color: '#999' } }
+  }
+};
+
+// Chart 1 - Topo do Funil
+new Chart(document.getElementById('chartTopo'), {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Sessões',
+        data: data.sessoes,
+        borderColor: cores.preto,
+        backgroundColor: cores.bgPreto,
+        borderWidth: 2.5,
+        tension: 0.25,
+        fill: false,
+        pointRadius: 4,
+        pointBackgroundColor: cores.preto
+      },
+      {
+        label: 'Foram pro Cardápio',
+        data: data.cardapio,
+        borderColor: cores.dourado,
+        backgroundColor: cores.bgDourado,
+        borderWidth: 2.5,
+        tension: 0.25,
+        fill: true,
+        pointRadius: 4,
+        pointBackgroundColor: cores.dourado
+      }
+    ]
+  },
+  options: baseOpts,
+  plugins: [marcoSexta]
+});
+
+// Chart 2 - Funil de Decisão
+new Chart(document.getElementById('chartFunil'), {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [
+      { label: 'Viu Produto', data: data.viewItem, borderColor: cores.cinzaEscuro, borderWidth: 2, tension: 0.25, pointRadius: 3 },
+      { label: 'Carrinho', data: data.carrinho, borderColor: cores.dourado, borderWidth: 2, tension: 0.25, pointRadius: 3 },
+      { label: 'Checkout', data: data.checkout, borderColor: '#e08020', borderWidth: 2, tension: 0.25, pointRadius: 3 },
+      { label: 'Compra', data: data.compra, borderColor: cores.vermelho, borderWidth: 3, tension: 0.25, pointRadius: 4, pointBackgroundColor: cores.vermelho }
+    ]
+  },
+  options: baseOpts,
+  plugins: [marcoSexta]
+});
+
+// Charts individuais (pequenos) com linha de média pré-campanha
+function smallChart(canvasId, dataset, color, mediaPre) {
+  const mediaLinePlugin = {
+    id: 'mediaLine_' + canvasId,
+    afterDatasetsDraw: (chart) => {
+      const {ctx, chartArea: {left, right}, scales: {y}} = chart;
+      const yPos = y.getPixelForValue(mediaPre);
+      ctx.save();
+      ctx.strokeStyle = 'rgba(150,150,150,0.7)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.moveTo(left, yPos);
+      ctx.lineTo(right, yPos);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#888';
+      ctx.font = '9px Inter';
+      ctx.textAlign = 'left';
+      ctx.fillText('média pré: ' + Math.round(mediaPre), left + 4, yPos - 4);
+      ctx.restore();
+    }
+  };
+
+  new Chart(document.getElementById(canvasId), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'eventos',
+        data: dataset,
+        backgroundColor: dataset.map((_, i) => i >= 4 ? color : 'rgba(150,150,150,0.55)'),
+        borderRadius: 3,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      ...baseOpts,
+      plugins: {
+        legend: { display: false },
+        tooltip: baseOpts.plugins.tooltip
+      }
+    },
+    plugins: [marcoSexta, mediaLinePlugin]
+  });
+}
+
+smallChart('chartCardapio', data.cardapio, cores.dourado, preMedias.cardapio);
+smallChart('chartItem', data.viewItem, cores.cinzaEscuro, preMedias.viewItem);
+smallChart('chartCarrinho', data.carrinho, '#e08020', preMedias.carrinho);
+smallChart('chartCheckout', data.checkout, cores.vermelho, preMedias.checkout);
+
+// Chart 5 - Revenue dual axis
+new Chart(document.getElementById('chartRevenue'), {
+  type: 'bar',
+  data: {
+    labels,
+    datasets: [
+      {
+        type: 'bar',
+        label: 'Compras',
+        data: data.compra,
+        backgroundColor: data.compra.map((_, i) => i >= 4 ? cores.vermelho : 'rgba(150,150,150,0.5)'),
+        borderRadius: 3,
+        yAxisID: 'y'
+      },
+      {
+        type: 'line',
+        label: 'Faturamento (R$)',
+        data: data.revenue,
+        borderColor: cores.dourado,
+        backgroundColor: cores.bgDourado,
+        borderWidth: 3,
+        tension: 0.25,
+        pointRadius: 5,
+        pointBackgroundColor: cores.dourado,
+        yAxisID: 'y1',
+        fill: false
+      }
+    ]
+  },
+  options: {
+    ...baseOpts,
+    scales: {
+      x: baseOpts.scales.x,
+      y: {
+        ...baseOpts.scales.y,
+        position: 'left',
+        suggestedMax: 110,
+        title: { display: true, text: 'Compras', font: { size: 10, family: 'Inter' }, color: '#999' }
+      },
+      y1: {
+        beginAtZero: true,
+        position: 'right',
+        suggestedMax: 15000,
+        grid: { drawOnChartArea: false },
+        ticks: {
+          font: { size: 10, family: 'Inter' },
+          color: '#999',
+          callback: function(v) { return 'R$ ' + (v/1000).toFixed(1) + 'k'; }
+        },
+        title: { display: true, text: 'Faturamento (R$)', font: { size: 10, family: 'Inter' }, color: '#999' }
+      }
+    }
+  },
+  plugins: [marcoSexta]
+});
+</script>
+
+</body>
+</html>
