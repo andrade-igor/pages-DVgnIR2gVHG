@@ -602,6 +602,65 @@
     .counter-number { font-size: 64px; }
     .counter-label { font-size: 13px; }
   }
+
+  /* PRINT / PDF EXPORT */
+  @media print {
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+
+    /* Preserva cores e fundos escuros na impressao */
+    html, body, * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    body {
+      background: var(--black) !important;
+    }
+
+    /* Esconde textura de ruido (pesa render e nao soma valor no PDF) */
+    body::before { display: none !important; }
+
+    /* Header nao quebra no meio */
+    header { break-inside: avoid; page-break-inside: avoid; }
+
+    /* Grid em 2 colunas no A4 retrato */
+    .grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8px !important;
+      padding: 0 12mm 12mm !important;
+    }
+
+    /* CADA CARD = bloco indivisivel (imagem + copy + por que funcionou ficam juntos) */
+    .card,
+    .card-img-wrap,
+    .card-body,
+    .copy-block,
+    .why-block,
+    .replicate-box,
+    .funnel-step,
+    .modal {
+      break-inside: avoid !important;
+      page-break-inside: avoid !important;
+    }
+
+    /* Titulos nao ficam orfaos no fim da pagina */
+    h1, h2, h3, .card-title, .section-label, .funnel-title {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+
+    /* Remove hover/transicoes que nao fazem sentido no PDF */
+    .card { transition: none !important; cursor: default !important; }
+    .card:hover { transform: none !important; }
+    .card-overlay { display: none !important; }
+
+    /* Modal nao deve aparecer no print */
+    .modal-bg { display: none !important; }
+  }
 </style>
 </head>
 <body>
