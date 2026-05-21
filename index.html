@@ -627,17 +627,45 @@
     /* Header nao quebra no meio */
     header { break-inside: avoid; page-break-inside: avoid; }
 
-    /* Grid em 2 colunas no A4 retrato */
+    /* Grid em 1 coluna: cada card ocupa a linha inteira */
     .grid {
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 8px !important;
-      padding: 0 12mm 12mm !important;
+      grid-template-columns: 1fr !important;
+      gap: 10px !important;
+      padding: 0 !important;
+      max-width: none !important;
     }
+
+    /* Card horizontal: imagem a esquerda, conteudo a direita (cabe inteiro em uma pagina) */
+    .card {
+      display: grid !important;
+      grid-template-columns: 75mm 1fr !important;
+      align-items: stretch !important;
+    }
+
+    /* Imagem com altura travada pra garantir que o card todo caiba na pagina */
+    .card-img-wrap {
+      aspect-ratio: auto !important;
+      height: 100% !important;
+      max-height: 130mm !important;
+      min-height: 130mm !important;
+    }
+
+    .card-img-wrap img {
+      object-fit: contain !important;
+      background: #0d0d0d !important;
+    }
+
+    .card-body {
+      padding: 14px 16px !important;
+      gap: 10px !important;
+    }
+
+    .card-title { font-size: 18px !important; }
+    .copy-block p, .why-block p { font-size: 12px !important; line-height: 1.5 !important; }
+    .replicate-box p { font-size: 11px !important; }
 
     /* CADA CARD = bloco indivisivel (imagem + copy + por que funcionou ficam juntos) */
     .card,
-    .card-img-wrap,
-    .card-body,
     .copy-block,
     .why-block,
     .replicate-box,
