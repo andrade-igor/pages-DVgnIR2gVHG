@@ -167,15 +167,16 @@
 
   .card-img-wrap {
     position: relative;
-    aspect-ratio: 9/16;
     overflow: hidden;
     background: #0d0d0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .card-img-wrap img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
     transition: transform 0.4s ease;
   }
@@ -629,12 +630,10 @@
       align-items: stretch !important;
     }
     .card-img-wrap {
-      aspect-ratio: auto !important;
-      height: 100% !important;
       max-height: 130mm !important;
-      min-height: 130mm !important;
+      align-items: flex-start !important;
     }
-    .card-img-wrap img { object-fit: contain !important; background: #0d0d0d !important; }
+    .card-img-wrap img { max-height: 130mm !important; width: auto !important; max-width: 100% !important; }
     .card-body { padding: 14px 16px !important; gap: 10px !important; }
     .card-title { font-size: 18px !important; }
     .copy-block p, .why-block p { font-size: 12px !important; line-height: 1.5 !important; }
