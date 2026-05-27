@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Sellers 7d - Sintonia de Mulher 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #4a1428;
+    --accent-light: rgba(74,20,40,0.06);
+    --gold: #b8943f;
+    --gold-light: #e8d4a8;
+    --border: #e5e5e5;
+    --bg: #ffffff;
+    --bg-page: #f3f3f3;
+    --text: #1a1a1a;
+    --text-2: #555;
+    --text-3: #999;
+    --green: #0f7b3f;
+    --green-bg: #eefbf2;
+    --red: #c0392b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.55;
+    background: var(--bg-page);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 24px auto;
+    background: var(--bg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  .header {
+    padding: 28px 36px 24px;
+    border-bottom: 3px solid var(--accent);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .header h1 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+
+  .header .sub {
+    font-size: 12px;
+    color: var(--text-2);
+    font-weight: 400;
+    margin-top: 1px;
+  }
+
+  .header-meta {
+    text-align: right;
+    font-size: 11px;
+    color: var(--text-3);
+    line-height: 1.8;
+  }
+
+  .header-meta strong { color: var(--text-2); font-weight: 600; }
+
+  .summary {
+    padding: 24px 36px;
+    background: var(--accent);
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .summary strong { color: var(--gold-light); }
+
+  .body { padding: 0 36px 36px; }
+
+  .s {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .s:last-child { border-bottom: none; }
+
+  .s-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-3);
+    margin-bottom: 4px;
+  }
+
+  .s h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 4px 0 8px;
+  }
+
+  .kpi {
+    padding: 14px 8px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+
+  .kpi:last-child { border-right: none; }
+
+  .kpi-n {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-3);
+    margin-bottom: 4px;
+  }
+
+  .kpi-v {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .kpi.em { background: var(--accent); }
+  .kpi.em .kpi-n { color: rgba(255,255,255,0.45); }
+  .kpi.em .kpi-v { color: var(--gold-light); }
+
+  /* AD CARDS */
+  .ad-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 16px;
+  }
+
+  .ad-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: box-shadow 0.15s;
+    position: relative;
+  }
+
+  .ad-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+  .ad-rank {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: var(--accent);
+    color: var(--gold-light);
+    font-size: 11px;
+    font-weight: 700;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .ad-thumb {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: #1a0a14;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ad-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ad-thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .ad-format-tag {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  .ad-funnel-tag {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  .tag-fundo { background: var(--accent); color: var(--gold-light); }
+  .tag-topo { background: var(--gold); color: #fff; }
+
+  .ad-body {
+    padding: 12px 14px 14px;
+  }
+
+  .ad-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .ad-campaign {
+    font-size: 10px;
+    color: var(--text-3);
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ad-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .ad-metric {
+    text-align: center;
+    padding: 6px 4px;
+    background: #f9f9f9;
+    border-radius: 3px;
+  }
+
+  .ad-metric-label {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-3);
+  }
+
+  .ad-metric-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  .ad-metric-value.good { color: var(--green); }
+  .ad-metric-value.warn { color: #b8860b; }
+  .ad-metric-value.bad { color: var(--red); }
+
+  .ad-spend {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-3);
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  .ad-spend strong { color: var(--text-2); font-weight: 600; }
+
+  /* HERO */
+  .hero {
+    padding: 28px 0 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-label {
+    display: inline-block;
+    background: var(--gold);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 5px 14px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(184,148,63,0.35);
+  }
+
+  .hero-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    background: linear-gradient(135deg, var(--accent) 0%, #6e2238 100%);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(74,20,40,0.25);
+  }
+
+  .hero-thumb {
+    aspect-ratio: 4/5;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    background: #1a0a14;
+  }
+
+  .hero-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+  }
+
+  .hero-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+
+  .hero-roas {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 4px;
+  }
+
+  .hero-roas-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 18px;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .hero-stat {
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 10px 8px;
+    text-align: center;
+  }
+
+  .hero-stat-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .hero-stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold-light);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* TYPE SUMMARY */
+  .type-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+
+  .type-table th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-3);
+    padding: 8px 10px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .type-table th:not(:first-child) { text-align: right; }
+
+  .type-table td {
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .type-table td:not(:first-child) { text-align: right; font-weight: 600; }
+
+  .type-table tr:last-child td { border-bottom: none; }
+
+  .type-table .type-name {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .type-bar {
+    display: inline-block;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--gold);
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  /* TREND CHART */
+  .chart-wrap {
+    margin-top: 4px;
+    background: #fafafa;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 12px 8px;
+  }
+
+  .chart-wrap svg { width: 100%; height: auto; display: block; }
+
+  .chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 6px;
+    font-size: 10px;
+    color: var(--text-2);
+    flex-wrap: wrap;
+  }
+
+  .chart-legend .lg-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .chart-legend .lg-bar {
+    width: 14px;
+    height: 10px;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+
+  .chart-legend .lg-bar.peak { background: var(--red); }
+  .chart-legend .lg-bar.best { background: var(--green); }
+
+  .chart-legend .lg-line {
+    width: 18px;
+    height: 0;
+    border-top: 2px dashed var(--gold);
+  }
+  .chart-legend .lg-line.prev { border-top-color: #999; }
+
+  .chart-insight {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.7;
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding: 12px 14px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .chart-insight strong { color: var(--accent); font-weight: 700; }
+
+  /* COMPARATIVO 2 SEMANAS */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+
+  .compare-table th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-3);
+    padding: 8px 10px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .compare-table th:not(:first-child) { text-align: right; }
+
+  .compare-table td {
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .compare-table td:not(:first-child) { text-align: right; font-weight: 600; }
+
+  .compare-table tr:last-child td { border-bottom: none; }
+
+  .compare-table .row-label { font-weight: 600; color: var(--text); }
+  .compare-table .delta-up { color: var(--green); font-size: 11px; }
+  .compare-table .delta-down { color: var(--red); font-size: 11px; }
+  .compare-table .delta-flat { color: var(--text-3); font-size: 11px; }
+
+  .footer {
+    padding: 16px 36px;
+    background: #fafafa;
+    border-top: 1px solid var(--border);
+    font-size: 10px;
+    color: var(--text-3);
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .page { margin: 0; }
+    .header, .body, .summary { padding-left: 20px; padding-right: 20px; }
+    .ad-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .hero-card { grid-template-columns: 140px 1fr; padding: 16px; gap: 16px; }
+    .hero-roas { font-size: 40px; }
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+    .kpi { border-bottom: 1px solid var(--border); }
+  }
+
+  @media (max-width: 480px) {
+    .ad-grid { grid-template-columns: 1fr; }
+    .hero-card { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+
+    body { background: #fff; font-size: 11px; }
+    .page { margin: 0; box-shadow: none; max-width: 100%; }
+    .header, .body, .summary, .footer { padding-left: 24px; padding-right: 24px; }
+
+    .summary { background: var(--accent) !important; color: rgba(255,255,255,0.85) !important; }
+    .summary strong { color: var(--gold-light) !important; }
+
+    .kpis { page-break-inside: avoid; }
+    .kpi.em { background: var(--accent) !important; }
+    .kpi.em .kpi-n { color: rgba(255,255,255,0.45) !important; }
+    .kpi.em .kpi-v { color: var(--gold-light) !important; }
+
+    .hero { page-break-inside: avoid; }
+    .hero-card { background: linear-gradient(135deg, var(--accent) 0%, #6e2238 100%) !important; }
+    .hero-stat { background: rgba(255,255,255,0.08) !important; }
+    .hero-roas { color: var(--gold-light) !important; }
+    .hero-stat-value { color: var(--gold-light) !important; }
+
+    .ad-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .ad-card { page-break-inside: avoid; break-inside: avoid; border: 1px solid #ddd; }
+    .ad-thumb { background: #1a0a14 !important; }
+    .ad-thumb img { display: block !important; }
+    .ad-rank { background: var(--accent) !important; color: var(--gold-light) !important; }
+    .ad-format-tag { background: rgba(0,0,0,0.7) !important; color: #fff !important; }
+    .ad-funnel-tag.tag-fundo { background: var(--accent) !important; color: var(--gold-light) !important; }
+    .ad-funnel-tag.tag-topo { background: var(--gold) !important; color: #fff !important; }
+
+    .ad-metric-value.good { color: var(--green) !important; }
+    .ad-metric-value.warn { color: #b8860b !important; }
+
+    .type-bar { background: var(--gold) !important; }
+
+    .s { page-break-inside: avoid; }
+    .footer { background: #fafafa !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div>
+      <h1>Top Sellers - Ultimos 7 Dias</h1>
+      <div class="sub">Sintonia de Mulher 2026 - Anuncios que mais venderam</div>
+    </div>
+    <div class="header-meta">
+      <strong>Periodo:</strong> 20 a 26 mai 2026<br>
+      <strong>Fonte:</strong> Pixel Meta (7d_click + 1d_view)
+    </div>
+  </div>
+
+  <div class="summary">
+    <strong>67 vendas</strong> em 7 dias, distribuidas em 34 anuncios. Os 15 abaixo concentram a maior parte das vendas e respondem pelo melhor retorno.
+    A linguagem dominante e <strong>escassez quantificada</strong> (27 vendas, ROAS 10,6x), com <strong>palestrante-ancora + urgencia</strong> entregando o ROAS mais alto da reta final (11 vendas, ROAS 27,5x).
+  </div>
+
+  <div class="body">
+
+    <!-- KPIs GERAIS -->
+    <div class="s">
+      <div class="s-label">Visao geral - 7 dias</div>
+      <h2>Performance agregada dos ads com vendas</h2>
+      <div class="kpis">
+        <div class="kpi em">
+          <div class="kpi-n">Vendas</div>
+          <div class="kpi-v">67</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-n">Investimento</div>
+          <div class="kpi-v">R$ 2.900</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-n">CAC Medio</div>
+          <div class="kpi-v">R$ 43</div>
+        </div>
+        <div class="kpi em">
+          <div class="kpi-n">ROAS</div>
+          <div class="kpi-v">11,9x</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO - Melhor ad -->
+    <div class="hero">
+      <div class="hero-label">Destaque absoluto</div>
+      <div class="hero-card">
+        <div class="hero-thumb">
+          <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/703890613_1276695427999015_4381324228114218562_n.png?_nc_cat=110&ccb=1-7&_nc_ohc=nn4UCRlLz1YQ7kNvwF-GzLA&_nc_oc=Adp2oT22ahPqiam57pGjPZtE9X1XCfF5Zq7WcEhqrgFv7MYaB9I4LYqkakWf-HwaJ8w&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=eTHSW3-SGv52bAu13WS3XQ&_nc_tpa=Q5bMBQF2JpewI-DQkw_rMKz_zrFQ6eJApL-M-uYGRmebCAp0jfiOsSEV1tPcHT8_-GroTAWRPFKgU0q03w&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af51NhAyyZpWjCYtCobni4erVUJ1z0KkYzR94BW-dy6zGg&oe=6A1CBF50" alt="AD 67 ULTIMAS VAGAS Hellen Belota">
+        </div>
+        <div class="hero-info">
+          <div class="hero-name">AD 67 - ULTIMAS VAGAS Hellen Belota<br><span style="font-size:11px;color:rgba(255,255,255,0.5)">Remarketing Urgencia | CARD FUNDO</span></div>
+          <div class="hero-roas">66,9x</div>
+          <div class="hero-roas-label">ROAS</div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-label">Vendas</div>
+              <div class="hero-stat-value">5</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-label">Invest.</div>
+              <div class="hero-stat-value">R$ 48</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-label">CAC</div>
+              <div class="hero-stat-value">R$ 10</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POR TIPO DE MENSAGEM -->
+    <div class="s">
+      <div class="s-label">Analise por linguagem</div>
+      <h2>Qual tipo de mensagem vende mais?</h2>
+      <table class="type-table">
+        <thead>
+          <tr>
+            <th>Tipo de Mensagem</th>
+            <th>Vendas</th>
+            <th>Invest.</th>
+            <th>CAC</th>
+            <th>ROAS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="type-name"><span class="type-bar" style="width:108px"></span>Escassez quantificada</td>
+            <td>27</td>
+            <td>R$ 1.206</td>
+            <td>R$ 44,68</td>
+            <td>10,6x</td>
+          </tr>
+          <tr>
+            <td class="type-name"><span class="type-bar" style="width:48px"></span>Reels depoimento / bastidores</td>
+            <td>12</td>
+            <td>R$ 515</td>
+            <td>R$ 42,94</td>
+            <td>14,2x</td>
+          </tr>
+          <tr>
+            <td class="type-name"><span class="type-bar" style="width:44px"></span>Palestrante + urgencia</td>
+            <td>11</td>
+            <td>R$ 226</td>
+            <td>R$ 20,53</td>
+            <td>27,5x</td>
+          </tr>
+          <tr>
+            <td class="type-name"><span class="type-bar" style="width:36px"></span>Contagem regressiva curta</td>
+            <td>9</td>
+            <td>R$ 409</td>
+            <td>R$ 45,40</td>
+            <td>9,5x</td>
+          </tr>
+          <tr>
+            <td class="type-name"><span class="type-bar" style="width:28px"></span>Reels TOPO autoridade</td>
+            <td>7</td>
+            <td>R$ 532</td>
+            <td>R$ 75,95</td>
+            <td>5,8x</td>
+          </tr>
+          <tr>
+            <td class="type-name"><span class="type-bar" style="width:4px"></span>Curiosidade evento</td>
+            <td>1</td>
+            <td>R$ 12</td>
+            <td>R$ 12</td>
+            <td>101,2x</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- GRID DE ADS -->
+    <div class="s">
+      <div class="s-label">Top 15 anuncios</div>
+      <h2>Ranking por vendas nos ultimos 7 dias</h2>
+
+      <div class="ad-grid">
+
+        <!-- #1 -->
+        <div class="ad-card">
+          <div class="ad-rank">1</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/702027337_1275703364764888_5300339026945082389_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=6dp3k7QPsswQ7kNvwHFw3AY&_nc_oc=AdoLPf5CQppMM2_LIfreX-rO9nKyFfbM2au4SNAwBFbt_KQ-cymV4eVQPFdOJIb8rKs&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=6PBxHVfcN1wmTOw1C_5IJQ&_nc_tpa=Q5bMBQEuSHLW1ympp1GmFFt_eptxUh_BVwn8hLeQxB9GMcGm6XLLa5Vd3EjdLdEWKMOwn3kSDBpd23IreQ&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af7uEckct476uZBqna64M7UaDPEP486fGmXBBWt3LGw3HA&oe=6A1CC979" alt="AD 61">
+            <div class="ad-format-tag">CARD</div>
+            <div class="ad-funnel-tag tag-fundo">FUNDO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">ULTIMOS 50 PASSAPORTES VIP</div>
+            <div class="ad-campaign">Remarketing Urgencia</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">6</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value good">16,3x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value good">R$ 38</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 3.684</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 226,58</strong></div>
+          </div>
+        </div>
+
+        <!-- #2 -->
+        <div class="ad-card">
+          <div class="ad-rank">2</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t15.5256-10/705293583_1305993741633775_8084327492038297565_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=5WsQq17IrwQQ7kNvwFedFkZ&_nc_oc=Adp1RxeDtG-nlNDknsP3PCKMyxwPzJfI2xgIgbVO49q39Ww7hIvnny2gfiqgKWVaht8&_nc_zt=23&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=qWBPPwTVAw3-2MiFysqBoA&_nc_tpa=Q5bMBQEyIf3AZ0n2Jw49moDfweEqXTFfWVI8KIPXl6wnZGQveCadueKM9Fsgtd9HXFyHVPzqhFHE-nTg9A&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=d2b52d&_nc_sid=58080a&oh=00_Af6Jj-PQglTEur0jLIMpXXSFSwzhyaTzxnTyzyuuKBFEhQ&oe=6A1CBB41" alt="AD 97">
+            <div class="ad-format-tag">REELS</div>
+            <div class="ad-funnel-tag tag-fundo">FUNDO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">Ingrid Formoso - Depoimento Participante</div>
+            <div class="ad-campaign">Remarketing Urgencia</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">5</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value good">18,7x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value good">R$ 43</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 4.054</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 217,21</strong></div>
+          </div>
+        </div>
+
+        <!-- #3 -->
+        <div class="ad-card">
+          <div class="ad-rank">3</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/703890613_1276695427999015_4381324228114218562_n.png?_nc_cat=110&ccb=1-7&_nc_ohc=nn4UCRlLz1YQ7kNvwF-GzLA&_nc_oc=Adp2oT22ahPqiam57pGjPZtE9X1XCfF5Zq7WcEhqrgFv7MYaB9I4LYqkakWf-HwaJ8w&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=eTHSW3-SGv52bAu13WS3XQ&_nc_tpa=Q5bMBQF2JpewI-DQkw_rMKz_zrFQ6eJApL-M-uYGRmebCAp0jfiOsSEV1tPcHT8_-GroTAWRPFKgU0q03w&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af51NhAyyZpWjCYtCobni4erVUJ1z0KkYzR94BW-dy6zGg&oe=6A1CBF50" alt="AD 67">
+            <div class="ad-format-tag">CARD</div>
+            <div class="ad-funnel-tag tag-fundo">FUNDO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">ULTIMAS VAGAS Hellen Belota</div>
+            <div class="ad-campaign">Remarketing Urgencia</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">5</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value good">66,9x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value good">R$ 10</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 3.179</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 47,54</strong></div>
+          </div>
+        </div>
+
+        <!-- #4 -->
+        <div class="ad-card">
+          <div class="ad-rank">4</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/703914202_1276695564665668_4255462320956228877_n.png?_nc_cat=110&ccb=1-7&_nc_ohc=Tl_3D6GoxWIQ7kNvwHEw5hr&_nc_oc=AdqfRUBWN8XsjvugTN9kVMya-PNHuAOBIk5guWDWwUuVofBFUfUoKu3M7Yi5na2IqsA&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=fTwcyvtFMJMGTwB8ZhpTeg&_nc_tpa=Q5bMBQF-ILF9e-TiLp5GDbVrdjsbe-LYoUWaW7tqN8I6C6n72ALoYdvJpsjCuCDjJkfQSi8INsg4dl3Z7A&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af7sy4qDNV6YlXQa5HHNe-ms9BBz3ccnVMwJzMNlSLAFnQ&oe=6A1CA918" alt="AD 69">
+            <div class="ad-format-tag">CARD</div>
+            <div class="ad-funnel-tag tag-fundo">FUNDO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">ULTIMAS VAGAS Cintia Chagas</div>
+            <div class="ad-campaign">Remarketing Urgencia</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">5</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value good">15,5x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value good">R$ 33</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 2.560</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 164,69</strong></div>
+          </div>
+        </div>
+
+        <!-- #5 -->
+        <div class="ad-card">
+          <div class="ad-rank">5</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/704086678_1278910264444198_2487263325684899073_n.png?_nc_cat=100&ccb=1-7&_nc_ohc=rhHvV8RYQeoQ7kNvwEEMebJ&_nc_oc=Adr_4LxEh9pOyJJZVMj6GngWDGSKFhnz6hXUSQMVT0JhInebKwAqS1Dq0pJd211KOY4&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=zdUOezxHlduxXp0OjaXnBw&_nc_tpa=Q5bMBQHC93WTkLkaQqlR_Qtl9VUIgiprgQ-JvhqW5v5ZuBBJ-tn51cI1zCdxrrVzZA7c6HsddtrodZOt2Q&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af7JelYT1uszlG9oHqrhGk-rPmoINRca5v3m-3GJJrl5TQ&oe=6A1CB6BD" alt="AD 94">
+            <div class="ad-format-tag">CARD</div>
+            <div class="ad-funnel-tag tag-fundo">FUNDO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">90% Vendidos - Nao Fique de Fora</div>
+            <div class="ad-campaign">Remarketing Urgencia</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">4</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value good">12,1x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value good">R$ 43</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 2.082</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 172,04</strong></div>
+          </div>
+        </div>
+
+        <!-- #6 -->
+        <div class="ad-card">
+          <div class="ad-rank">6</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/704591988_1278999391101952_7497617460829037690_n.png?_nc_cat=109&ccb=1-7&_nc_ohc=5Oq_RofIJlMQ7kNvwG326p6&_nc_oc=AdrlpBAEAcVWIlfQu1ryPZir4HRNSS9O00OUbt9pA4rKWfFsGl25SwCiILuxYSflwGI&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=W3rsR-kLXnh1-yBkQbl2iA&_nc_tpa=Q5bMBQHcmqjEy_-gWdd2dswHA4LKS24f_qRdTmU1GgvC2wb_qUjIFfbWJ9jYQNO9O_bNlHMmTfF4wVqSWg&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af6otwlEwX4NXKdAWJsEwv5WFE7oFnz1mmJTTt8N4wEcIg&oe=6A1CA895" alt="AD 97">
+            <div class="ad-format-tag">CARD</div>
+            <div class="ad-funnel-tag tag-fundo">FUNDO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">Faltam Menos de 5 Dias</div>
+            <div class="ad-campaign">ALL FUNNEL Andromeda</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">3</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value good">35,1x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value good">R$ 17</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 1.791</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 51,05</strong></div>
+          </div>
+        </div>
+
+        <!-- #7 -->
+        <div class="ad-card">
+          <div class="ad-rank">7</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/703167709_1276564508012107_3828582810207069014_n.png?_nc_cat=103&ccb=1-7&_nc_ohc=lKM1W0orZxoQ7kNvwGSs-iB&_nc_oc=AdojPyuoame-mrI035nxKVQUl1Qb0VnaotbEMuopAEmbk4y23Rzc8782dxAT0C-XM2Y&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=pOKROVC5GmacrH3Q1uyB-w&_nc_tpa=Q5bMBQH7XAz_DMuNeYpy9w6WJQglP-UIIXYn5Ph1Duvy50et1G7bDXjwKjnCaP6d-GUs0WvgcBl-iIOUMQ&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af58NAgFQTp9a_d3KHLSGluZbjaylpOweNvwQXKNh-plSA&oe=6A1C9FF6" alt="AD 64">
+            <div class="ad-format-tag">CARD</div>
+            <div class="ad-funnel-tag tag-fundo">FUNDO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">80% DOS LUGARES OCUPADOS</div>
+            <div class="ad-campaign">ALL FUNNEL Andromeda</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">3</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value good">24,9x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value good">R$ 20</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 1.530</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 61,37</strong></div>
+          </div>
+        </div>
+
+        <!-- #8 -->
+        <div class="ad-card">
+          <div class="ad-rank">8</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t15.5256-10/703199903_996366969749320_9137234281567245196_n.jpg?_nc_cat=111&ccb=1-7&_nc_ohc=V78PaRTb6WoQ7kNvwHeIu6x&_nc_oc=AdqistEkMJzase0GR2SkKfmAEzubcGvivR0FRRobm8fyXqAbqxWT8df2kEn1AfDBDeo&_nc_zt=23&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=uUg0cH93XeyK4ieSGPoRKg&_nc_tpa=Q5bMBQGtnpFmuAMk6YTS-SMAtar3VEM_Gtw4ipbCLvEVT6ABjV4mAfIWA10MT6NCcCfB6ayq2IGFZ8MUJg&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=d2b52d&_nc_sid=58080a&oh=00_Af5AcaeJ3OsTMI5WWlKkwg77wfuEsv6tFFqLAaNSPvGUxA&oe=6A1CB0D8" alt="AD 61">
+            <div class="ad-format-tag">REELS</div>
+            <div class="ad-funnel-tag tag-topo">TOPO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">Hellen Belota - Empreender e bruto</div>
+            <div class="ad-campaign">ALL FUNNEL Andromeda</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">3</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value good">13,3x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value good">R$ 37</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 1.472</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 110,86</strong></div>
+          </div>
+        </div>
+
+        <!-- #9 -->
+        <div class="ad-card">
+          <div class="ad-rank">9</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t15.5256-10/700277633_2143075836547555_6446742368661598114_n.jpg?_nc_cat=109&ccb=1-7&_nc_ohc=sln2lRXDbBEQ7kNvwGxHhHR&_nc_oc=Adpak6sSquRMd_oTuTsIFnt9JKM5IVPDoMkZFZYtz2PWXdbQSu64Sifjk3TwwdZ_gCk&_nc_zt=23&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=HxznflYxFw4qMfr1p3ok-g&_nc_tpa=Q5bMBQFEVNRO1SNh_5yBxKypySum-EdYIwR71ZmhY5q0tKnGnr5zux5WOJZeMmy5bskBV7sEGCJA4PNDiw&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=d2b52d&_nc_sid=58080a&oh=00_Af4x2vF7HSi4ceMt9_pl3w9Y6zWkn1GcRtn4khLcsy9RNA&oe=6A1CBC7B" alt="AD 48">
+            <div class="ad-format-tag">REELS</div>
+            <div class="ad-funnel-tag tag-fundo">FUNDO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">Daiana - Convida a Amiga</div>
+            <div class="ad-campaign">Remarketing Urgencia</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">3</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value good">9,4x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value warn">R$ 49</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 1.388</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 147,38</strong></div>
+          </div>
+        </div>
+
+        <!-- #10 -->
+        <div class="ad-card">
+          <div class="ad-rank">10</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/706856658_1280560724279152_840462264517956803_n.png?_nc_cat=102&ccb=1-7&_nc_ohc=ezCaud1UV18Q7kNvwHZqnwh&_nc_oc=AdpemHNwf5bn6tOI4UEPyU7ouSod4ghzMNGMYBaN8NFfmeJUNMq3Wnizkhqk2QrUrIE&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=Ee9s0SohujA-hM0HNsoLsw&_nc_tpa=Q5bMBQEROLX6Im5F8By-Cnb1IS3szUv4vFqCCTpDWj1oxCMq_m3iVhj2Fkavy82S_TxmothmoJaRf9S2aA&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af65FGjPhlbhB2r83ywEvmgnLhu2R5SpN6UsICVBDvYX2A&oe=6A1CBE56" alt="AD 102">
+            <div class="ad-format-tag">CARD</div>
+            <div class="ad-funnel-tag tag-fundo">FUNDO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">95% Dos Passaportes Vendidos</div>
+            <div class="ad-campaign">Remarketing Urgencia</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">3</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value">5,4x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value warn">R$ 64</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 1.041</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 193,02</strong></div>
+          </div>
+        </div>
+
+        <!-- #11 -->
+        <div class="ad-card">
+          <div class="ad-rank">11</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/702857182_1275049098163648_1804651909798357494_n.png?_nc_cat=104&ccb=1-7&_nc_ohc=-KfGgnv3UCMQ7kNvwH7U-BQ&_nc_oc=AdqX-mE_9G3-L2n5g5GC5t9Xp_R9sNS9pf4ZCF3fZFoLg96qK74ladrH90RxumaKSqQ&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=DCem1QL7va2qOFV1rvkuNA&_nc_tpa=Q5bMBQGwXUwTIZ9LO-7S3l9XHCH4GmSVBhzQAdfzcXEOGOmMcyi_XQbWHI2Y0aMWRJfEsFuSwkR-2NXA_w&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af603beQa_NrUjfjTHoZXJSOvbmgGTvCZnX8OqO4sPtslw&oe=6A1CB581" alt="AD 59">
+            <div class="ad-format-tag">CARD</div>
+            <div class="ad-funnel-tag tag-fundo">FUNDO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">Cintia Chagas - ULTIMAS CHANCES 80%</div>
+            <div class="ad-campaign">Remarketing Urgencia</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">2</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value good">19,5x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value good">R$ 22</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 875</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 44,77</strong></div>
+          </div>
+        </div>
+
+        <!-- #12 -->
+        <div class="ad-card">
+          <div class="ad-rank">12</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/706857009_1279033571098534_3204835213757832949_n.png?_nc_cat=101&ccb=1-7&_nc_ohc=h2bU9AHodYEQ7kNvwGlTU3W&_nc_oc=Ado3Su0AaCNrjlrNHmdz-jLJ8WE2KCaCf44aME50kq1EQE8bMZVXAxQirnqt-6AUC1Y&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=qVW7gyuQwCINE0enYWwH6A&_nc_tpa=Q5bMBQHQHOjGe1QGy2X2CACJ8tQqd1AfUa_PuSNtCq2lLPXfUTFU4pFYhltBOjBCWhrAUkvLs3Jamy87hw&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af6Yfq54tTkglnjkf-iSaSrpPVwYZ-pPSQp7gLS6oWNGLg&oe=6A1CB675" alt="AD 100">
+            <div class="ad-format-tag">CARD</div>
+            <div class="ad-funnel-tag tag-fundo">FUNDO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">Ultimo Domingo Pra Garantir</div>
+            <div class="ad-campaign">Remarketing Urgencia</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">2</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value bad">3,4x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value bad">R$ 101</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 694</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 201,52</strong></div>
+          </div>
+        </div>
+
+        <!-- #13 -->
+        <div class="ad-card">
+          <div class="ad-rank">13</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/706811367_1278997324435492_2219734166194908329_n.png?_nc_cat=102&ccb=1-7&_nc_ohc=vovTWiPUc1IQ7kNvwFeUXGO&_nc_oc=Adroc0YtH0qlADS21J7ZY-U6gJnH95jj7MW4Uwn8bTvQzkXzUSc6GZTcSUuz3pbhV1c&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=DCpGt7fgGiLRF6xie8-iMg&_nc_tpa=Q5bMBQG9sud1dQ70gEJQzDJ6mBldENG-8NPKlgZ-SsKBG5GghwawF4kzEs3GTLpeZjdsVwtmpcdNWTpU9Q&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af4zPy4vEbuInHa6Zs-GlfWRTfOs9G7Yrwlra2a5vSBKBw&oe=6A1CB855" alt="AD 98">
+            <div class="ad-format-tag">CARD</div>
+            <div class="ad-funnel-tag tag-fundo">FUNDO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">Ultimo Sabado Pra Garantir</div>
+            <div class="ad-campaign">Remarketing Urgencia</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">2</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value good">40,2x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value good">R$ 9</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 694</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 17,25</strong></div>
+          </div>
+        </div>
+
+        <!-- #14 -->
+        <div class="ad-card">
+          <div class="ad-rank">14</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/702845048_1277635671238324_8271897174589110134_n.png?_nc_cat=106&ccb=1-7&_nc_ohc=8bla8EMpHD0Q7kNvwGNV7o6&_nc_oc=AdpAd5bway_G3GTkjegKxo-BPO8JWNvDty7WBW3Baf4QpdTRSfLwfxSkqA2UWP7pPEU&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=85Wmck9PxRYd_wPTRglvgg&_nc_tpa=Q5bMBQHw1W950AveN3CjJSQ6bmgyr9y36dWu4vLNK2Y1tl35oC-4i6fLM0wuMfL6EMG5UEiB_YQQ8kxeiA&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af5Mi9a5S2TEwaDl_GD8wh-tp7l4IlP3Ab-J8jT8CN78xg&oe=6A1CC1D5" alt="AD 70">
+            <div class="ad-format-tag">CARD</div>
+            <div class="ad-funnel-tag tag-fundo">FUNDO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">O Encontro Mais Comentado dos Proximos Dias</div>
+            <div class="ad-campaign">ALL FUNNEL Andromeda</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">1</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value good">101,2x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value good">R$ 12</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 1.194</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 11,80</strong></div>
+          </div>
+        </div>
+
+        <!-- #15 -->
+        <div class="ad-card">
+          <div class="ad-rank">15</div>
+          <div class="ad-thumb">
+            <img src="https://scontent.fpll10-1.fna.fbcdn.net/v/t45.1600-4/702857182_1275049098163648_1804651909798357494_n.png?_nc_cat=104&ccb=1-7&_nc_ohc=-KfGgnv3UCMQ7kNvwH7U-BQ&_nc_oc=AdqX-mE_9G3-L2n5g5GC5t9Xp_R9sNS9pf4ZCF3fZFoLg96qK74ladrH90RxumaKSqQ&_nc_zt=1&_nc_ht=scontent.fpll10-1.fna&edm=AAT1rw8EAAAA&_nc_gid=bn3QUR1nNvsvxAWRDSNc0Q&_nc_tpa=Q5bMBQGNUMYMrFbAge24iftMed0xHRZgvpMshQd37dB0clJlu0q1rkCr3hobOCpW50zuM2cPSZwEf47Igw&stp=c0.5000x0.5000f_dst-emg0_p1080x1350_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af6y0XegVeO6bUKpxDF5_54UqvMKTqUw_WqUaqQNaEvZJg&oe=6A1CB581" alt="AD 58">
+            <div class="ad-format-tag">CARD</div>
+            <div class="ad-funnel-tag tag-fundo">FUNDO</div>
+          </div>
+          <div class="ad-body">
+            <div class="ad-name">Cintia Chagas - ULTIMAS CHANCES 80%</div>
+            <div class="ad-campaign">ALL FUNNEL Andromeda</div>
+            <div class="ad-metrics">
+              <div class="ad-metric">
+                <div class="ad-metric-label">Vendas</div>
+                <div class="ad-metric-value">1</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">ROAS</div>
+                <div class="ad-metric-value">6,7x</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">CAC</div>
+                <div class="ad-metric-value warn">R$ 89</div>
+              </div>
+              <div class="ad-metric">
+                <div class="ad-metric-label">Revenue</div>
+                <div class="ad-metric-value">R$ 597</div>
+              </div>
+            </div>
+            <div class="ad-spend">Investimento: <strong>R$ 89,49</strong></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Sintonia de Mulher 2026 - Dados: Pixel Meta (last_7d) - Gerado em 27/05/2026 por Eva
+  </div>
+
+</div>
+
+</body>
+</html>
