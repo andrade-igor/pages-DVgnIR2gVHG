@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roraimoda &amp; Beleza · Proposta de Estratégia Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#F6F1E7;
+    --bone-2:#EFE7D7;
+    --green:#15352A;
+    --green-soft:#23463A;
+    --clay:#B5563A;
+    --clay-soft:#C76B49;
+    --gold:#C49A4A;
+    --ink:#2A2521;
+    --ink-soft:#5A5249;
+    --line:rgba(42,37,33,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Outfit',sans-serif;
+    background:var(--bone);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .serif{font-family:'Cormorant Garamond',serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 40px}
+  section{padding:96px 0}
+  .eyebrow{
+    font-size:12px;letter-spacing:.32em;text-transform:uppercase;
+    font-weight:600;color:var(--clay);margin-bottom:18px;display:flex;align-items:center;gap:14px;
+  }
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--clay);display:inline-block}
+  h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(30px,4.6vw,52px);line-height:1.08;color:var(--green);letter-spacing:-.01em}
+  h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:var(--green);line-height:1.2}
+  p{color:var(--ink-soft);font-weight:300;font-size:17px}
+  strong{color:var(--ink);font-weight:600}
+  .lead{font-size:20px;color:var(--ink);font-weight:300}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(155deg,#15352A 0%,#1C3F32 55%,#234A3A 100%);
+    color:var(--bone);position:relative;padding:0;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 82% 18%, rgba(196,154,74,.20), transparent 42%),
+      radial-gradient(circle at 12% 88%, rgba(181,86,58,.22), transparent 46%);
+    pointer-events:none;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:120px 40px 96px;position:relative;z-index:2}
+  .hero-tag{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:34px}
+  .hero h1{
+    font-family:'Cormorant Garamond',serif;font-weight:500;
+    font-size:clamp(48px,9vw,108px);line-height:.96;letter-spacing:-.015em;color:#fff;
+  }
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero-concept{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
+    font-size:clamp(22px,3.2vw,34px);color:rgba(246,241,231,.92);margin-top:30px;max-width:680px;line-height:1.25;
+  }
+  .hero-rule{width:64px;height:1px;background:var(--gold);margin:42px 0 36px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:48px}
+  .hero-meta .item .k{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px}
+  .hero-meta .item .v{font-size:18px;color:#fff;font-weight:400}
+  .hero-foot{margin-top:64px;padding-top:26px;border-top:1px solid rgba(246,241,231,.16);display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:14px;color:rgba(246,241,231,.7)}
+  .hero-foot strong{color:#fff;font-weight:500}
+
+  /* CENÁRIO */
+  .cenario{background:var(--bone)}
+  .cenario .lead{margin-top:22px;max-width:720px}
+  .cen-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:stretch;margin-top:58px}
+  .cen-col{border-radius:6px;padding:40px 38px;position:relative}
+  .cen-col.hoje{background:var(--bone-2);border:1px solid var(--line)}
+  .cen-col.futuro{background:var(--green);color:var(--bone)}
+  .cen-state{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;margin-bottom:18px}
+  .cen-col.hoje .cen-state{color:var(--clay)}
+  .cen-col.futuro .cen-state{color:var(--gold)}
+  .cen-col h3{font-size:27px;margin-bottom:16px}
+  .cen-col.futuro h3{color:#fff}
+  .cen-col p{font-size:16px}
+  .cen-col.futuro p{color:rgba(246,241,231,.84)}
+  .cen-arrow{align-self:center;justify-self:center;font-family:'Cormorant Garamond',serif;font-size:38px;color:var(--clay);line-height:1}
+
+  /* AS VERTENTES */
+  .vertentes{background:var(--bone-2)}
+  .v-grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:56px}
+  .v-card{
+    background:var(--bone);border:1px solid var(--line);border-left:4px solid var(--clay);
+    border-radius:4px;padding:38px 40px;display:grid;grid-template-columns:200px 1fr;gap:36px;align-items:start;
+  }
+  .v-card.b2b{border-left-color:var(--green-soft)}
+  .v-card.pub{border-left-color:var(--gold)}
+  .v-head .tagn{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--clay);font-weight:600;margin-bottom:10px}
+  .v-card.b2b .tagn{color:var(--green-soft)}
+  .v-card.pub .tagn{color:#a07c2c}
+  .v-head h3{font-size:27px;margin-bottom:8px}
+  .v-head .prio{display:inline-block;margin-top:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#fff;background:var(--clay);padding:5px 11px;border-radius:40px}
+  .v-body .row{display:flex;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:15.5px}
+  .v-body .row:last-child{border-bottom:none}
+  .v-body .row .lbl{flex:0 0 124px;font-weight:600;color:var(--green);font-size:13px;letter-spacing:.02em;text-transform:uppercase}
+  .v-body .row .txt{color:var(--ink-soft);font-weight:300}
+
+  /* CALENDÁRIO / FLIGHT */
+  .timeline{background:var(--bone)}
+  .flight{margin-top:56px;display:grid;gap:14px}
+  .fl-row{
+    display:grid;grid-template-columns:210px 1fr 130px;gap:26px;align-items:center;
+    background:var(--bone-2);border:1px solid var(--line);border-left:4px solid var(--clay);
+    border-radius:4px;padding:24px 30px;
+  }
+  .fl-row.f2{border-left-color:var(--green-soft)}
+  .fl-row.f3{border-left-color:var(--gold)}
+  .fl-name{font-family:'Cormorant Garamond',serif;font-size:23px;color:var(--green);font-weight:600;line-height:1.12}
+  .fl-name small{display:block;font-family:'Outfit';font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--clay);font-weight:600;margin-bottom:6px}
+  .fl-row.f2 .fl-name small{color:var(--green-soft)}
+  .fl-row.f3 .fl-name small{color:#a07c2c}
+  .fl-mid .fl-when{font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--green);margin-bottom:6px}
+  .fl-mid .fl-desc{font-size:14.5px;color:var(--ink-soft);font-weight:300}
+  .fl-val{text-align:right;font-family:'Cormorant Garamond',serif;font-size:27px;color:var(--green);font-weight:600;white-space:nowrap}
+  .fl-total{
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+    background:var(--green);color:var(--bone);border-radius:4px;padding:22px 30px;margin-top:4px;
+  }
+  .fl-total .lbl{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--gold)}
+  .fl-total .val{font-family:'Cormorant Garamond',serif;font-size:30px;color:#fff;font-weight:600}
+  .tl-note{margin-top:36px;background:var(--bone-2);border-left:3px solid var(--gold);padding:20px 26px;font-size:15.5px;color:var(--ink);border-radius:3px}
+
+  /* INVESTIMENTO */
+  .invest{background:var(--green);color:var(--bone)}
+  .invest .eyebrow{color:var(--gold)}.invest .eyebrow::before{background:var(--gold)}
+  .invest h2{color:#fff}
+  .invest .intro{color:rgba(246,241,231,.82);max-width:680px;margin-top:20px;font-weight:300;font-size:18px}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;align-items:stretch}
+  .tier{background:rgba(246,241,231,.05);border:1px solid rgba(246,241,231,.18);border-radius:6px;padding:36px 30px;display:flex;flex-direction:column;position:relative}
+  .tier.reco{background:var(--bone);border:none;transform:translateY(-14px);box-shadow:0 30px 60px -24px rgba(0,0,0,.5)}
+  .ribbon{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--clay);color:#fff;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:6px 16px;border-radius:40px;white-space:nowrap}
+  .tier .name{font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:18px}
+  .tier.reco .name{color:var(--clay)}
+  .tier .val{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:#fff;line-height:1}
+  .tier.reco .val{color:var(--green)}
+  .tier .per{font-size:13px;color:rgba(246,241,231,.6);margin-top:6px;letter-spacing:.04em}
+  .tier.reco .per{color:var(--ink-soft)}
+  .tier .desc{margin-top:22px;font-size:14.5px;color:rgba(246,241,231,.78);font-weight:300;flex:1}
+  .tier.reco .desc{color:var(--ink-soft)}
+  .tier .split{margin-top:22px;padding-top:18px;border-top:1px solid rgba(246,241,231,.16);font-size:13px;color:rgba(246,241,231,.7)}
+  .tier.reco .split{border-top:1px solid var(--line);color:var(--ink-soft)}
+  .invest .disc{margin-top:48px;font-size:13px;color:rgba(246,241,231,.55);font-weight:300;max-width:780px}
+
+  /* ENTREGA / KPI */
+  .entrega{background:var(--bone)}
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:54px}
+  .kpi{background:var(--bone-2);border-radius:5px;padding:32px 30px;border-top:3px solid var(--clay)}
+  .kpi:nth-child(2){border-top-color:var(--green-soft)}
+  .kpi:nth-child(3){border-top-color:var(--gold)}
+  .kpi h3{font-size:22px;margin-bottom:14px}
+  .kpi .m{font-size:15px;color:var(--ink);font-weight:500;margin-bottom:8px}
+  .kpi .m::before{content:"◆";color:var(--clay);font-size:9px;vertical-align:middle;margin-right:8px}
+  .kpi:nth-child(2) .m::before{color:var(--green-soft)}
+  .kpi:nth-child(3) .m::before{color:var(--gold)}
+  .kpi p{font-size:14px;margin-top:12px}
+
+  /* PASSOS */
+  .passos{background:var(--green);color:var(--bone)}
+  .passos .eyebrow{color:var(--gold)}.passos .eyebrow::before{background:var(--gold)}
+  .passos h2{color:#fff;max-width:760px}
+  .steps{margin-top:50px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .step{padding-top:22px;border-top:1px solid rgba(246,241,231,.2)}
+  .step .sn{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--gold);line-height:1}
+  .step p{color:rgba(246,241,231,.82);font-size:15px;margin-top:12px;font-weight:300}
+  .step p strong{color:#fff;font-weight:600}
+
+  /* FOOTER */
+  footer{background:#0F271E;color:rgba(246,241,231,.6);padding:54px 0;text-align:center}
+  footer .fc{font-family:'Cormorant Garamond',serif;font-size:26px;color:#fff;font-style:italic;margin-bottom:18px}
+  footer .meta{font-size:13px;letter-spacing:.04em}
+  footer .meta strong{color:var(--gold);font-weight:600}
+
+  /* RESPONSIVE */
+  @media (max-width:980px){
+    .wrap{padding:0 30px}
+    section{padding:72px 0}
+    .cen-grid{grid-template-columns:1fr;gap:18px}
+    .cen-arrow{transform:rotate(90deg);margin:2px 0}
+    .fl-row{grid-template-columns:1fr;gap:14px}
+    .fl-val{text-align:left}
+    .tiers{grid-template-columns:1fr;gap:34px}
+    .tier.reco{transform:none;order:-1}
+    .kpi-grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .hero-inner{padding:90px 30px 72px}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 22px}
+    section{padding:56px 0}
+    .hero-inner{padding:70px 22px 56px}
+    .hero-meta{gap:26px}
+    .cen-col{padding:30px 26px}
+    .v-card{grid-template-columns:1fr;gap:22px;padding:30px 26px}
+    .v-body .row{flex-direction:column;gap:3px}
+    .v-body .row .lbl{flex:none}
+    .fl-row{padding:22px 24px}
+    .steps{grid-template-columns:1fr}
+    .tier .val{font-size:44px}
+  }
+
+  /* PRINT / PDF */
+  @media print{
+    *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+    html,body{width:100%;margin:0;padding:0;background:#fff}
+    body{font-size:14px;line-height:1.5}
+
+    /* page config */
+    @page{size:A4 portrait;margin:12mm 0}
+
+    /* page breaks - allow sections to break, protect atomic blocks */
+    .v-card,.tier,.kpi,.step,.fl-row,.fl-total,.cen-col,.tl-note{page-break-inside:avoid;break-inside:avoid}
+    h2,h3,.eyebrow{page-break-after:avoid;break-after:avoid}
+    .tiers,.cen-grid{page-break-inside:avoid;break-inside:avoid}
+
+    /* hero */
+    .hero{padding:0;background:linear-gradient(155deg,#15352A 0%,#1C3F32 55%,#234A3A 100%)!important}
+    .hero::after{display:block!important}
+    .hero-inner{padding:72px 40px 64px}
+    .hero h1{font-size:72px}
+    .hero-concept{font-size:26px}
+
+    /* sections spacing */
+    section{padding:48px 0}
+    .wrap{max-width:100%;padding:0 48px}
+
+    /* cenário - keep futuro block dark */
+    .cen-grid{grid-template-columns:1fr auto 1fr;gap:18px}
+    .cen-col.hoje{background:var(--bone-2)!important;border:1px solid var(--line)!important}
+    .cen-col.futuro{background:var(--green)!important;color:var(--bone)!important}
+    .cen-col.futuro h3{color:#fff!important}
+    .cen-col.futuro p{color:rgba(246,241,231,.84)!important}
+    .cen-col.futuro .cen-state{color:var(--gold)!important}
+
+    /* vertentes cards */
+    .v-card{grid-template-columns:180px 1fr;gap:28px;padding:28px 32px}
+    .v-grid{gap:18px}
+
+    /* calendário / flight */
+    .fl-row{background:var(--bone-2)!important;border:1px solid var(--line)!important;border-left:4px solid var(--clay)!important}
+    .fl-row.f2{border-left-color:var(--green-soft)!important}
+    .fl-row.f3{border-left-color:var(--gold)!important}
+    .fl-total{background:var(--green)!important;color:var(--bone)!important}
+    .fl-total .lbl{color:var(--gold)!important}
+    .fl-total .val{color:#fff!important}
+
+    /* investimento (dark section) - bg on every child so page breaks don't lose it */
+    .invest{background:var(--green)!important;color:var(--bone)!important}
+    .invest .wrap{background:var(--green)!important}
+    .invest h2{color:#fff!important}
+    .invest .intro{color:rgba(246,241,231,.82)!important}
+    .invest .disc{color:rgba(246,241,231,.55)!important}
+
+    /* tiers - reset responsive order, keep original: Essencial | Recomendado | Completo */
+    .tiers{grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+    .tier{order:0!important;background:rgba(246,241,231,.05)!important;border:1px solid rgba(246,241,231,.18)!important}
+    .tier .val{color:#fff!important}
+    .tier .name{color:var(--gold)!important}
+    .tier .per,.tier .desc,.tier .split{color:rgba(246,241,231,.7)!important}
+    .tier.reco{order:0!important;background:var(--bone)!important;border:none!important;transform:none;box-shadow:0 4px 20px rgba(0,0,0,.3)!important}
+    .tier.reco .val{color:var(--green)!important}
+    .tier.reco .name{color:var(--clay)!important}
+    .tier.reco .per,.tier.reco .desc,.tier.reco .split{color:var(--ink-soft)!important}
+    .ribbon{background:var(--clay)!important;color:#fff!important}
+
+    /* KPI grid - keep 3 cols */
+    .kpi-grid{grid-template-columns:repeat(3,1fr)}
+    .kpi{border-top:3px solid var(--clay)!important}
+    .kpi:nth-child(2){border-top-color:var(--green-soft)!important}
+    .kpi:nth-child(3){border-top-color:var(--gold)!important}
+
+    /* passos (dark section) */
+    .passos{background:var(--green)!important;color:var(--bone)!important}
+    .passos .wrap{background:var(--green)!important}
+    .passos h2{color:#fff!important}
+    .step{border-top:1px solid rgba(246,241,231,.2)!important}
+    .step .sn{color:var(--gold)!important}
+    .step p{color:rgba(246,241,231,.82)!important}
+    .step p strong{color:#fff!important}
+    .steps{grid-template-columns:repeat(4,1fr)}
+
+    /* footer */
+    footer{background:#0F271E!important;color:rgba(246,241,231,.6)!important}
+    footer .fc{color:#fff!important}
+    footer .meta strong{color:var(--gold)!important}
+
+    /* eyebrows */
+    .eyebrow::before{background:var(--clay)!important;display:inline-block!important}
+    .invest .eyebrow::before,.passos .eyebrow::before{background:var(--gold)!important}
+    .invest .eyebrow,.passos .eyebrow{color:var(--gold)!important}
+
+    /* links */
+    a{text-decoration:none!important;color:inherit!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">SEBRAE Roraima · Boa Vista</div>
+    <h1>Roraimoda<br>&amp; <em>Beleza</em></h1>
+    <p class="hero-concept">"A identidade que veste, a Amazônia transpira."</p>
+    <div class="hero-rule"></div>
+    <div class="hero-meta">
+      <div class="item"><div class="k">Quando</div><div class="v">30 de julho a 1º de agosto</div></div>
+      <div class="item"><div class="k">Onde</div><div class="v">Pátio Roraima Shopping</div></div>
+      <div class="item"><div class="k">Meta de público</div><div class="v">15.000 pessoas em 3 dias</div></div>
+    </div>
+    <div class="hero-foot">
+      <div>Proposta de <strong>Estratégia Digital de Performance</strong></div>
+      <div>Digital Comunicação · Gestão de tráfego: <strong>Igor Andrade</strong></div>
+    </div>
+  </div>
+</header>
+
+<!-- O CENÁRIO -->
+<section class="cenario">
+  <div class="wrap">
+    <div class="eyebrow">01 · O cenário</div>
+    <h2>De verba invisível a presença inevitável</h2>
+    <p class="lead">O obstáculo do Roraimoda &amp; Beleza nunca foi falta de dinheiro. Foi falta de percepção. A virada está em fazer o evento aparecer ao mesmo tempo na rua e no digital, até a cidade inteira saber que ele vem aí.</p>
+    <div class="cen-grid">
+      <div class="cen-col hoje">
+        <div class="cen-state">Hoje</div>
+        <h3>Investimento sem percepção</h3>
+        <p>As edições anteriores passaram sem ser percebidas, na rua ou no digital. Havia verba no ar, mas o público não viu, e nem os próprios expositores notaram que existia uma campanha rodando. O dinheiro foi gasto; a presença não aconteceu.</p>
+      </div>
+      <div class="cen-arrow">&rarr;</div>
+      <div class="cen-col futuro">
+        <div class="cen-state">Para onde vamos</div>
+        <h3>ON e OFF jogando juntos</h3>
+        <p>O evento aparece na rua e no digital ao mesmo tempo, alcançando o público por dois caminhos que se reforçam. Mídia e ambiente físico contam a mesma história, na mesma hora, de forma medida e repetida, até o Roraimoda virar assunto de Boa Vista.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AS 3 VERTENTES -->
+<section class="vertentes">
+  <div class="wrap">
+    <div class="eyebrow">02 · As três frentes da campanha</div>
+    <h2>Três objetivos, três jeitos de medir</h2>
+    <div class="v-grid">
+
+      <div class="v-card b2b">
+        <div class="v-head">
+          <div class="tagn">Frente 1</div>
+          <h3>Expositores</h3>
+          <span class="prio" style="background:var(--green-soft)">Prioridade imediata</span>
+        </div>
+        <div class="v-body">
+          <div class="row"><div class="lbl">Objetivo</div><div class="txt">Gerar contatos qualificados de quem quer expor: moda autoral, varejo, salões, estética e cosméticos de Boa Vista.</div></div>
+          <div class="row"><div class="lbl">Como atrai</div><div class="txt">Anúncios com a condição especial SEBRAE (estande e balcão com valor diferenciado) como gatilho, direcionando para um cadastro rápido.</div></div>
+          <div class="row"><div class="lbl">Como medimos</div><div class="txt">Quantidade de contatos de expositor e custo por contato. Meta: encher os cerca de 30 espaços com folga.</div></div>
+          <div class="row"><div class="lbl">Condição</div><div class="txt">Atendimento comercial respondendo rápido (idealmente em até 3 horas). Sem isso, o contato esfria.</div></div>
+        </div>
+      </div>
+
+      <div class="v-card b2b">
+        <div class="v-head">
+          <div class="tagn">Frente 2</div>
+          <h3>Patrocinadores</h3>
+          <span class="prio" style="background:var(--green-soft)">Prioridade imediata</span>
+        </div>
+        <div class="v-body">
+          <div class="row"><div class="lbl">Objetivo</div><div class="txt">Apoiar o fechamento das cotas Ouro, Prata e Bronze. Uma cota não se vende por clique: quem fecha é a relação comercial. O digital prepara o terreno.</div></div>
+          <div class="row"><div class="lbl">Como atrai</div><div class="txt">Comunicação institucional de escala mostrada diretamente para os decisores - inclusive para a própria lista de prospecção do evento.</div></div>
+          <div class="row"><div class="lbl">Como medimos</div><div class="txt">Presença de marca junto aos decisores certos e apoio às vendas conduzidas pela equipe. Esta frente ataca o "ninguém percebeu" na veia.</div></div>
+        </div>
+      </div>
+
+      <div class="v-card pub">
+        <div class="v-head">
+          <div class="tagn">Frente 3</div>
+          <h3>Público</h3>
+          <span class="prio" style="background:var(--gold);color:#3a2e0a">Intensifica nos últimos 15 dias</span>
+        </div>
+        <div class="v-body">
+          <div class="row"><div class="lbl">Objetivo</div><div class="txt">Levar 15 mil pessoas ao evento. Como a entrada é franca, aqui não se mede venda: mede-se quanta gente da cidade foi impactada e com que frequência.</div></div>
+          <div class="row"><div class="lbl">Como atrai</div><div class="txt">A identidade visual do evento e as influenciadoras (Mari Guapichana e Tainá) carregando o conceito amazônico, com presença crescente até a virada final. No fim, anúncios de "é esse fim de semana" e "é hoje" para quem está perto do shopping.</div></div>
+          <div class="row"><div class="lbl">Como medimos</div><div class="txt">Alcance (quantas pessoas da cidade vimos), frequência (quantas vezes), e quantas demonstraram intenção de ir.</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ORQUESTRAÇÃO TEMPORAL -->
+<section class="timeline">
+  <div class="wrap">
+    <div class="eyebrow">03 · O calendário da campanha</div>
+    <h2>Cada frente no seu tempo, com seu valor</h2>
+    <p class="lead">Presença ao longo de 60 dias, ofensiva nos 15 finais. Abaixo, quando cada frente entra no ar e quanto recebe no cenário recomendado (R$ 50 mil).</p>
+    <div class="flight">
+
+      <div class="fl-row f1">
+        <div class="fl-name"><small>Frente 1</small>Expositores</div>
+        <div class="fl-mid">
+          <div class="fl-when">1 a 28 de junho</div>
+          <div class="fl-desc">Captação concentrada logo no arranque, para encher os ~30 espaços com folga usando a condição especial SEBRAE como gatilho.</div>
+        </div>
+        <div class="fl-val">R$ 5.000</div>
+      </div>
+
+      <div class="fl-row f2">
+        <div class="fl-name"><small>Frente 2</small>Patrocinadores</div>
+        <div class="fl-mid">
+          <div class="fl-when">1 de junho a 13 de julho</div>
+          <div class="fl-desc">Presença institucional junto aos decisores em paralelo à prospecção comercial, preparando o terreno das cotas Ouro, Prata e Bronze.</div>
+        </div>
+        <div class="fl-val">R$ 6.000</div>
+      </div>
+
+      <div class="fl-row f3">
+        <div class="fl-name"><small>Frente 3 · Público</small>Visibilidade contínua</div>
+        <div class="fl-mid">
+          <div class="fl-when">1 de junho a 15 de julho</div>
+          <div class="fl-desc">O evento na rua e no digital todos os dias, consertando de vez o "ninguém percebeu" das edições passadas.</div>
+        </div>
+        <div class="fl-val">R$ 11.000</div>
+      </div>
+
+      <div class="fl-row f3">
+        <div class="fl-name"><small>Frente 3 · Público</small>Influenciadoras</div>
+        <div class="fl-mid">
+          <div class="fl-when">22 de junho a 29 de julho</div>
+          <div class="fl-desc">Amplificação paga de Mari Guapichana e Tainá carregando o conceito amazônico, com presença crescente até a virada.</div>
+        </div>
+        <div class="fl-val">R$ 6.000</div>
+      </div>
+
+      <div class="fl-row f3">
+        <div class="fl-name"><small>Frente 3 · Público</small>Ofensiva + evento</div>
+        <div class="fl-mid">
+          <div class="fl-when">16 de julho a 1º de agosto</div>
+          <div class="fl-desc">Saturação da praça, ativação de quem circula no shopping e a comunicação de "é hoje" nos 3 dias do evento. O empurrão que enche a casa.</div>
+        </div>
+        <div class="fl-val">R$ 22.000</div>
+      </div>
+
+      <div class="fl-total">
+        <span class="lbl">Investimento total · cenário recomendado</span>
+        <span class="val">R$ 50.000</span>
+      </div>
+
+    </div>
+    <div class="tl-note"><strong>Ponto-chave:</strong> as frentes de expositores e patrocinadores arrancam <strong>já</strong> na primeira semana, porque a prospecção começa cedo. A frente de público cresce ao longo do tempo e explode na reta final - cerca de metade do orçamento se concentra nos últimos 15 dias, conforme o briefing.</div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section class="invest">
+  <div class="wrap">
+    <div class="eyebrow">04 · Investimento sugerido</div>
+    <h2>Três cenários para a campanha</h2>
+    <p class="intro">Valores investidos 100% em Facebook e Instagram, onde está a atenção do público de Boa Vista. Os números abaixo são dimensionados pela realidade de uma praça desse porte.</p>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="name">Essencial</div>
+        <div class="val">R$ 35 mil</div>
+        <div class="per">total · 60 dias</div>
+        <div class="desc">O mínimo para as três frentes funcionarem juntas. Mantém a visibilidade na cidade e a captação comercial, com a ofensiva de público mais contida e sem amplificação paga das influenciadoras. Abaixo disso, alguma frente fica descoberta.</div>
+        <div class="split">100% Facebook e Instagram</div>
+      </div>
+      <div class="tier reco">
+        <div class="ribbon">Recomendado</div>
+        <div class="name">Recomendado</div>
+        <div class="val">R$ 50 mil</div>
+        <div class="per">total · 60 dias</div>
+        <div class="desc">As três frentes no peso certo: visibilidade sustentada para resolver de vez o "estar na rua", captação comercial forte, ofensiva de público com fôlego na reta final e a amplificação paga das influenciadoras carregando a identidade amazônica. É o cenário que entrega a meta com folga.</div>
+        <div class="split">100% Facebook e Instagram</div>
+      </div>
+      <div class="tier">
+        <div class="name">Completo</div>
+        <div class="val">R$ 70 mil</div>
+        <div class="per">total · 60 dias</div>
+        <div class="desc">Saturação máxima da praça, presença ampliada das influenciadoras e cobertura em todos os espaços do Facebook e Instagram - feed, stories e reels. Para que ninguém em Boa Vista deixe de ouvir falar do evento, e o Roraimoda vire assunto da cidade.</div>
+        <div class="split">100% Facebook e Instagram</div>
+      </div>
+    </div>
+
+    <p class="disc">Os valores de mídia são estimativas de planejamento baseadas em operações comparáveis de eventos da agência e serão calibrados com dados reais de alcance da praça assim que a conta e a página de captação estiverem configuradas. Cerca de metade do investimento se concentra nos 15 a 20 dias finais, conforme orientação do briefing.</p>
+  </div>
+</section>
+
+<!-- O QUE CADA FRENTE ENTREGA -->
+<section class="entrega">
+  <div class="wrap">
+    <div class="eyebrow">05 · O que vamos entregar e como provamos</div>
+    <h2>Cada frente com seu indicador</h2>
+    <div class="kpi-grid">
+      <div class="kpi">
+        <h3>Patrocinadores</h3>
+        <div class="m">Marca do evento vista pelos decisores certos, com repetição</div>
+        <div class="m">Apoio direto ao fechamento das cotas</div>
+        <p>Não medimos por venda automática: o fechamento é da equipe comercial. O digital garante que o decisor chegue na conversa já conhecendo e valorizando o evento.</p>
+      </div>
+      <div class="kpi">
+        <h3>Expositores</h3>
+        <div class="m">Número de contatos qualificados de expositor</div>
+        <div class="m">Custo por contato</div>
+        <p>Indicador objetivo e acompanhável dia a dia. A meta é abastecer os cerca de 30 espaços com sobra de procura.</p>
+      </div>
+      <div class="kpi">
+        <h3>Público</h3>
+        <div class="m">Pessoas da cidade impactadas e quantas vezes</div>
+        <div class="m">Intenção de ir demonstrada</div>
+        <p>O sucesso é a cidade saber que o evento existe e querer ir. A meta de 15 mil pessoas se sustenta no alcance somado ao fluxo natural do shopping.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="passos">
+  <div class="wrap">
+    <div class="eyebrow">06 · Para começar a rodar em até 72 horas</div>
+    <h2>O que precisamos alinhar agora</h2>
+    <div class="steps">
+      <div class="step"><div class="sn">01</div><p><strong>Página de captação</strong> no sistema SEBRAE, com a medição de visitas e cadastros ativada.</p></div>
+      <div class="step"><div class="sn">02</div><p><strong>Material aberto</strong> da identidade visual já criada, para adaptarmos aos formatos dos anúncios.</p></div>
+      <div class="step"><div class="sn">03</div><p><strong>Lista de prospecção</strong> dos patrocinadores e atendimento comercial pronto para responder rápido.</p></div>
+      <div class="step"><div class="sn">04</div><p><strong>Definição do cenário</strong> de investimento, para liberarmos a campanha já no lançamento.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fc">A Amazônia transpira. E vai parar Boa Vista.</div>
+  <div class="meta">Proposta de Estratégia Digital · Roraimoda &amp; Beleza · <strong>Digital Comunicação</strong> · Gestão de tráfego: Igor Andrade</div>
+</footer>
+
+</body>
+</html>
