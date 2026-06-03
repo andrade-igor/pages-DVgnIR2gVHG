@@ -222,7 +222,7 @@
     @page{size:A4 portrait;margin:12mm 0}
 
     /* page breaks - allow sections to break, protect atomic blocks */
-    .v-card,.tier,.kpi,.step,.fl-row,.fl-total,.cen-col,.tl-note{page-break-inside:avoid;break-inside:avoid}
+    .v-card,.tier,.kpi,.step,.fl-row,.fl-total,.cen-col,.tl-note,.invest .disc{page-break-inside:avoid;break-inside:avoid}
     h2,h3,.eyebrow{page-break-after:avoid;break-after:avoid}
     .tiers,.cen-grid{page-break-inside:avoid;break-inside:avoid}
 
@@ -256,6 +256,9 @@
     .fl-total{background:var(--green)!important;color:var(--bone)!important}
     .fl-total .lbl{color:var(--gold)!important}
     .fl-total .val{color:#fff!important}
+
+    /* start key sections on a fresh page to avoid orphan headers */
+    .invest,.passos{page-break-before:always;break-before:page}
 
     /* investimento (dark section) - bg on every child so page breaks don't lose it */
     .invest{background:var(--green)!important;color:var(--bone)!important}
