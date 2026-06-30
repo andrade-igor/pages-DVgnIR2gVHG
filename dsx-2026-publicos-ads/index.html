@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSX 2026 — Públicos e Ads</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --navy:#06122D; --navy2:#0B1E45; --gold:#F5C02B; --gold-deep:#E5A800;
+    --blue:#1F5BD6; --blue-soft:#EEF3FC; --blue-line:#D5E1F7;
+    --ink:#0B1E45; --muted:#6B7A99; --faint:#9AA7C2;
+    --line:#E4E9F2; --bg:#F4F6FB; --card:#FFFFFF;
+  }
+  body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--ink); -webkit-font-smoothing:antialiased; font-feature-settings:"tnum"; }
+  .page { max-width:880px; margin:0 auto; background:var(--card); }
+  .o { color:var(--gold); }
+
+  /* HEADER */
+  .header { position:relative; color:#fff; padding:64px 56px 52px; overflow:hidden;
+    background-image:linear-gradient(180deg, rgba(6,18,45,0.58) 0%, rgba(6,18,45,0.78) 50%, rgba(6,18,45,0.95) 100%), url('img/capa-dsx-teatro.jpeg');
+    background-size:cover; background-position:center 35%; }
+  .h-brand { position:absolute; top:44px; right:48px; }
+  .h-brand img { width:150px; height:auto; display:block; }
+  .back { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; letter-spacing:.04em; color:#C3CEE4; text-decoration:none; margin-bottom:22px; padding:7px 14px; border:1px solid rgba(255,255,255,.22); border-radius:100px; transition:.2s; }
+  .back:hover { background:rgba(255,255,255,.08); color:#fff; }
+  .h-kicker { font-size:12px; font-weight:800; letter-spacing:.22em; color:var(--gold); margin-bottom:16px; text-transform:uppercase; }
+  .h-title { font-family:'Anton'; font-size:60px; line-height:.9; letter-spacing:.01em; text-transform:uppercase; text-shadow:0 4px 30px rgba(0,0,0,.35); }
+  .h-rule { width:64px; height:5px; background:var(--gold); margin:24px 0 18px; border-radius:3px; }
+  .h-lede { font-size:16px; font-weight:500; color:#C3CEE4; max-width:56ch; line-height:1.5; }
+
+  /* SECTION */
+  .sec { padding:50px 56px; }
+  .sec + .sec { border-top:1px solid var(--line); }
+  .sec-head { text-align:center; margin:0 0 32px; }
+  .sec-head .tag { font-size:12px; font-weight:800; letter-spacing:.2em; color:var(--blue); text-transform:uppercase; position:relative; padding:0 22px; display:inline-block; }
+  .sec-head .tag::before, .sec-head .tag::after { content:""; position:absolute; top:50%; width:48px; height:2px; background:var(--line); }
+  .sec-head .tag::before { right:100%; } .sec-head .tag::after { left:100%; }
+  .sec-head h2 { font-family:'Anton'; font-size:38px; line-height:1; letter-spacing:.01em; text-transform:uppercase; margin-top:14px; }
+  .sec-head .sub { font-size:15px; color:var(--muted); max-width:66ch; margin:14px auto 0; line-height:1.6; }
+  .sec-head .sub b { color:var(--ink); font-weight:700; }
+
+  /* PERSONA */
+  .persona { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:0; margin-bottom:18px; overflow:hidden; box-shadow:0 2px 14px rgba(11,30,69,.05); }
+  .persona-top { display:flex; align-items:center; gap:16px; padding:24px 30px; background:linear-gradient(120deg,var(--navy),var(--navy2)); color:#fff; }
+  .persona-top .pn { font-family:'Anton'; font-size:34px; color:var(--gold); line-height:1; }
+  .persona-top .pname { font-family:'Anton'; font-size:26px; text-transform:uppercase; letter-spacing:.01em; }
+  .persona-top .chip { margin-left:auto; font-size:11px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); color:#fff; padding:6px 13px; border-radius:100px; }
+  .persona-body { padding:8px 30px 26px; }
+  .row { display:grid; grid-template-columns:150px 1fr; gap:18px; padding:18px 0; border-top:1px solid var(--line); }
+  .row:first-child { border-top:none; }
+  .row .l { font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); padding-top:2px; }
+  .row .v { font-size:15px; color:#2A3754; line-height:1.6; }
+  .row .v b { color:var(--navy); font-weight:700; }
+  .row.angle .v { background:var(--blue-soft); border:1px solid var(--blue-line); border-radius:12px; padding:14px 18px; color:#1B3A78; font-weight:500; }
+  .row.cta .v { display:inline-block; font-size:13px; font-weight:800; color:#fff; background:var(--blue); border-radius:100px; padding:9px 18px; }
+
+  /* FUNIL BLOCK */
+  .fnl { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:26px 30px; margin-bottom:16px; border-left:5px solid var(--blue); box-shadow:0 2px 14px rgba(11,30,69,.04); }
+  .fnl-head { display:flex; align-items:center; gap:13px; flex-wrap:wrap; margin-bottom:6px; }
+  .fnl-head .fnum { font-family:'Anton'; font-size:26px; color:var(--blue); line-height:1; }
+  .fnl-head .fname { font-family:'Anton'; font-size:25px; text-transform:uppercase; color:var(--navy); letter-spacing:.01em; }
+  .fnl-head .ftag { margin-left:auto; font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--blue); background:var(--blue-soft); border:1px solid var(--blue-line); padding:5px 12px; border-radius:100px; }
+  .fnl-head .ftag.alt { color:var(--muted); background:#F4F6FB; border-color:var(--line); }
+  .fnl .fobj { font-size:13.5px; color:var(--muted); line-height:1.55; margin-bottom:16px; }
+  .fnl .fobj b { color:var(--ink); font-weight:700; }
+  .cr-list { display:flex; flex-direction:column; gap:8px; }
+  .cr { display:flex; align-items:center; gap:14px; padding:13px 16px; background:#F8FAFE; border:1px solid var(--line); border-radius:12px; }
+  .cr .cr-t { font-size:14px; color:#2A3754; line-height:1.45; flex:1; }
+  .cr .cr-t b { color:var(--navy); font-weight:700; }
+  .cr .cr-t span { color:var(--muted); }
+  .badge { flex-shrink:0; font-size:10px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; padding:5px 11px; border-radius:100px; white-space:nowrap; }
+  .badge.live { background:var(--blue); color:#fff; }
+  .badge.test { background:transparent; border:1px solid var(--gold-deep); color:var(--gold-deep); }
+  .badge.todo { background:transparent; border:1px solid var(--faint); color:var(--muted); }
+  .fnl-legend { display:flex; gap:18px; flex-wrap:wrap; justify-content:center; margin-top:16px; font-size:12px; color:var(--muted); font-weight:600; }
+  .fnl-legend .li { display:inline-flex; align-items:center; gap:7px; }
+  .fnl-legend .dot { width:9px; height:9px; border-radius:50%; }
+  .fnl-legend .dot.live { background:var(--blue); }
+  .fnl-legend .dot.test { border:2px solid var(--gold-deep); }
+  .fnl-legend .dot.todo { border:2px solid var(--faint); }
+
+  /* FORMULA */
+  .refad { background:linear-gradient(135deg,var(--navy),var(--navy2)); border-radius:16px; padding:26px 30px; margin-bottom:26px; position:relative; overflow:hidden; }
+  .refad::after { content:""; position:absolute; right:-30px; top:-50px; width:160px; height:160px; background:radial-gradient(circle,var(--gold) 0 60%,transparent 61%); opacity:.1; border-radius:50%; }
+  .refad .rl { font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; position:relative; z-index:1; }
+  .refad .rc { font-size:15px; color:#E6ECF7; line-height:1.7; position:relative; z-index:1; }
+  .refad .rc b { color:#fff; }
+  .refad .rm { margin-top:14px; font-size:12px; color:#9FB0D0; font-weight:600; position:relative; z-index:1; }
+  .refad .rm b { color:var(--gold); }
+
+  .steps { border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+  .step { display:grid; grid-template-columns:48px 1fr; gap:18px; padding:20px 24px; border-top:1px solid var(--line); align-items:start; }
+  .step:first-child { border-top:none; }
+  .step .sn { font-family:'Anton'; font-size:30px; color:var(--blue); line-height:.9; }
+  .step .st { font-size:16px; font-weight:800; color:var(--navy); }
+  .step .sd { font-size:13.5px; color:var(--muted); line-height:1.5; margin-top:3px; }
+  .step .se { margin-top:10px; font-size:13.5px; color:#1B3A78; background:var(--blue-soft); border:1px solid var(--blue-line); border-radius:10px; padding:10px 14px; line-height:1.5; }
+  .step .se i { color:var(--muted); font-style:normal; font-weight:700; font-size:11px; letter-spacing:.04em; text-transform:uppercase; display:block; margin-bottom:3px; }
+
+  .swap { margin-top:24px; }
+  .swap-lab { font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin-bottom:12px; display:flex; align-items:center; gap:10px; }
+  .swap-lab::after { content:''; flex:1; height:1px; background:var(--line); }
+  .swap-row { display:grid; grid-template-columns:190px 1fr; gap:16px; padding:15px 18px; background:#F8FAFE; border:1px solid var(--line); border-radius:12px; margin-bottom:8px; align-items:center; }
+  .swap-row .who { font-size:13px; font-weight:800; color:var(--navy); }
+  .swap-row .who span { display:block; font-size:11px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin-top:2px; }
+  .swap-row .q { font-size:14.5px; color:#1B3A78; font-weight:500; line-height:1.45; }
+
+  @media (max-width:780px) {
+    .step { grid-template-columns:1fr; gap:6px; }
+    .swap-row { grid-template-columns:1fr; gap:6px; }
+  }
+
+  /* NOTE */
+  .note { margin-top:6px; padding:22px 26px; background:var(--blue-soft); border:1px solid var(--blue-line); border-left:4px solid var(--blue); border-radius:14px; font-size:14.5px; color:#2A3754; line-height:1.6; }
+  .note b { color:var(--navy); }
+
+  /* FOOTER */
+  .footer { background:var(--navy); color:#9FB0D0; padding:24px 56px; display:flex; align-items:center; justify-content:space-between; font-size:12px; flex-wrap:wrap; gap:10px; }
+  .footer .fl { display:flex; align-items:center; gap:14px; font-family:'Anton'; font-size:15px; color:#fff; letter-spacing:.02em; }
+  .footer .fl img { width:96px; height:auto; display:block; }
+  .footer a { color:var(--gold); font-weight:800; text-decoration:none; }
+
+  @media (max-width:780px) {
+    .header { padding:42px 26px 36px; } .h-brand { position:static; margin-bottom:16px; }
+    .h-title { font-size:40px; }
+    .sec { padding:40px 26px; } .sec-head h2 { font-size:28px; }
+    .persona-top { padding:20px 22px; } .persona-top .pname { font-size:21px; }
+    .persona-body { padding:6px 22px 22px; }
+    .row { grid-template-columns:1fr; gap:6px; }
+    .footer { padding:20px 26px; }
+  }
+  @media print {
+    *, *::before, *::after { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+    @page { margin:12mm; }
+    html, body { background:var(--card) !important; }
+    .page { max-width:none; width:100%; }
+    .header, .sec, .footer, .persona, .note { break-inside:avoid; }
+    .sec-head, .persona-top { break-after:avoid; }
+    .back { display:none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="h-brand"><img src="img/logo-dsx.png" alt="DSX - Digital Summit Experience"></div>
+    <div class="h-kicker">DSX 2026 · Segmentação de público</div>
+    <div class="h-title">Públicos<br>&amp; <span class="o">Ads</span></div>
+    <div class="h-rule"></div>
+    <div class="h-lede">A verba é uma só, mas a mensagem muda conforme quem está do outro lado. Aqui estão os quatro públicos que a gente vai falar - e o ângulo do ad para cada um.</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="sec">
+    <div class="sec-head">
+      <span class="tag">Como ler</span>
+      <h2>Um ad para cada público</h2>
+      <p class="sub">O evento é o mesmo, a dor de cada um é diferente. Em vez de um anúncio genérico para todo mundo, a gente <b>recorta a mensagem por persona</b>: o que move, o ângulo que fala com ela e a chamada certa.</p>
+    </div>
+    <div class="note"><b>Direção, não copy final.</b> Os ângulos abaixo são o norte de cada público. O time de conteúdo desenvolve a copy e o criativo em cima disso - sempre com <b>hook de 3 segundos</b>, mostrando <b>pessoas</b> (não a grade do evento) e com CTA de "quero fazer parte", nunca "compre".</p></div>
+  </div>
+
+  <!-- PERSONAS -->
+  <div class="sec">
+    <div class="sec-head">
+      <span class="tag">Os quatro públicos</span>
+      <h2>Quem a gente fala</h2>
+    </div>
+
+    <div class="persona">
+      <div class="persona-top">
+        <span class="pn">01</span>
+        <span class="pname">Empresário B2B</span>
+        <span class="chip">Corporativo</span>
+      </div>
+      <div class="persona-body">
+        <div class="row"><div class="l">Quem é</div><div class="v">Quem <b>lidera uma empresa com mais de 10 colaboradores</b>. Decide trazer e capacitar o time.</div></div>
+        <div class="row"><div class="l">O que move</div><div class="v">Garantir que o time evolua na velocidade que o mercado exige, com conhecimento, networking e discussões que aceleram os resultados do negócio.</div></div>
+        <div class="row angle"><div class="l">Ângulo do ad</div><div class="v">Você lidera uma empresa com mais de 10 colaboradores: seu time está evoluindo na velocidade que o mercado exige? No DSX, sua equipe acessa o conhecimento, o networking e as discussões que aceleram os próximos resultados.</div></div>
+        <div class="row cta"><div class="l">CTA</div><div class="v">Falar com o time comercial</div></div>
+      </div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-top">
+        <span class="pn">02</span>
+        <span class="pname">Profissional de Marketing</span>
+        <span class="chip">Carreira / Agência</span>
+      </div>
+      <div class="persona-body">
+        <div class="row"><div class="l">Quem é</div><div class="v">Profissional ou gestor de marketing, agência, social media, performance. Quer <b>crescer na carreira</b>.</div></div>
+        <div class="row"><div class="l">O que move</div><div class="v">Se capacitar pra ganhar experiência e, com isso, faturar mais - e construir o network que abre as próximas portas.</div></div>
+        <div class="row angle"><div class="l">Ângulo do ad</div><div class="v">Se você trabalha com marketing, existe uma pergunta importante: o que falta pra sua carreira (e seu faturamento) subir de nível? No DSX 2026, você se capacita com quem está no topo e constrói o network que abre as próximas portas.</div></div>
+        <div class="row cta"><div class="l">CTA</div><div class="v">Quero garantir meu acesso</div></div>
+      </div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-top">
+        <span class="pn">03</span>
+        <span class="pname">Pequeno Empresário</span>
+        <span class="chip">PME local</span>
+      </div>
+      <div class="persona-body">
+        <div class="row"><div class="l">Quem é</div><div class="v">Dono de pequeno negócio em Manaus, com <b>fome de crescer e faturar mais</b>.</div></div>
+        <div class="row"><div class="l">O que move</div><div class="v">Vender mais, faturar mais e fazer o negócio crescer - aprender o que dá pra aplicar na prática e subir de patamar.</div></div>
+        <div class="row angle"><div class="l">Ângulo do ad</div><div class="v">Se você toca um negócio em Manaus, existe uma pergunta importante: o que falta pra ele vender mais e crescer de verdade? No DSX 2026, você aprende com quem já fez o que dá pra aplicar na sua empresa pra faturar mais - marketing, vendas e gestão na prática.</div></div>
+        <div class="row cta"><div class="l">CTA</div><div class="v">Quero fazer parte</div></div>
+      </div>
+    </div>
+
+    <div class="persona">
+      <div class="persona-top">
+        <span class="pn">04</span>
+        <span class="pname">Expositor / Patrocinador</span>
+        <span class="chip">Marca / Negócio</span>
+      </div>
+      <div class="persona-body">
+        <div class="row"><div class="l">Quem é</div><div class="v">Empresa ou marca que quer <b>expor e fazer negócio no DSX</b> - não vem assistir, vem se posicionar diante do público.</div></div>
+        <div class="row"><div class="l">O que move</div><div class="v">Colocar a marca diante de um público qualificado que decide, gerar conexões e estar no centro do maior ambiente de negócios do Norte.</div></div>
+        <div class="row angle"><div class="l">Ângulo do ad</div><div class="v">Já pensou em colocar sua marca dentro de um dos maiores ambientes de negócios do Norte? O DSX reúne grandes nomes e empresários de todo o Brasil - sua empresa pode estar onde as conexões acontecem. Seja expositor e posicione sua marca diante de um público extremamente qualificado.</div></div>
+        <div class="row cta"><div class="l">CTA</div><div class="v">Falar com o time comercial</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A FORMULA -->
+  <div class="sec">
+    <div class="sec-head">
+      <span class="tag">A ferramenta do time</span>
+      <h2>A fórmula vencedora</h2>
+      <p class="sub">Pegamos as duas melhores copies que já estão no ar - a do corporativo e a de expositores - e mesclamos o que cada uma faz de melhor numa estrutura só. Esta é a fórmula que o time usa pra montar qualquer ad.</p>
+    </div>
+
+    <div class="refad">
+      <div class="rl">Matéria-prima 1 · Corporativo</div>
+      <div class="rc">"Se você lidera uma empresa com mais de 10 colaboradores, existe uma pergunta importante. <b>Seu time está evoluindo na mesma velocidade que o mercado exige?</b> No DSX 2026, sua equipe acessa conhecimento, networking e as discussões que podem acelerar os próximos resultados do seu negócio. Fale com nosso time."</div>
+      <div class="rm">Identifica o público · cutuca a dor · entrega concreta</div>
+    </div>
+
+    <div class="refad">
+      <div class="rl">Matéria-prima 2 · Expositores</div>
+      <div class="rc">"Já pensou em colocar sua marca dentro de um dos maiores ambientes de negócios do Norte? <b>O DSX 2026 vai reunir grandes nomes, marcas e empresários de todo o Brasil aqui na nossa região.</b> E a sua empresa pode estar exatamente no lugar onde essas conexões acontecem. Seja um expositor e posicione sua marca para um público extremamente qualificado. Fale com o nosso time."</div>
+      <div class="rm">Prova de magnitude · te coloca dentro da cena</div>
+    </div>
+
+    <div class="swap-lab" style="margin-bottom:14px;">A fusão · 6 passos</div>
+    <div class="steps">
+      <div class="step">
+        <div class="sn">1</div>
+        <div>
+          <div class="st">Fisga quem importa</div>
+          <div class="sd">Abre identificando o público ou com uma pergunta de oportunidade. Quem é daquele público para tudo; quem não é, ignora.</div>
+          <div class="se"><i>Corporativo</i>"Se você lidera uma empresa com mais de 10 colaboradores..."</div>
+          <div class="se" style="margin-top:6px;"><i>Expositor</i>"Já pensou em colocar sua marca em um dos maiores ambientes de negócios do Norte?"</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">2</div>
+        <div>
+          <div class="st">A pergunta que cutuca</div>
+          <div class="sd">A dor ou o desejo real daquele público - não o evento, não o ingresso. É aqui que o ad vira ou morre.</div>
+          <div class="se"><i>Corporativo</i>"Seu time está evoluindo na mesma velocidade que o mercado exige?"</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">3</div>
+        <div>
+          <div class="st">A prova de magnitude</div>
+          <div class="sd">Dá tamanho ao DSX: grandes nomes, marcas e empresários de todo o Brasil. É o que transforma "mais um evento" em "o evento que eu preciso estar".</div>
+          <div class="se"><i>Expositor</i>"O DSX vai reunir grandes nomes, marcas e empresários de todo o Brasil aqui na nossa região."</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">4</div>
+        <div>
+          <div class="st">Te coloca dentro da cena</div>
+          <div class="sd">Faz a pessoa se imaginar lá. Não fala do evento, fala dela no evento.</div>
+          <div class="se"><i>Expositor</i>"E a sua empresa pode estar exatamente no lugar onde essas conexões acontecem."</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">5</div>
+        <div>
+          <div class="st">O que o DSX entrega</div>
+          <div class="sd">Conhecimento, networking e as conexões que aceleram o resultado. A resposta concreta pra dor do passo 2.</div>
+          <div class="se"><i>Corporativo</i>"No DSX, sua equipe acessa conhecimento, networking e as discussões que aceleram os próximos resultados."</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sn">6</div>
+        <div>
+          <div class="st">Chamada direta</div>
+          <div class="sd">Sem rodeio. Fala com o time, garante o acesso. Nunca "compre".</div>
+          <div class="se"><i>Dos dois</i>"Fale com o nosso time."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swap">
+      <div class="swap-lab">O gancho que muda por público — os passos 1 e 2</div>
+      <div class="swap-row">
+        <div class="who">Empresário B2B<span>copy pronta</span></div>
+        <div class="q">"Seu time está evoluindo na velocidade que o mercado exige?"</div>
+      </div>
+      <div class="swap-row">
+        <div class="who">Profissional de Marketing<span>a produzir</span></div>
+        <div class="q">"O que falta pra sua carreira e seu faturamento subirem de nível?"</div>
+      </div>
+      <div class="swap-row">
+        <div class="who">Pequeno Empresário<span>a produzir</span></div>
+        <div class="q">"O que falta pro seu negócio vender mais e crescer de verdade?"</div>
+      </div>
+      <div class="swap-row">
+        <div class="who">Expositor / Patrocinador<span>copy pronta</span></div>
+        <div class="q">"Já pensou em colocar sua marca dentro de um dos maiores ambientes de negócios do Norte?"</div>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:24px;"><b>A espinha é a mesma pra todo mundo</b> - magnitude, cena, entrega e chamada. O que muda é o gancho do começo: a dor ou o desejo de cada público. E a regra de ouro não muda em nenhum funil: <b>fale da dor ou do desejo da pessoa, nunca do ingresso.</b></div>
+  </div>
+
+  <div class="footer">
+    <div class="fl"><img src="img/logo-dsx.png" alt="DSX"> 2026 · Públicos e Ads</div>
+    <div class="fr">Material interno · time de criação</div>
+  </div>
+
+</div>
+</body>
+</html>
